@@ -22,7 +22,7 @@ const UserNotifications = () => {
     rental: true,
     room: true,
   });
-  
+
 
   const { currentUser } = useAuth(); // Get the current user's ID
 
@@ -36,7 +36,7 @@ const UserNotifications = () => {
         setLoading((prev) => ({
           ...prev,
           food: false,
-      }));
+        }));
       }
     };
     const fetchRentalInfo = async () => {
@@ -88,7 +88,7 @@ const UserNotifications = () => {
 
   return (
     <div className="p-6">
-     <Tabs activeTab={activeTab} setActiveTab={setActiveTab}/>
+      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === "food-orders" && (
         <UserFoodNotification
           handleDelete={handleDelete}
@@ -101,7 +101,7 @@ const UserNotifications = () => {
           <UserRentalNotifications
             rentalVehicles={rentalVehicles}
             handleDelete={handleDelete}
-          loading={loading}
+            loading={loading}
           />
         </div>
       )}
@@ -110,7 +110,7 @@ const UserNotifications = () => {
           <UserControlsRoom
             roomNotifications={roomNotifications}
             handleDelete={handleDelete}
-          loading={loading}
+            loading={loading}
 
           />
         </div>
