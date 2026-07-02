@@ -20,20 +20,6 @@ import WelcomePage from './WelcomePage';
 
 
 const App = () => {
-  const [welcome, setWelcome] = useState(true); // Default state is true to show the welcome screen.
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setWelcome(false); // Hide the welcome screen after 3 seconds.
-    }, 3000);
-
-    return () => clearTimeout(timer); // Clean up the timer to avoid memory leaks.
-  }, []);
-
-  if (welcome) {
-    // Show the WelcomePage component while `welcome` is true.
-    return <WelcomePage />;
-  }
   const Layout = React.lazy(() => import('./layout/Layout'));
   const Home = React.lazy(() => import('./pages/Home'));
   return (

@@ -18,7 +18,7 @@ function CardRate({vehicle, handleSubmit }) {
       <p className="text-gray-600 italic mb-4">{vehicle.desc}</p>
         <button
           onClick={handleSubmit}
-          className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+          className="mt-4 w-full bg-blue-500 text-slate-800 py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300"
         >
           Book Now
         </button>

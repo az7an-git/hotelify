@@ -37,75 +37,80 @@ const ParkingCard = ({ vehicle }) => {
   };
 
   return (
-    <div className="max-w-sm mx-auto p-4 border rounded-lg shadow-lg bg-white transform transition duration-300 hover:shadow-xl hover:scale-105">
-      <div className="relative">
+    <div className="glass-card max-w-sm mx-auto p-4 hover:-translate-y-1 transition-transform duration-300">
+      <div className="relative rounded-xl overflow-hidden mb-4 shadow-sm border border-white/50 bg-white/20 flex items-center justify-center h-48">
         <img
           src={vehicle.imageUrl}
           alt={vehicle.name}
-          className="w-full h-48 object-cover"
+          className="max-w-full max-h-full object-contain"
         />
-      </div>
-      <div className="max-md:p-2 p-4">
-        <div className="flex justify-between items-center font-semibold text-gray-800 text-lg lg:text-xl 2xl:text-3xl">
-          <div className="   capitalize">{vehicle.name}</div>
-          <div title="Per day" className="">
-            ${vehicle.rate}
-          </div>
+        <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-md text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-white/60 shadow-sm">
+          ${vehicle.rate}/day
         </div>
-        <p className="text-gray-600 italic py-3 text-center">
+      </div>
+      <div className="px-2">
+        <div className="flex justify-between items-center font-semibold text-slate-800 text-xl">
+          <div className="capitalize">{vehicle.name}</div>
+        </div>
+        <p className="text-slate-500 italic py-2 text-sm">
           {vehicle.category}
         </p>
       </div>
 
-      <div className="space-y-3 mt-4">
+      <div className="space-y-4 mt-2 px-2">
         <div className="flex justify-between items-center">
-          <label className="text-gray-600 font-medium">Start Date:</label>
+          <label className="text-slate-600 font-medium text-sm">Start Date:</label>
           <input
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="border rounded p-1 transition duration-200 focus:ring-2 focus:ring-blue-300"
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md rounded-xl px-3 py-1.5 outline-none focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 text-sm"
             max={endDate}
             min={today}
           />
         </div>
         <div className="flex justify-between items-center">
-          <label className="text-gray-600 font-medium">End Date:</label>
+          <label className="text-slate-600 font-medium text-sm">End Date:</label>
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="border rounded p-1 transition duration-200 focus:ring-2 focus:ring-blue-300"
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md rounded-xl px-3 py-1.5 outline-none focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 text-sm"
             min={startDate}
           />
         </div>
       </div>
-      <p className="text-gray-800 font-semibold text-lg mt-4">
-        Total Rate: <span className="text-green-600">${totalRate}</span>
-      </p>
-      {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
-        <button
-          className={`mt-4 w-full py-2 rounded-lg transition-all duration-300 ${
-            isAvailable
-              ? "bg-green-500 hover:bg-green-600"
-              : "bg-red-500 hover:bg-red-600"
-          } text-white font-semibold`}
-          onClick={handleToggleAvailability}
-        >
-          {isAvailable ? "Available" : "Unavailable"}
-        </button>
-      )}
-      {currentUser && currentUser.uid !== "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
-        <button
-          className={`mt-4 w-full py-2 rounded-lg cursor-not-allowed transition-all duration-300 ${
-            isAvailable
-              ? "bg-green-500 hover:bg-green-600"
-              : "bg-red-500 hover:bg-red-600"
-          } text-white font-semibold`}
-        >
-          {isAvailable ? "Available" : "Unavailable"}
-        </button>
-      )}
+      
+      <div className="px-2 mt-5">
+        <p className="text-slate-800 font-semibold text-lg flex justify-between items-center border-t border-white/40 pt-4">
+          <span>Total Rate:</span> 
+          <span className="text-blue-600 bg-blue-100/50 px-3 py-1 rounded-lg border border-blue-200/50">${totalRate}</span>
+        </p>
+        
+        {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" ? (
+          <button
+            className={`mt-6 w-full py-2.5 rounded-xl transition-all duration-300 shadow-md border ${
+              isAvailable
+                ? "bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 border-emerald-300/50 text-white"
+                : "bg-gradient-to-r from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 border-rose-300/50 text-white"
+            } font-semibold backdrop-blur-sm`}
+            onClick={handleToggleAvailability}
+          >
+            {isAvailable ? "Available" : "Unavailable"}
+          </button>
+        ) : (
+          <button
+            className={`mt-6 w-full py-2.5 rounded-xl cursor-not-allowed transition-all duration-300 shadow-md border ${
+              isAvailable
+                ? "bg-gradient-to-r from-emerald-400 to-emerald-500 border-emerald-300/50 text-white opacity-80"
+                : "bg-gradient-to-r from-rose-400 to-rose-500 border-rose-300/50 text-white opacity-80"
+            } font-semibold backdrop-blur-sm`}
+            disabled
+          >
+            {isAvailable ? "Available" : "Unavailable"}
+          </button>
+        )}
+      </div>
     </div>
   );
 };

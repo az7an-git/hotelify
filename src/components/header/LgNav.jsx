@@ -21,18 +21,18 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
 
         {/* Services Dropdown */}
         <div className="relative group py-2">
-          <button className="flex items-center space-x-1.5 text-slate-300 hover:text-white font-medium transition-colors duration-200">
+          <button className="flex items-center space-x-1.5 text-slate-600 hover:text-blue-600 font-medium transition-colors duration-200">
             <span>Services</span>
             <FaChevronDown className="text-xs transition-transform duration-250 group-hover:rotate-180" />
           </button>
-          <div className="absolute left-0 mt-2 w-48 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+          <div className="absolute left-0 mt-2 w-48 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-100 shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
             {bookingNavs.map((nav, i) => (
               <NavLink
                 key={i}
                 to={`/${nav.nv}`}
                 className={({ isActive }) =>
                   `${
-                    isActive ? "text-teal-400 font-semibold bg-slate-800/40" : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                    isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
                   } block px-4 py-2 text-sm transition-all duration-200`
                 }
               >
@@ -45,18 +45,18 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
         {/* Admin/User Dashboard Dropdown */}
         {currentUser && (
           <div className="relative group py-2">
-            <button className="flex items-center space-x-1.5 text-slate-300 hover:text-white font-medium transition-colors duration-200">
+            <button className="flex items-center space-x-1.5 text-slate-600 hover:text-blue-600 font-medium transition-colors duration-200">
               <span>{isAdmin ? "Admin Panel" : "My Account"}</span>
               <FaChevronDown className="text-xs transition-transform duration-250 group-hover:rotate-180" />
             </button>
-            <div className="absolute left-0 mt-2 w-48 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+            <div className="absolute left-0 mt-2 w-48 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-100 shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
               {(isAdmin ? adminNavs : userNavs).map((nav, i) => (
                 <NavLink
                   key={i}
                   to={`/${nav.nv}`}
                   className={({ isActive }) =>
                     `${
-                      isActive ? "text-teal-400 font-semibold bg-slate-800/40" : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                      isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
                     } block px-4 py-2 text-sm transition-all duration-200`
                   }
                 >
@@ -72,7 +72,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
         {!currentUser && (
           <NavLink
             to="/login"
-            className="flex items-center space-x-1 py-1.5 px-4 text-slate-300 hover:text-white hover:bg-slate-800/40 rounded-full border border-slate-800 transition-all duration-200 cursor-pointer text-sm font-medium"
+            className="flex items-center space-x-1 py-1.5 px-4 text-slate-700 hover:text-blue-600 hover:bg-slate-100/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
           >
             <CiLogin className="text-lg" />
             <span>Login</span>
@@ -81,7 +81,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
         {currentUser && (
           <button
             onClick={handleLogout}
-            className="flex items-center space-x-1 py-1.5 px-4 text-slate-300 hover:text-rose-400 hover:bg-slate-800/40 rounded-full border border-slate-800 transition-all duration-200 cursor-pointer text-sm font-medium"
+            className="flex items-center space-x-1 py-1.5 px-4 text-slate-700 hover:text-rose-500 hover:bg-rose-50/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
           >
             <IoIosLogOut className="text-lg" />
             <span>Logout</span>

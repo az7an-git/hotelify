@@ -51,7 +51,7 @@ function BookingForm({ order, formData, setFormData, handleSubmitOrder }) {
           </div>
           <button
             onClick={handleSubmitOrder}
-            className="mt-4 px-4 py-2 bg-green-500 hover:bg-green-800 transition-all duration-200 text-white rounded"
+            className="mt-4 px-4 py-2 bg-green-500 hover:bg-green-800 transition-all duration-200 text-slate-800 rounded"
           >
             Place Order
           </button>

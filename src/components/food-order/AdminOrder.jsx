@@ -63,13 +63,13 @@ const AdminOrders = () => {
                       <>
                         <button
                           onClick={() => handleStatusChange(order.id, order.userId, 'accepted', order.items, order.name)}
-                          className="px-4 py-2 bg-green-500 text-white font-semibold rounded-full transition transform hover:bg-green-600 hover:scale-110 focus:ring focus:ring-green-200"
+                          className="px-4 py-2 bg-green-500 text-slate-800 font-semibold rounded-full transition transform hover:bg-green-600 hover:scale-110 focus:ring focus:ring-green-200"
                         >
                           Accept
                         </button>
                         <button
                           onClick={() => handleStatusChange(order.id, order.userId, 'rejected', order.items, order.name)}
-                          className="px-4 py-2 bg-red-500 text-white font-semibold rounded-full transition transform hover:bg-red-600 hover:scale-110 focus:ring focus:ring-red-200"
+                          className="px-4 py-2 bg-red-500 text-slate-800 font-semibold rounded-full transition transform hover:bg-red-600 hover:scale-110 focus:ring focus:ring-red-200"
                         >
                           Reject
                         </button>
@@ -78,7 +78,7 @@ const AdminOrders = () => {
                     {order.status === 'accepted' && (
                       <button
                         onClick={() => handleStatusChange(order.id, order.userId, 'delivered', order.items, order.name)}
-                        className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-full transition transform hover:bg-blue-600 hover:scale-110 focus:ring focus:ring-blue-200"
+                        className="px-4 py-2 bg-blue-500 text-slate-800 font-semibold rounded-full transition transform hover:bg-blue-600 hover:scale-110 focus:ring focus:ring-blue-200"
                       >
                         Mark as Delivered
                       </button>

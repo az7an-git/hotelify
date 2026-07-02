@@ -49,33 +49,46 @@ const UserChat = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-xl md:text-2xl lg:text-3xl text-center font-bold mb-4">Chat with Admin</h2>
+    <div className="max-w-4xl mx-auto p-4">
+      <h2 className="text-2xl md:text-3xl text-center font-extrabold tracking-tight mb-6">
+        Chat with <span className="text-blue-600">Admin</span>
+      </h2>
       <div
-            ref={chatContainerRef}
-       className="overflow-y-auto h-[50vh] element bg-gray-50 p-4 rounded-lg shadow mb-4">
-       { loading ? <Loader msg={"Fetching your messages"} /> :
-        messages.map(msg => (
-        ( msg.senderId === currentUser.uid || msg.senderId === 'admin') && msg.userId === currentUser.uid &&
-        <div 
-            key={msg.id} 
-            className={`mb-2 p-2 rounded-lg shadow-md w-fit ${msg.senderId === currentUser.uid ? 'bg-green-100 text-right ms-auto' : msg.senderId === 'admin' ? 'bg-gray-300 text-left' : 'hidden'}`}
-          >
-            {msg.message}
-          </div> 
-        ))}
+        ref={chatContainerRef}
+        className="overflow-y-auto h-[50vh] element bg-white/40 backdrop-blur-md shadow-sm border border-white/50 border border-white/60/80 p-4 rounded-2xl shadow-inner mb-4 space-y-3"
+      >
+        {loading ? (
+          <Loader msg={"Fetching your messages"} />
+        ) : (
+          messages.map(
+            (msg) =>
+              (msg.senderId === currentUser.uid || msg.senderId === "admin") &&
+              msg.userId === currentUser.uid && (
+                <div
+                  key={msg.id}
+                  className={`p-3 rounded-2xl shadow-md max-w-md text-sm ${
+                    msg.senderId === currentUser.uid
+                      ? "bg-blue-500 text-slate-950 ml-auto rounded-tr-none font-medium"
+                      : "bg-slate-850 text-slate-700 border border-white/60 mr-auto rounded-tl-none"
+                  }`}
+                >
+                  {msg.message}
+                </div>
+              )
+          )
+        )}
       </div>
-      <form onSubmit={handleSendMessage} className="flex">
-        <input 
-          type="text" 
-          value={newMessage} 
-          onChange={(e) => setNewMessage(e.target.value)} 
-          placeholder="Type a message..." 
-          className={`flex-1  p-2 mr-2 ${inputStyles}`}
+      <form onSubmit={handleSendMessage} className="flex gap-2">
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          placeholder="Type a message..."
+          className="flex-1 bg-white/40 backdrop-blur-md shadow-sm border border-white/50 text-slate-700 border border-white/60 rounded-full px-5 py-3 outline-none focus:border-teal-500 transition-colors"
         />
-        <button 
-        type='submit'
-          className="bg-green-500 hover:bg-green-800 transition-all duration-200 text-white px-4 py-2 rounded-xl"
+        <button
+          type="submit"
+          className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 px-6 py-3 rounded-full font-bold transition-all duration-200 active:scale-95 shadow-md shadow-teal-500/10"
         >
           Send
         </button>

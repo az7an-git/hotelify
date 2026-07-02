@@ -6,8 +6,8 @@ import { inputStyles } from "../registrations/FoodRegistration";
 const SubmitTestimonialForm = () => {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
-//   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,21 +17,18 @@ const SubmitTestimonialForm = () => {
     }
 
     setLoading(true);
+    setSuccess(false);
 
     try {
-    const testimonialSubit = async () => {
-        await addDoc(collection(db, "testimonials"), {
-          name,
-          review,
-          time: Timestamp.fromDate(new Date())
-        });
-        setName("");
-        setReview("");
-        // setImage(null);
-        alert('Testimonial added successfully')
-      };
-      testimonialSubit();
-    //   reader.readAsDataURL(image);
+      await addDoc(collection(db, "testimonials"), {
+        name,
+        review,
+        time: Timestamp.fromDate(new Date())
+      });
+      setName("");
+      setReview("");
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 5000);
     } catch (error) {
       console.error("Error adding testimonial: ", error);
     }
@@ -40,39 +37,51 @@ const SubmitTestimonialForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-xl md:text-2xl lg:text-3xl text-center font-bold mb-4">Share your thoughts</h2>
-   <div
-className="flex justify-between items-center flex-wrap mb-4"
-   >
-   <input
-        type="text"
-        placeholder="Your Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className={`w-[15%] p-2 border rounded-lg ${inputStyles} `}
-      />
-      <textarea
-        placeholder="Your Review"
-        value={review}
-        rows={1}
-        onChange={(e) => setReview(e.target.value)}
-        className="w-[70%] p-2  border rounded-lg"
-      />
-     </div>
-   
-    <div
-    className="text-center"
-    >
-    <button
-        type="submit"
-        className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg"
-        disabled={loading}
-      >
-        {loading ? "Submitting..." : "Submit Testimonial"}
-      </button>
+    <div className="max-w-2xl mx-auto px-4 pb-16">
+      <form onSubmit={handleSubmit} className="p-6 md:p-8 glass-card space-y-6">
+        <h2 className="text-xl md:text-2xl font-bold text-center text-slate-800">Share Your Experience</h2>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full md:w-[30%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-full px-5 py-3 outline-none focus:border-teal-500 transition-colors text-sm"
+          />
+          <textarea
+            placeholder="Your Review"
+            value={review}
+            rows={1}
+            onChange={(e) => setReview(e.target.value)}
+            className="w-full md:w-[67%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-5 py-3 outline-none focus:border-teal-500 transition-colors text-sm resize-none"
+          />
+        </div>
+      
+        <div className="text-center space-y-3">
+          <button
+            type="submit"
+            className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-slate-950 px-6 py-2.5 rounded-full font-bold transition duration-200 disabled:opacity-50 min-w-[160px]"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <svg className="animate-spin h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                <span>Submitting...</span>
+              </>
+            ) : "Submit Testimonial"}
+          </button>
+
+          {success && (
+            <div className="text-emerald-400 text-sm font-semibold animate-fadeInUp">
+              ✓ Testimonial added successfully!
+            </div>
+          )}
+        </div>
+      </form>
     </div>
-    </form>
   );
 };
 

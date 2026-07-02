@@ -63,7 +63,7 @@ const Auth = () => {
         />
         <button
           type="submit"
-          className="w-full p-2 bg-blue-600 hover:bg-blue-800 transition-all duration-150 text-white rounded"
+          className="w-full p-2 bg-blue-600 hover:bg-blue-800 transition-all duration-150 text-slate-800 rounded"
         >
           {isLogin ? "Login" : "Sign Up"}
         </button>

@@ -30,57 +30,93 @@ const FoodRegistration = () => {
   return loading ? (
     <Loader msg={"Adding the Dish"} />
   ) : (
-    <form
-      onSubmit={handleAddFood}
-      className=" max-md:space-y-3 max-md:mx-auto flex justify-center items-center flex-wrap space-x-4"
-    >
-      <input
-        className={`${inputStyles} max-md:flex-1`}
-        type="text"
-        placeholder="Food Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <input
-        className={`${inputStyles} max-md:flex-1`}
-        type="number"
-        placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-        required
-      />
-      <input
-        className={`${inputStyles} max-md:flex-1`}
-        type="text"
-        placeholder="Description"
-        value={desc}
-        onChange={(e) => setDesc(e.target.value)}
-        required
-      />
-      {["Full Course", "Lunch", "Breakfast"].map((cat) => (
-        <div className="space-x-4 max-md:w-full">
-          <label htmlFor="category">
-            {cat}
+    <div className="max-w-md mx-auto p-4">
+      <form
+        onSubmit={handleAddFood}
+        className="glass-card p-6 md:p-8 space-y-5"
+      >
+        <h3 className="text-xl font-bold text-center text-slate-800 pb-3 border-b border-white/60">Register Food Item</h3>
+        
+        <div className="flex flex-col space-y-1.5">
+          <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Food Name</label>
+          <input
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm"
+            type="text"
+            placeholder="e.g., Gourmet Pizza"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="flex flex-col space-y-1.5">
+          <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Price ($)</label>
+          <input
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm"
+            type="number"
+            placeholder="e.g., 15"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="flex flex-col space-y-1.5">
+          <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Description</label>
+          <input
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm"
+            type="text"
+            placeholder="e.g., Delicious wood-fired crust..."
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="flex flex-col space-y-1.5">
+          <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider mb-1">Category</label>
+          <div className="grid grid-cols-3 gap-2">
+            {["Full Course", "Lunch", "Breakfast"].map((cat) => (
+              <label 
+                key={cat}
+                className={`flex items-center justify-center py-2 px-1 text-xs border rounded-xl cursor-pointer font-semibold transition-all duration-200 ${
+                  category === cat
+                    ? "bg-blue-500 text-slate-950 border-teal-300"
+                    : "bg-white/40 backdrop-blur-md border border-white/50 text-slate-600 font-medium border-white/60 hover:text-slate-700 hover:bg-slate-850"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="category"
+                  value={cat}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="hidden"
+                  required
+                />
+                {cat}
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col space-y-1.5">
+          <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider mb-1">Item Image</label>
+          <label className="flex flex-col items-center justify-center border border-dashed border-white/60 hover:border-teal-500/50 rounded-xl p-4 cursor-pointer bg-white/40 backdrop-blur-md border border-white/50 text-slate-600 font-medium hover:text-slate-250 transition-all text-xs">
+            <span className="font-semibold">{image ? image.name : "Select Image File"}</span>
             <input
-              className={`${inputStyles} ms-1`}
-              type="radio"
-              name="category"
-              value={cat}
-              onChange={(e) => setCategory(e.target.value)}
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])}
+              className="hidden"
               required
             />
           </label>
         </div>
-      ))}
-      <input
-        type="file"
-        onChange={(e) => setImage(e.target.files[0])}
-        required
-      />
-      {/* <button className='bg-blue-500 px-4 py-1 text-white hover:bg-blue-800 rounded-xl transition-all duration-300' type="submit">Add Food Item</button> */}
-      <SubmitButton callToAction={"Add Food Item"} />
-    </form>
+
+        <div className="pt-2">
+          <SubmitButton callToAction={"Add Food Item"} loading={loading} />
+        </div>
+      </form>
+    </div>
   );
 };
 

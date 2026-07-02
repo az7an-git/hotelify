@@ -10,37 +10,41 @@ function DateRange({
   handleDownloadReport,
 }) {
   return (
-    <div className="flex gap-4 items-center mb-6 flex-wrap max-md:space-y-3">
-      <div>
-        <label className="block font-semibold mb-1">Start Date:</label>
+    <div className="flex gap-4 items-center mb-8 flex-wrap">
+      <div className="flex flex-col space-y-1.5">
+        <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Start Date</label>
         <DatePicker
           maxDate={endDate}
           selected={startDate}
           onChange={(date) => setStartDate(date)}
-          className="border p-2 rounded "
+          onKeyDown={(e) => e.preventDefault()}
+          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm w-full md:w-auto"
         />
       </div>
-      <div>
-        <label className="block font-semibold mb-1">End Date:</label>
+      <div className="flex flex-col space-y-1.5">
+        <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">End Date</label>
         <DatePicker
           minDate={startDate}
           selected={endDate}
           onChange={(date) => setEndDate(date)}
-          className="border p-2 rounded"
+          onKeyDown={(e) => e.preventDefault()}
+          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm w-full md:w-auto"
         />
       </div>
-      <button
-        onClick={fetchBookings}
-        className="bg-green-500 text-white px-4 py-2 rounded lg:mt-7"
-      >
-        Generate Report
-      </button>
-      <button
-        onClick={handleDownloadReport}
-        className="bg-blue-500 text-white px-4 py-2 rounded lg:mt-7"
-      >
-        Download Report
-      </button>
+      <div className="flex gap-3 items-end pt-4 lg:pt-5 w-full md:w-auto">
+        <button
+          onClick={fetchBookings}
+          className="bg-blue-500 hover:bg-blue-600 text-slate-950 px-6 py-2.5 rounded-full font-bold transition duration-200 text-sm shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20"
+        >
+          Generate Report
+        </button>
+        <button
+          onClick={handleDownloadReport}
+          className="bg-slate-850 hover:bg-slate-800 text-slate-700 border border-slate-750 px-6 py-2.5 rounded-full font-bold transition duration-200 text-sm"
+        >
+          Download PDF
+        </button>
+      </div>
     </div>
   );
 }

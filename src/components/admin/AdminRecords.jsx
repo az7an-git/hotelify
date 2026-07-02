@@ -16,10 +16,10 @@ const AdminRecords = () => {
   const [loading, setLoading] = useState(true);
 
 
-   // Mock: Selected fields for each booking type
-   const bookingFields = {
-    "Food Order": ["userName", "status", ],
-    "Rental Bookings": ["name", "vehicleName", "startDate", "endDate", ],
+  // Mock: Selected fields for each booking type
+  const bookingFields = {
+    "Food Order": ["userName", "status",],
+    "Rental Bookings": ["name", "vehicleName", "startDate", "endDate",],
     "Hall Bookings": ["name", "hallName", "startDate", "endDate", "status"],
     "Room Bookings": ["name", "room", "startDate", "endDate", "status"],
   };
@@ -42,35 +42,34 @@ const AdminRecords = () => {
     fetchBookings();
   }, [activeTab]);
 
-const records = [
+  const records = [
     {
-        name: "Food Order",
-        comp : FoodOrder,
+      name: "Food Order",
+      comp: FoodOrder,
     },
     {
-        name: "Rental Bookings",
-        comp : VehicleOrder,
+      name: "Rental Bookings",
+      comp: VehicleOrder,
     },
     {
-        name: "Hall Bookings",
-        comp : Halls,
+      name: "Hall Bookings",
+      comp: Halls,
     },
     {
-        name: "Room Bookings",
-        comp : Rooms,
+      name: "Room Bookings",
+      comp: Rooms,
     },
-]
+  ]
 
   return (
     <div className="p-4">
       {/* Tabs */}
-      <div className="flex space-x-4 border-b-2 mb-4 overflow-x-auto">
+      <div className="flex space-x-4 border-b border-slate-850 mb-6 overflow-x-auto">
         {["Food Order", "Rental Bookings", "Hall Bookings", "Room Bookings"].map((tab) => (
           <button
             key={tab}
-            className={`px-4 py-2 ${
-              activeTab === tab ? "border-b-2 border-blue-500 text-blue-500 font-semibold" : "text-gray-500"
-            }`}
+            className={`px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 ${activeTab === tab ? "border-b-2 border-teal-400 text-blue-600" : "text-slate-600 font-medium hover:text-slate-700"
+              }`}
             onClick={() => setActiveTab(tab)}
           >
             {tab}
@@ -79,29 +78,28 @@ const records = [
       </div>
 
       {/* Booking Records */}
-    {
-      loading ? <Loader msg={"Fetching Records"} /> :
-      <div>
-        {bookings.length ? (        
-        <>
-        {
-        records.map((record) => (
-            activeTab === record.name &&  <record.comp
-          activeTab={activeTab}
-          bookingFields={bookingFields}
-          bookings={bookings}
-         /> 
-        ))
+      {
+        loading ? <Loader msg={"Fetching Records"} /> :
+          <div>
+            {bookings.length ? (
+              <>
+                {
+                  records.map((record) => (
+                    activeTab === record.name && <record.comp
+                      activeTab={activeTab}
+                      bookingFields={bookingFields}
+                      bookings={bookings}
+                    />
+                  ))
 
-        }
-    
-        </>        
-        ) : (
-          <p>No records found for {activeTab}.
-          </p>
-        )}
-      </div>
-    }
+                }
+              </>
+            ) : (
+              <p>No records found for {activeTab}.
+              </p>
+            )}
+          </div>
+      }
     </div>
   );
 };

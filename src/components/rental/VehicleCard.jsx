@@ -27,7 +27,7 @@ const VehicleCard = ({ vehicle }) => {
       
       {/* Admin-only availability toggle (Apply restrictions later) */}
       {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
-      <button onClick={toggleAvailability} className="bg-gray-600 text-white p-2 mt-2 rounded absolute max-md:-bottom-2 -bottom-5 right-[35%] ">
+      <button onClick={toggleAvailability} className="bg-gray-600 text-slate-800 p-2 mt-2 rounded absolute max-md:-bottom-2 -bottom-5 right-[35%] ">
         {isAvailable ? 'Set as Unavailable' : 'Set as Available'}
       </button>
       )}

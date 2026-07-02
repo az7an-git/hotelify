@@ -11,14 +11,16 @@ const amenities = [
 ];
 
 const AmenitiesSection = () => (
-  <section className="py-16 bg-gray-50">
-    <div className="container mx-auto px-8 text-center ">
-      <h2 className="text-3xl font-bold mb-8">Our Amenities</h2>
-      <div className="grid md:grid-cols-3 gap-10">
+  <section className="py-16 glass-panel rounded-3xl mx-4 my-12 text-slate-800">
+    <div className="container mx-auto px-8 text-center">
+      <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-12">
+        Our Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Amenities</span>
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
         {amenities.map((amenity, index) => (
-          <div key={index} className="text-center transform hover:scale-105 transition duration-500 shadow-sm">
-            <div className="text-yellow-500 text-6xl mb-4">{amenity.icon}</div>
-            <h3 className="text-xl font-semibold">{amenity.title}</h3>
+          <div key={index} className="p-6 bg-white/40 backdrop-blur-md border border-white/50 border border-white/60/80 rounded-2xl text-center transform hover:-translate-y-1 transition-all duration-300 shadow-xl">
+            <div className="text-blue-600 text-5xl flex justify-center mb-4">{amenity.icon}</div>
+            <h3 className="text-lg font-bold text-slate-700">{amenity.title}</h3>
           </div>
         ))}
       </div>

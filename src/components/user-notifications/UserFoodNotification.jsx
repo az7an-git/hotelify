@@ -22,7 +22,7 @@ function UserFoodNotification({notifications, handleDelete, loading}) {
             </ul>
             <button
               onClick={() => handleDelete(notification.id, 'food-notifications')}
-              className="mt-4 px-4 py-2 bg-red-500 text-white rounded-full transition duration-300 transform hover:bg-red-600 hover:scale-105"
+              className="mt-4 px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-300 transform hover:bg-red-600 hover:scale-105"
             >
               Delete
             </button>

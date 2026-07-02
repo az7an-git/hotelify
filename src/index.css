@@ -5,20 +5,85 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: 'Inter', sans-serif;
-    @apply bg-slate-950 text-slate-100 antialiased selection:bg-teal-500/30 selection:text-teal-200;
+    font-size: 0.95rem;
+    @apply bg-slate-50 text-slate-800 antialiased selection:bg-blue-500/30 selection:text-blue-900;
   }
   
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    /* A more vibrant background to make the white glass pop */
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 50%, #84fab0 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', sans-serif;
+    @apply text-slate-900 font-semibold tracking-tight;
   }
 }
 
-/* Glassmorphism custom classes */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom Styled Thin Scrollbar for Light UI */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Light Mode Glassmorphism custom classes */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.35); /* More transparent */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Stronger depth */
+}
+
+.glass-card {
+  @apply glass-panel rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  @apply px-4 py-2 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-md active:scale-95 font-medium;
+}
+
+.glass-button-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  @apply px-4 py-2 rounded-xl text-white border-transparent shadow-md transition-all duration-300 hover:shadow-lg hover:opacity-90 active:scale-95 font-medium;
 }

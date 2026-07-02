@@ -44,12 +44,12 @@ const ReportsPage = () => {
         handleDownloadReport={handleDownloadReport}
       />
 
-      <div className="p-6 bg-gray-100 h-auto">
-        <h2 className="text-2xl font-bold text-center mb-6">
-          Booking Report for <span className="italic">{activeTab}</span>
+      <div className="p-6 md:p-8 glass-card h-auto">
+        <h2 className="text-xl md:text-2xl font-extrabold text-slate-800 text-center mb-8 pb-4 border-b border-white/60/60">
+          Booking Report for <span className="text-blue-600 italic">{activeTab}</span>
         </h2>
         {bookings.length < 1 ? (
-          <p className="font-semibold text-lg text-center"> No Bookings yet </p>
+          <p className="font-semibold text-slate-600 font-medium text-center py-6 italic"> No bookings found for this range </p>
         ) : loading ? (
           <Loader msg={"Fetching Reports"} />
         ) : (
@@ -57,28 +57,34 @@ const ReportsPage = () => {
             {bookings.map((booking) => (
               <div
                 key={booking.id}
-                className="border p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300"
+                className="bg-white/40 backdrop-blur-md border border-white/50 border border-slate-850 p-6 rounded-2xl shadow-lg hover:border-white/60 transition-all duration-200"
               >
-                <h4 className="text-xl font-semibold mb-2 text-gray-800">
+                <h4 className="text-lg font-bold text-slate-700 mb-3 pb-2 border-b border-slate-900">
                   {booking.name ? (
-                    <span> {booking.name} </span>
+                    <span>{booking.name}</span>
                   ) : (
-                    <span>N/A</span>
+                    <span className="text-slate-600 font-medium italic">N/A</span>
                   )}
                 </h4>
-                <p className="text-gray-600 mb-1">
-                  <span className="font-medium">Status:</span> {booking.status}
-                </p>
-                <p className="text-gray-600 mb-1">
-                  <span className="font-medium">Contact:</span>{" "}
-                  {booking.contact}
-                </p>
-                <p className="text-gray-600 mb-1">
-                  <span className="font-medium">Applied Date:</span>{" "}
-                  {new Date(
-                    booking.applyDate.seconds * 1000
-                  ).toLocaleDateString()}
-                </p>
+                <div className="space-y-1.5 text-sm">
+                  <p className="text-slate-600 font-medium">
+                    <span className="text-slate-600 font-medium font-semibold uppercase tracking-wider text-xs mr-2">Status:</span> 
+                    <span className={`px-2 py-0.5 rounded text-xs font-semibold ${
+                      booking.status === 'vacant' || booking.status === 'paid' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-amber-500/10 text-amber-400'
+                    }`}>
+                      {booking.status}
+                    </span>
+                  </p>
+                  <p className="text-slate-600 font-medium">
+                    <span className="text-slate-600 font-medium font-semibold uppercase tracking-wider text-xs mr-2">Contact:</span> {booking.contact}
+                  </p>
+                  <p className="text-slate-600 font-medium">
+                    <span className="text-slate-600 font-medium font-semibold uppercase tracking-wider text-xs mr-2">Applied:</span>{" "}
+                    {new Date(
+                      booking.applyDate.seconds * 1000
+                    ).toLocaleDateString()}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

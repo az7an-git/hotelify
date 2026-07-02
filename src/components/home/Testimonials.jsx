@@ -57,23 +57,25 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-4 max-md:mt-5 lg:py-16">
+    <section className="py-12 max-md:mt-5 lg:py-24 glass-panel my-12 mx-4 rounded-3xl text-slate-800 border-t border-white/50">
       <div className="container mx-auto px-8 text-center">
-        <h2 className="text-xl md:text-2xl lg:text-3xl  font-bold mb-8">What Our Guests Say</h2>
+        <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-12">
+          What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Guests Say</span>
+        </h2>
         {testimonials.length > 0 ? (
           <Slider {...settings}
           className="overflow-hidden"
           >
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="max-sm:p-4 p-8 bg-gray-50 rounded-lg shadow-lg ">
-               <p className="text-lg italic mb-4">"{testimonial.review}"</p>
-                <p className="font-semibold text-yellow-600">{testimonial.name}</p>
-                <p className="text-gray-400 text-sm">{testimonial.time.toDate().toLocaleDateString()}</p>
+              <div key={testimonial.id} className="max-sm:p-4 p-8 glass-card space-y-3">
+               <p className="text-base md:text-lg italic text-slate-600 font-light">"{testimonial.review}"</p>
+                <p className="font-bold text-blue-600">{testimonial.name}</p>
+                <p className="text-slate-600 font-medium text-xs">{testimonial.time.toDate().toLocaleDateString()}</p>
               </div>
             ))}
           </Slider>
         ) : (
-          <p>No testimonials available yet.</p>
+          <p className="text-slate-600 font-medium italic">No testimonials available yet.</p>
         )}
       </div>
     </section>

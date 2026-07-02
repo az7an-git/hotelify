@@ -31,7 +31,11 @@ const RegistrationTabs = () => {
         {['Food', 'Rental', 'Parking', 'Hall', 'Room'].map(tab => (
           <button
             key={tab}
-            className={`px-4 py-1 rounded-xl  text-white ${activeTab === tab ? 'bg-blue-700' : 'bg-slate-600'}  `}
+            className={`px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 shadow-md ${
+              activeTab === tab
+                ? 'bg-blue-500 text-slate-950 border border-teal-300'
+                : 'bg-white/40 text-slate-600 hover:text-blue-600 hover:bg-white/60 border border-white/50 shadow-sm rounded-xl backdrop-blur-md transition-all'
+            }`}
             onClick={() => setActiveTab(tab)}>
             {tab}
           </button>

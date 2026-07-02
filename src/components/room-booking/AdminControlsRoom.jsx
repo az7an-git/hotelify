@@ -79,7 +79,7 @@ function AdminControlsRoom() {
                   onClick={() =>
                     handleStatusChange(room.id, room.userId, "booked", room.name, room.room, room.startDate, room.endDate)
                   }
-                  className="px-4 py-2 bg-green-500 text-white rounded-full transition duration-200 transform hover:bg-green-600 hover:scale-105 focus:outline-none focus:ring focus:ring-green-200"
+                  className="px-4 py-2 bg-green-500 text-slate-800 rounded-full transition duration-200 transform hover:bg-green-600 hover:scale-105 focus:outline-none focus:ring focus:ring-green-200"
                 >
                   Accept
                 </button>
@@ -87,7 +87,7 @@ function AdminControlsRoom() {
                   onClick={() =>
                     handleStatusChange(room.id, room.userId, "rejected", room.name, room.room, room.startDate, room.endDate)
                   }
-                  className="px-4 py-2 bg-red-500 text-white rounded-full transition duration-200 transform hover:bg-red-600 hover:scale-105 focus:outline-none focus:ring focus:ring-red-200"
+                  className="px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-200 transform hover:bg-red-600 hover:scale-105 focus:outline-none focus:ring focus:ring-red-200"
                 >
                   Reject
                 </button>
@@ -99,7 +99,7 @@ function AdminControlsRoom() {
                 onClick={() =>
                   handleStatusChange(room.id, room.userId, "checkedIn", room.name, room.room, room.startDate, room.endDate)
                 }
-                className="px-4 py-2 bg-blue-500 text-white rounded-full transition duration-200 transform hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring focus:ring-blue-200"
+                className="px-4 py-2 bg-blue-500 text-slate-800 rounded-full transition duration-200 transform hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring focus:ring-blue-200"
               >
                 Check In
               </button>
@@ -110,7 +110,7 @@ function AdminControlsRoom() {
                 onClick={() =>
                   handleStatusChange(room.id, room.userId, "checkedOut", room.name, room.room, room.startDate, room.endDate)
                 }
-                className="px-4 py-2 bg-purple-500 text-white rounded-full transition duration-200 transform hover:bg-purple-600 hover:scale-105 focus:outline-none focus:ring focus:ring-purple-200"
+                className="px-4 py-2 bg-purple-500 text-slate-800 rounded-full transition duration-200 transform hover:bg-purple-600 hover:scale-105 focus:outline-none focus:ring focus:ring-purple-200"
               >
                 Check Out
               </button>
