@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { auth } from "../../firebase/Firebase";
 import { addVehicleBooking } from "../../services/vehicleRentalService";
 import BookingForm from "../common/forms/BookingForm";
+import { toast } from "sonner";
 
 const VehicleBooking = ({ vehicle }) => {
   const [name, setName] = useState("");
@@ -37,7 +38,7 @@ const VehicleBooking = ({ vehicle }) => {
       available: true,
     };
     await addVehicleBooking(bookingData);
-    alert("Booking requested successfully");
+    toast.success("Booking requested successfully!");
   };
 
   return (

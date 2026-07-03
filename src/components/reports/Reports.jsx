@@ -5,6 +5,7 @@ import { downloadReport } from "./reportsPdf";
 import Tabs from "./Tabs";
 import DateRange from "./DateRange";
 import Loader from "../common/loader/Loader";
+import { toast } from "sonner";
 
 const ReportsPage = () => {
   const [activeTab, setActiveTab] = useState("Food Orders");
@@ -15,7 +16,7 @@ const ReportsPage = () => {
 
   const fetchBookings = async () => {
     if (!startDate || !endDate) {
-      alert("Please select both start and end dates.");
+      toast.error("Please select both start and end dates.");
       return;
     }
     setLoading(true);

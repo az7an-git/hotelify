@@ -5,6 +5,8 @@ import { auth } from '../../firebase/Firebase';
 import CardRate from '../common/cards/CardRate';
 import { useAuth } from '../../contexts/authContext';
 
+import { toast } from 'sonner';
+
 const VehicleCard = ({ vehicle }) => {
   const [showForm, setShowForm] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
@@ -14,7 +16,7 @@ const VehicleCard = ({ vehicle }) => {
     if (auth.currentUser) {
       setShowForm(!showForm);
     } else {
-      alert('Please log in to apply for vehicle rental');
+      toast.error('Please log in to apply for vehicle rental');
     }
   };
 

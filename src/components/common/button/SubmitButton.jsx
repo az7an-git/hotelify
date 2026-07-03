@@ -4,7 +4,7 @@ import './submitButton.css';
 function SubmitButton({callToAction, loading}) {
   return (
     <button
-      className='subButton mt-3 flex items-center justify-center gap-2'
+      className='glass-button-primary w-full py-3.5 rounded-full text-base font-bold shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300 transform active:scale-95 mt-3 flex items-center justify-center gap-2'
       type='submit'
       disabled={loading}
     >

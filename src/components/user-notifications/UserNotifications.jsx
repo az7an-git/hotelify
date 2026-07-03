@@ -12,6 +12,8 @@ import { getRoomBookingsNotification } from "../../services/roomBookingService.j
 import UserControlsHall from "../wedding-hall/UserControlsHall.jsx";
 import Tabs from "./Tabs.jsx";
 
+import { toast } from "sonner";
+
 const UserNotifications = () => {
   const [activeTab, setActiveTab] = useState("food-orders");
   const [foodNotifications, setFoodNotifications] = useState([]);
@@ -68,7 +70,7 @@ const UserNotifications = () => {
 
   const handleDelete = async (notificationId, collectionNotification) => {
     await deleteNotification(notificationId, collectionNotification);
-    alert("Notification deleted successfully");
+    toast.success("Notification deleted successfully!");
     setFoodNotifications((prevNotifications) =>
       prevNotifications.filter(
         (notification) => notification.id !== notificationId

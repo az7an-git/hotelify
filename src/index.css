@@ -7,10 +7,12 @@
 @layer base {
   html {
     overflow-y: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
   }
 
   body {
+    overflow-x: hidden;
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     @apply bg-slate-50 text-slate-800 antialiased selection:bg-blue-500/30 selection:text-blue-900;

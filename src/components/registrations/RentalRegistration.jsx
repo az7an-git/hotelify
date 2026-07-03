@@ -3,6 +3,8 @@ import { addVehicle } from '../../services/rentalRegService';
 import { inputStyles } from './FoodRegistration';
 import SubmitButton from '../common/button/SubmitButton';
 
+import { toast } from 'sonner';
+
 const RentalRegistration = () => {
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
@@ -17,7 +19,7 @@ const RentalRegistration = () => {
       setLoading(true);
       await addVehicle(name, desc, price, image, available);
       setLoading(false);
-      alert('Vehicle added successfully!');
+      toast.success('Vehicle added successfully!');
       setName('');
       setDesc('');
       setPrice('');

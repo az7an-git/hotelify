@@ -17,13 +17,15 @@ import UserRecordsPage from './pages/UserRecordsPage';
 import AdminRecordsPage from './pages/AdminRecordsPage';
 import WelcomePage from './WelcomePage';
 
-
+import ImgLoader from './components/common/loader/ImgLoader';
+import { Toaster } from 'sonner';
 
 const App = () => {
   const Layout = React.lazy(() => import('./layout/Layout'));
   const Home = React.lazy(() => import('./pages/Home'));
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<ImgLoader />}>
+      <Toaster richColors position="top-right" />
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>

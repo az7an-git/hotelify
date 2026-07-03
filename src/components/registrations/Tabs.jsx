@@ -27,14 +27,14 @@ const RegistrationTabs = () => {
 
   return (
     <div className="admin-dashboard">
-      <div className="tabs flex justify-center items-center mb-5 space-x-4 flex-wrap max-md:space-y-3">
+      <div className="tabs flex justify-center items-center mb-8 gap-3 sm:gap-4 flex-wrap">
         {['Food', 'Rental', 'Parking', 'Hall', 'Room'].map(tab => (
           <button
             key={tab}
-            className={`px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 shadow-md ${
+            className={`whitespace-nowrap shrink-0 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 shadow-md border ${
               activeTab === tab
-                ? 'bg-blue-500 text-slate-950 border border-teal-300'
-                : 'bg-white/40 text-slate-600 hover:text-blue-600 hover:bg-white/60 border border-white/50 shadow-sm rounded-xl backdrop-blur-md transition-all'
+                ? 'bg-blue-500 text-white border-blue-400 shadow-blue-500/30'
+                : 'bg-white/50 text-slate-600 border-white/60 hover:text-blue-700 hover:bg-white/80 backdrop-blur-md hover:shadow-lg'
             }`}
             onClick={() => setActiveTab(tab)}>
             {tab}

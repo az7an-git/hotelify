@@ -11,16 +11,16 @@ const amenities = [
 ];
 
 const AmenitiesSection = () => (
-  <section className="py-16 glass-panel rounded-3xl mx-4 my-12 text-slate-800">
-    <div className="container mx-auto px-8 text-center">
-      <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-12">
-        Our Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Amenities</span>
+  <section className="py-12 md:py-16 my-8 md:my-12 text-slate-800">
+    <div className="container mx-auto px-4 sm:px-8 text-center">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-10">
+        Our Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Amenities</span>
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
         {amenities.map((amenity, index) => (
-          <div key={index} className="p-6 bg-white/40 backdrop-blur-md border border-white/50 border border-white/60/80 rounded-2xl text-center transform hover:-translate-y-1 transition-all duration-300 shadow-xl">
-            <div className="text-blue-600 text-5xl flex justify-center mb-4">{amenity.icon}</div>
-            <h3 className="text-lg font-bold text-slate-700">{amenity.title}</h3>
+          <div key={index} className="p-4 sm:p-6 bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl text-center transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <div className="text-blue-600 text-4xl sm:text-5xl flex justify-center mb-3 sm:mb-4">{amenity.icon}</div>
+            <h3 className="text-sm sm:text-lg font-bold text-slate-700">{amenity.title}</h3>
           </div>
         ))}
       </div>

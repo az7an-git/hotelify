@@ -11,6 +11,8 @@ import HallCard from "./HallCard";
 import BookButton from "../common/button/BookButton";
 import BookingForm from "../common/forms/BookingForm";
 
+import { toast } from "sonner";
+
 const WeddingHallCard = ({ hall }) => {
   const { currentUser } = useAuth();
   const [isBooking, setIsBooking] = useState(false);
@@ -31,7 +33,7 @@ const WeddingHallCard = ({ hall }) => {
 
   const handleBooking = async (e) => {
     e.preventDefault();
-    if (!currentUser) return alert("Please log in to book");
+    if (!currentUser) return toast.error("Please log in to book");
     handleTotalRate();
     const bookingInfo = {
       name,
@@ -51,9 +53,10 @@ const WeddingHallCard = ({ hall }) => {
     try {
       await addDoc(collection(db, "wedding-hall-bookings"), bookingInfo);
       setIsBooking(false);
-      alert("Booking request sent!");
+      toast.success("Booking request sent!");
     } catch (error) {
       console.error("Error booking hall:", error);
+      toast.error("Failed to book hall. Please try again.");
     }
   };
 

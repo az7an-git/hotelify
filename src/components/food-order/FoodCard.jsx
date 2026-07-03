@@ -19,28 +19,33 @@ const FoodCard = ({ foodItem, onQuantityChange }) => {
 
   return (
     <div className="w-full mx-auto p-5 glass-card transform transition-all duration-300 hover:-translate-y-1 hover:border-slate-700/60">
-      <div className="flex justify-between items-center pb-3 border-b border-white/60/60">
-        <img className="rounded-full h-16 w-16 object-cover border border-white/60" src={foodItem.imageUrl} alt={foodItem.name} />
-        <h3 className="text-xl font-bold text-slate-800 capitalize">{foodItem.name}</h3>
+      <div className="flex items-center pb-3 border-b border-white/50">
+        <img className="shrink-0 rounded-full h-16 w-16 object-cover border border-white/60 shadow-sm" src={foodItem.imageUrl} alt={foodItem.name} />
+        <h3
+          className="text-lg md:text-xl font-bold text-slate-800 capitalize ml-4 flex-1 line-clamp-2 text-left leading-tight"
+          title={foodItem.name}
+        >
+          {foodItem.name}
+        </h3>
       </div>
-      <p className="text-slate-600 font-medium text-sm italic py-4 line-clamp-2">{foodItem.desc}</p>
+      <p className="text-slate-600 text-sm italic py-4 line-clamp-2">{foodItem.desc}</p>
 
-      <div className="flex items-center justify-between mt-2 pt-3 border-t border-white/60/60">
-        <span title="Per Item" className="text-blue-600 text-base font-semibold">
-          ${foodItem.price} / item
+      <div className="flex items-center justify-between mt-2 pt-3 border-t border-white/50">
+        <span title="Per Item" className="text-blue-600 text-base font-bold">
+          ${foodItem.price} <span className="text-xs text-slate-500 font-medium">/ item</span>
         </span>
-        
-        <div className="flex items-center bg-white/40 backdrop-blur-md border border-white/50 border border-white/60 px-2.5 py-1 rounded-full">
-          <button 
-            onClick={handleRemove} 
-            className="w-7 h-7 flex items-center justify-center text-sm bg-white/40 backdrop-blur-md shadow-sm border border-white/50 border border-white/60 rounded-full text-slate-600 font-medium hover:text-slate-800 hover:bg-slate-800 transition duration-200"
+
+        <div className="flex items-center bg-white/40 backdrop-blur-md border border-white/60 px-2.5 py-1 rounded-full shadow-sm">
+          <button
+            onClick={handleRemove}
+            className="w-7 h-7 flex items-center justify-center text-sm bg-white/50 backdrop-blur-md shadow-sm border border-white/60 rounded-full text-slate-600 font-bold hover:text-blue-600 hover:bg-white/80 transition-all duration-200 transform active:scale-90"
           >
             -
           </button>
-          <span className="mx-3 text-sm font-semibold text-slate-700 w-4 text-center">{quantity}</span>
-          <button 
-            onClick={handleAdd} 
-            className="w-7 h-7 flex items-center justify-center text-sm bg-white/40 backdrop-blur-md shadow-sm border border-white/50 border border-white/60 rounded-full text-slate-600 font-medium hover:text-slate-800 hover:bg-slate-800 transition duration-200"
+          <span className="mx-3 text-sm font-bold text-slate-700 w-4 text-center">{quantity}</span>
+          <button
+            onClick={handleAdd}
+            className="w-7 h-7 flex items-center justify-center text-sm bg-white/50 backdrop-blur-md shadow-sm border border-white/60 rounded-full text-slate-600 font-bold hover:text-blue-600 hover:bg-white/80 transition-all duration-200 transform active:scale-90"
           >
             +
           </button>
@@ -55,7 +60,7 @@ const FoodCard = ({ foodItem, onQuantityChange }) => {
           </span>
         </p>
       </div>
-    </div> 
+    </div>
   );
 };
 

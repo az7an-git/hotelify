@@ -20,6 +20,13 @@ const FoodOrderMain = () => {
   });
   const [foodItems, setFoodItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toastMsg, setToastMsg] = useState({ type: "", text: "" });
+
+  const showToast = (type, text) => {
+    setToastMsg({ type, text });
+    setTimeout(() => setToastMsg({ type: "", text: "" }), 3000);
+  };
 
   useEffect(() => {
     const fetchAllFoodOrders = async () => {
@@ -42,7 +49,7 @@ const FoodOrderMain = () => {
   const handleSubmitOrder = async () => {
     const items = Object.values(order).filter((item) => item.quantity > 0);
     if (items.length === 0) {
-      alert("Please add items to your order.");
+      showToast("error", "Please add items to your order.");
       return;
     }
 
@@ -60,9 +67,10 @@ const FoodOrderMain = () => {
       formData.address.trim() &&
       formData.contact.trim()
     ) {
+      setIsSubmitting(true);
       try {
         await saveFoodOrder(orderData);
-        alert("Order placed successfully!");
+        showToast("success", "Order placed successfully!");
         setFormData({
           name: "",
           contact: "",
@@ -70,10 +78,12 @@ const FoodOrderMain = () => {
         });
       } catch (error) {
         console.error("Error placing the order:", error);
-        alert("Something went wrong. Please try again!");
+        showToast("error", "Something went wrong. Please try again!");
+      } finally {
+        setIsSubmitting(false);
       }
     } else {
-      alert("Fill all the details, please!");
+      showToast("error", "Fill all the details, please!");
     }
   };
 
@@ -85,7 +95,24 @@ const FoodOrderMain = () => {
   return loading ? (
     <Loader msg={"Fetching Food Items"} />
   ) : (
-    <div className="max-w-6xl mx-auto p-6 space-y-6">
+    <div className="max-w-6xl mx-auto p-6 space-y-6 relative">
+      {/* Sleek Success/Error Toast */}
+      {toastMsg.text && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 animate-fade-in w-full max-w-sm px-4">
+          <div className={`glass-card p-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg backdrop-blur-xl border ${toastMsg.type === 'success' ? 'bg-emerald-500/10 border-emerald-400/50 shadow-emerald-500/20' : 'bg-rose-500/10 border-rose-400/50 shadow-rose-500/20'
+            }`}>
+            {toastMsg.type === 'success' ? (
+              <svg className="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+            ) : (
+              <svg className="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            )}
+            <span className={`font-bold text-sm ${toastMsg.type === 'success' ? 'text-emerald-700' : 'text-rose-700'}`}>
+              {toastMsg.text}
+            </span>
+          </div>
+        </div>
+      )}
+
       <div className="border-b border-white/60/80 pb-4 mb-6">
         <h1 className="text-3xl lg:text-4xl font-extrabold tracking-tight">
           Food Order
@@ -123,6 +150,7 @@ const FoodOrderMain = () => {
         formData={formData}
         setFormData={setFormData}
         handleSubmitOrder={handleSubmitOrder}
+        isSubmitting={isSubmitting}
       />
     </div>
   );

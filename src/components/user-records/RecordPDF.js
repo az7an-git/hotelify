@@ -51,11 +51,9 @@ export const downloadRecordPDF = (booking, activeTab, bookingFields) => {
     y += 10;
 
     booking.items.forEach((item, index) => {
-      const itemDetails = `Item ${index + 1}: ${
-        item.name || "N/A"
-      } | Category: ${item.category || "N/A"} | Quantity: ${
-        item.quantity || "N/A"
-      } | Price: ${item.price || "N/A"}`;
+      const itemDetails = `Item ${index + 1}: ${item.name || "N/A"
+        } | Category: ${item.category || "N/A"} | Quantity: ${item.quantity || "N/A"
+        } | Price: ${item.price || "N/A"}`;
       doc.text(itemDetails, 14, y);
       y += 10;
     });
@@ -78,8 +76,7 @@ export const downloadRecordPDF = (booking, activeTab, bookingFields) => {
   );
 
   // Save PDF with dynamic file name
-  const fileName = `${activeTab}_Booking_${
-    booking.bookingId || booking.orderId || "Record"
-  }.pdf`;
+  const fileName = `${activeTab}_Booking_${booking.bookingId || booking.orderId || "Record"
+    }.pdf`;
   doc.save(fileName);
 };

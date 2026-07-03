@@ -3,6 +3,8 @@ import { addRoom } from '../../services/roomRegService';
 import { inputStyles } from './FoodRegistration';
 import SubmitButton from '../common/button/SubmitButton';
 
+import { toast } from 'sonner';
+
 const RoomRegistration = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -18,7 +20,7 @@ const RoomRegistration = () => {
       setLoading(true);
       await addRoom(name, description, image, available, price, beds );
       setLoading(false);
-      alert('Room added successfully!');
+      toast.success('Room added successfully!');
       setName('');
       setDescription('');
       setImage(null);
@@ -26,7 +28,7 @@ const RoomRegistration = () => {
       setBeds('');
     }
     else{
-      alert('Please fill out all the fields')
+      toast.error('Please fill out all the fields');
     }
   };
 

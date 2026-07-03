@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { signOut } from "firebase/auth";
@@ -12,6 +12,20 @@ import LgNav from "./LgNav";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useAuth();
+  
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [isOpen]);
   const navigate = useNavigate();
   const { headerSticky } = useSticky();
 

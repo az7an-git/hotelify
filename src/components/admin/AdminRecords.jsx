@@ -24,8 +24,6 @@ const AdminRecords = () => {
     "Room Bookings": ["name", "room", "startDate", "endDate", "status"],
   };
 
-
-
   useEffect(() => {
     const fetchBookings = async () => {
       let data = [];
@@ -34,8 +32,18 @@ const AdminRecords = () => {
       if (activeTab === "Hall Bookings") data = await fetchHallsBookings();
       if (activeTab === "Room Bookings") data = await getRoomBookings();
 
-      // Filter bookings for the current user
-      setBookings(data);
+      // Sort bookings by date descending (newest first)
+      const sortedData = data.sort((a, b) => {
+        const getTimestamp = (record) => {
+          if (record.applyDate?.toDate) return record.applyDate.toDate().getTime();
+          if (record.startDate) return new Date(record.startDate).getTime();
+          if (record.date) return new Date(record.date).getTime();
+          if (record.createdAt?.toDate) return record.createdAt.toDate().getTime();
+          return 0;
+        };
+        return getTimestamp(b) - getTimestamp(a);
+      });
+      setBookings(sortedData);
       setLoading(false);
     };
 
@@ -64,11 +72,13 @@ const AdminRecords = () => {
   return (
     <div className="p-4">
       {/* Tabs */}
-      <div className="flex space-x-4 border-b border-slate-850 mb-6 overflow-x-auto">
+      <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:justify-center sm:gap-4 max-w-md sm:max-w-none mx-auto mb-8">
         {["Food Order", "Rental Bookings", "Hall Bookings", "Room Bookings"].map((tab) => (
           <button
             key={tab}
-            className={`px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 ${activeTab === tab ? "border-b-2 border-teal-400 text-blue-600" : "text-slate-600 font-medium hover:text-slate-700"
+            className={`px-3 py-2.5 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shadow-md border text-center ${activeTab === tab
+                ? 'bg-blue-500 text-white border-blue-400 shadow-blue-500/30'
+                : 'bg-white/50 text-slate-600 border-white/60 hover:text-blue-700 hover:bg-white/80 backdrop-blur-md hover:shadow-lg'
               }`}
             onClick={() => setActiveTab(tab)}
           >
@@ -95,8 +105,9 @@ const AdminRecords = () => {
                 }
               </>
             ) : (
-              <p>No records found for {activeTab}.
-              </p>
+              <div className="text-center py-12 bg-white/40 backdrop-blur-md shadow-sm border border-white/60 rounded-2xl text-slate-600 font-bold text-sm sm:text-base max-w-md mx-auto animate-fade-in">
+                No records found for {activeTab}.
+              </div>
             )}
           </div>
       }

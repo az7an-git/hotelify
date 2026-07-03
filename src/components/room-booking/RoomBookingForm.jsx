@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { auth } from "../../firebase/Firebase";
 import { addRoomBooking } from "../../services/roomBookingService";
 import BookingForm from "../common/forms/BookingForm";
+import { toast } from "sonner";
 
 const RoomBooking = ({ room }) => {
   const [name, setName] = useState("");
@@ -37,7 +38,7 @@ const RoomBooking = ({ room }) => {
       endDate,
     };
     await addRoomBooking(bookingData);
-    alert("Booking request sent successfully");
+    toast.success("Booking request sent successfully!");
   };
 
   return (

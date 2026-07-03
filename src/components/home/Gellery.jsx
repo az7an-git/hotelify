@@ -11,6 +11,7 @@ const GallerySection = () => {
   const [images, setImages] = useState([]);
   const [allImages, setAllImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showAdminForm, setShowAdminForm] = useState(false);
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -24,12 +25,24 @@ const GallerySection = () => {
     e.preventDefault();
     if (images) {
       setLoading(true);
-      await addToGallery(images);
-      setImages(null);
-      setLoading(false);
-      alert("images added succesfully");
+      try {
+        await addToGallery(images);
+        
+        // Refresh the gallery images so the new one appears immediately
+        const updatedImages = await fetchFromGallery();
+        setAllImages(updatedImages);
+        
+        setImages(null);
+        e.target.reset(); // Clear the file input visually
+        alert("Image added successfully!");
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        alert("Failed to upload image. Please try again.");
+      } finally {
+        setLoading(false);
+      }
     } else {
-      alert("try again");
+      alert("Please select an image first!");
     }
   };
   const handleDeletePic = async (id) => {
@@ -38,55 +51,69 @@ const GallerySection = () => {
   };
 
   return (
-    <section className="py-4 max-md:mt-5 lg:py-16">
-      <div className="container mx-auto px-8 text-center">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8">Gallery</h2>
+    <section className="py-12 lg:py-24 my-8 mx-4">
+      <div className="container mx-auto px-4 sm:px-8 text-center">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-10">
+          Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Gallery</span>
+        </h2>
         {loading ? (
-          <p>Adding Picture....</p>
+          <p className="text-blue-600 animate-pulse font-semibold">Adding Picture...</p>
         ) : (
-          <div className="flex space-x-4 space-y-4 justify-center items-center flex-wrap relative">
-            {/* Carousel items here */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 max-w-5xl mx-auto">
             {allImages.map((img, index) => (
               <div
                 key={index}
-                className="w-64 h-64 bg-gray-200 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-500"
+                className="relative aspect-square bg-white/40 rounded-3xl overflow-hidden shadow-xl border-2 border-white/60 group hover:shadow-2xl transition-all duration-300"
               >
                 <img
                   src={img.imageUrl}
                   alt="Gallery"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
                 />
                 {currentUser &&
                   currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
-                    <div
-                      className="font-bold italic absolute top-5 right-5 cursor-pointer text-2xl text-pink-400"
+                    <button
+                      className="absolute top-3 right-3 bg-white/80 p-2.5 rounded-full text-rose-500 hover:text-rose-700 hover:bg-white shadow-md transition-colors opacity-0 group-hover:opacity-100 transform active:scale-95"
                       onClick={() => handleDeletePic(img.id)}
                     >
-                      <MdDelete />
-                    </div>
+                      <MdDelete size={20} />
+                    </button>
                   )}
               </div>
             ))}
           </div>
         )}
+
+        {/* Admin Only Upload Toggle */}
         {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
-          <form onSubmit={handleAddPic} action="">
-            Add image to gallery here
-            {/* <input
-       type="file"
-       className={`${inputStyles}`}
-       value={images}
-       onChange={(e) => setImages(e.target.files[0])}
-         /> */}
-            <input
-              type="file"
-              className={`${inputStyles} mt-3 me-3`}
-              onChange={(e) => setImages(e.target.files[0])}
-              required
-            />
-            {/* <button type='submit'>Add</button> */}
-            <SubmitButton callToAction={"Add Picture"} />
-          </form>
+          <div className="mt-8 flex flex-col items-center">
+            <button 
+              onClick={() => setShowAdminForm(!showAdminForm)}
+              className="bg-white/50 backdrop-blur-md text-blue-700 border border-white/80 px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:bg-white/70 transition-all duration-300 transform active:scale-95"
+            >
+              {showAdminForm ? "Close Admin Panel" : "Admin: Upload Images"}
+            </button>
+            
+            {showAdminForm && (
+              <div className="max-w-xl mx-auto glass-card p-6 sm:p-8 rounded-3xl shadow-xl border border-white/60 mt-6 w-full animate-fade-in">
+                <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center justify-center gap-2">
+                  <span className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-md uppercase tracking-wide">Admin</span>
+                  Upload to Gallery
+                </h3>
+                <form onSubmit={handleAddPic} className="flex flex-col gap-4">
+                  <input
+                    type="file"
+                    className="w-full file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 text-slate-600 bg-white/50 border border-slate-200 rounded-full px-2 py-2 cursor-pointer transition-colors"
+                    onChange={(e) => setImages(e.target.files[0])}
+                    required
+                  />
+                  <button type="submit" className="glass-button-primary w-full py-3 rounded-full text-lg font-semibold shadow-blue-500/20 hover:shadow-blue-500/40">
+                    Add Picture
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
         )}
       </div>
     </section>

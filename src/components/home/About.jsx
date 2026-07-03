@@ -1,48 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../firebase/Firebase';
+import React, { useState } from 'react';
 import ImgLoader from '../common/loader/ImgLoader';
 
 const AboutUsSection = () => {
-    const [bg, setBg] = useState(null);
-    const[loading, setLoading] = useState(true);
-    useEffect(() => {
-      const fetchAboutImage = async () => {
-        try {
-          const snapshot = await getDocs(collection(db, 'custom-pics'));
-          const heroBg = snapshot.docs.map(doc => doc.data());
-          setBg(heroBg[0]?.about || "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80");
-          setLoading(false);
-        } catch (error) {
-          console.error('Error fetching about image:', error);
-          setBg("https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80");
-          setLoading(false);
-        }
-      };
-  
-      fetchAboutImage();
-    }, []);
+    const [loading, setLoading] = useState(false);
+    // Use an Unsplash fallback image directly
+    const fallbackAboutBg = "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80";
     
  return ( 
   loading ? <ImgLoader/> :
- <section className="py-12 lg:py-24 glass-panel max-lg:mt-5 my-12 rounded-3xl mx-4 text-slate-800">
-    <div className="container mx-auto px-8 lg:flex lg:items-center lg:gap-16">
-      <div className="lg:w-1/2 space-y-6">
-        <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight">
-          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Magnum Hotel</span>
+ <section className="py-12 lg:py-24 my-8 md:my-16 mx-4 sm:mx-6 lg:mx-8">
+    <div className="container mx-auto max-w-7xl glass-card p-6 sm:p-10 lg:p-16 rounded-3xl shadow-2xl border border-white/60 lg:flex lg:items-center lg:gap-16 bg-white/50 backdrop-blur-xl">
+      <div className="lg:w-1/2 space-y-6 lg:space-y-8 text-center lg:text-left">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-800">
+          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Magnum Hotel</span>
         </h2>
-        <p className="text-slate-600 text-base md:text-lg leading-relaxed font-light">
+        <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-medium">
           Experience unmatched luxury and comfort at The Magnum. From the moment you step through our doors, you'll be immersed in elegance and refinement. Our dedicated staff is committed to providing a personalized and unforgettable stay.
         </p>
-        <div>
-          <button className="bg-slate-800 hover:bg-slate-700 text-blue-600 border border-teal-500/30 hover:border-teal-500/60 px-6 py-2.5 rounded-full font-semibold transition-all duration-300">
+        <div className="pt-2">
+          <button className="glass-button-primary inline-block px-8 py-3.5 rounded-full text-lg shadow-blue-500/20 hover:shadow-blue-500/40">
             Learn More
           </button>
         </div>
       </div>
-      <div className="lg:w-1/2 h-[45vh] lg:flex lg:justify-center mt-10 lg:mt-0 relative group">
-        <div className="absolute -inset-1.5 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
-        <img src={bg} alt="About Hotel" className="relative rounded-2xl shadow-2xl transform group-hover:scale-[1.02] transition duration-500 w-full h-full object-cover object-center border border-white/60" />
+      <div className="lg:w-1/2 h-64 sm:h-80 md:h-[400px] lg:h-[500px] mt-10 lg:mt-0 relative group rounded-2xl overflow-hidden shadow-2xl border border-white/80">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none"></div>
+        <img src={fallbackAboutBg} alt="About Hotel" className="relative w-full h-full object-cover object-center transform group-hover:scale-110 transition duration-700 ease-in-out" />
       </div>
     </div>
   </section>
