@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ParkingCard from './ParkingCard';
 import { fetchParkingSpots } from '../../services/parkingRegService';
 import Loader from '../common/loader/Loader';
+import PageHeader from '../common/header/PageHeader';
 
 const ParkingMain = () => {
   const [parkingOptions, setParkingOptions] = useState([]);
@@ -20,11 +21,16 @@ const ParkingMain = () => {
   return (
     loading ? <Loader msg={"Fetching Parking Spots"} /> :
     <div className="p-6">
-      <h1 className="text-2xl lg:text-3xl text-center font-bold mb-4">Parking Options</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {parkingOptions.map((vehicle) => (
-          <ParkingCard key={vehicle.id} vehicle={vehicle} />
-        ))}
+      <div className="max-w-7xl mx-auto">
+        <PageHeader 
+          title="Parking Options" 
+          subtitle="Secure and convenient parking spots for your vehicle." 
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {parkingOptions.map((vehicle) => (
+            <ParkingCard key={vehicle.id} vehicle={vehicle} />
+          ))}
+        </div>
       </div>
     </div>
   );

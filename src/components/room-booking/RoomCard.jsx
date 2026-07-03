@@ -23,41 +23,43 @@ const RoomCard = ({ room }) => {
   console.log("room object:", room);
 
   return (
-    <div className="glass-card max-w-sm mx-auto p-4 space-y-4">
-      <div className="overflow-hidden rounded-xl h-44 relative">
-        <img
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          src={room.imageUrl}
-          alt="room"
-        />
-        <div className="absolute top-3 right-3 bg-white/40 backdrop-blur-md border border-white/50/80 backdrop-blur-md text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-white/60">
-          Luxury Suite
+    <div className="glass-card max-w-sm w-full mx-auto p-4 flex flex-col justify-between space-y-4">
+      <div className="space-y-4 flex flex-col flex-grow">
+        <div className="overflow-hidden rounded-xl h-44 relative flex-shrink-0">
+          <img
+            className="w-full h-full object-cover"
+            src={room.imageUrl}
+            alt="room"
+          />
+          <div className="absolute top-3 right-3 bg-white/40 backdrop-blur-md border border-white/50/80 backdrop-blur-md text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-white/60">
+            Luxury Suite
+          </div>
         </div>
-      </div>
-      <div className="space-y-2">
-        <div className="flex justify-between items-start">
-          <h3 className="text-xl font-bold text-slate-800">
-            {room.name}
-          </h3>
-          <span className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
-            ${room.price}
-          </span>
-        </div>
-        <div className="flex justify-between items-center text-sm text-slate-600 font-medium">
-          <p className="italic font-light line-clamp-2 pr-4">{room.description}</p>
-          <div
-            title="No. of Beds"
-            className="flex items-center space-x-1 bg-white/40 backdrop-blur-md border border-white/50 px-2 py-1 rounded-md border border-white/60 flex-shrink-0"
-          >
-            <span className="font-semibold">{room.beds}</span>
-            <span className="text-blue-600">
-              <FaBed />
+        <div className="space-y-2 flex-grow flex flex-col justify-between">
+          <div className="flex justify-between items-start">
+            <h3 className="text-xl font-bold text-slate-800">
+              {room.name}
+            </h3>
+            <span className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 ml-2 flex-shrink-0">
+              ${room.price}
             </span>
+          </div>
+          <div className="flex justify-between items-center text-sm text-slate-600 font-medium mt-auto pt-2">
+            <p className="italic font-light line-clamp-2 pr-4">{room.description}</p>
+            <div
+              title="No. of Beds"
+              className="flex items-center space-x-1 bg-white/40 backdrop-blur-md border border-white/50 px-2 py-1 rounded-md border border-white/60 flex-shrink-0"
+            >
+              <span className="font-semibold">{room.beds}</span>
+              <span className="text-blue-600">
+                <FaBed />
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="pt-2 border-t border-white/60/60 flex justify-center" onClick={handleBookNow}>
+      <div className="pt-2 border-t border-white/60/60 flex justify-center flex-shrink-0" onClick={handleBookNow}>
         <SubmitButton callToAction={"Book Now"} />
       </div>
       {showForm && <RoomBooking room={room} />}

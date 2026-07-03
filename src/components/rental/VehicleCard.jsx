@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import VehicleBooking from './VehicleBookingForm';
 import { auth } from '../../firebase/Firebase';
-import CardRate from '../common/cards/CardRate';
+import SubmitButton from '../common/button/SubmitButton';
 import { useAuth } from '../../contexts/authContext';
 
 import { toast } from 'sonner';
@@ -24,16 +24,47 @@ const VehicleCard = ({ vehicle }) => {
   const toggleAvailability = () => setIsAvailable(prev => !prev);
 
   return (
-    <div className="p-2 md:p-4 w-full md:w[45%] lg:w-[30%] mx-auto  flex relative flex-wrap">
-    <CardRate vehicle={vehicle} handleSubmit={handleBookNow}/>
-          {showForm && <VehicleBooking vehicle={vehicle} />}
+    <div className="glass-card max-w-sm w-full mx-auto p-4 flex flex-col justify-between space-y-4 relative">
+      <div className="space-y-4 flex flex-col flex-grow">
+        <div className="overflow-hidden rounded-xl h-44 relative flex-shrink-0">
+          <img
+            className="w-full h-full object-cover"
+            src={vehicle.imageUrl}
+            alt={vehicle.name}
+          />
+        </div>
+        <div className="space-y-2 flex-grow flex flex-col justify-between">
+          <div className="flex justify-between items-start gap-3">
+            <h3 className="text-xl font-bold text-slate-800 capitalize">
+              {vehicle.name}
+            </h3>
+            <span className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 flex-shrink-0 whitespace-nowrap">
+              ${vehicle.price}
+            </span>
+          </div>
+          <div className="flex justify-between items-center text-sm text-slate-600 font-medium mt-auto pt-2">
+            <p className="italic font-light line-clamp-2 pr-4">{vehicle.desc}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="pt-2 border-t border-white/60/60 flex flex-col gap-3 justify-center flex-shrink-0">
+        <div onClick={handleBookNow}>
+          <SubmitButton callToAction={"Book Now"} />
+        </div>
+        
+        {/* Admin-only availability toggle */}
+        {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
+          <button 
+            onClick={toggleAvailability} 
+            className="w-full bg-slate-700/80 hover:bg-slate-800/90 text-white font-medium py-2 rounded-lg transition-colors text-sm"
+          >
+            {isAvailable ? 'Set as Unavailable' : 'Set as Available'}
+          </button>
+        )}
+      </div>
       
-      {/* Admin-only availability toggle (Apply restrictions later) */}
-      {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
-      <button onClick={toggleAvailability} className="bg-gray-600 text-slate-800 p-2 mt-2 rounded absolute max-md:-bottom-2 -bottom-5 right-[35%] ">
-        {isAvailable ? 'Set as Unavailable' : 'Set as Available'}
-      </button>
-      )}
+      {showForm && <VehicleBooking vehicle={vehicle} />}
     </div>
   );
 };

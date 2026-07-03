@@ -19,10 +19,10 @@ const WeddingHallCard = ({ hall }) => {
   const [isBooking, setIsBooking] = useState(false);
   const [totalRate, setTotalRate] = useState(0);
   const [name, setName] = useState('');
-  const [contact,  setContact] = useState('');
-  const [startDate,  setStartDate] = useState('');
-  const [endDate,  setEndDate] = useState('');
-  const [cnic,  setCnic] = useState('');
+  const [contact, setContact] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [cnic, setCnic] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -40,14 +40,14 @@ const WeddingHallCard = ({ hall }) => {
       setTotalRate(0);
     }
   }, [startDate, endDate, hall.pp]);
- 
+
   const handleBooking = async (e) => {
     e.preventDefault();
     if (!currentUser) return toast.error(NOTIFICATIONS.HALL_BOOKING_LOGIN_REQUIRED);
     const bookingInfo = {
       name,
-      cnic, 
-      contact, 
+      cnic,
+      contact,
       startDate,
       endDate,
       userId: currentUser.uid,
@@ -73,29 +73,28 @@ const WeddingHallCard = ({ hall }) => {
   };
 
   return (
-    <div className="p-4 mx-auto   flex justify-center items-center flex-col w-full md:w-[45%] lg:w-[30%] 2xl:w-[23%]">
-      <HallCard hall={hall} />
-      <BookButton
-        text={"Book Now"}
-        setIsBooking={setIsBooking}
+    <div className="flex flex-col gap-3 h-full">
+      <HallCard
+        hall={hall}
+        onBook={() => setIsBooking(!isBooking)}
         isBooking={isBooking}
       />
       {isBooking && (
         <BookingForm
-      handleBooking={handleBooking}
-      name={name}
-      setName={setName}
-      contact={contact}
-      setContact={setContact}
-      cnic={cnic}
-      setCnic={setCnic}
-      startDate={startDate}
-      setStartDate={setStartDate}
-      endDate={endDate}
-      setEndDate={setEndDate}
-      totalRate={totalRate}
-      loading={loading}
-    />
+          handleBooking={handleBooking}
+          name={name}
+          setName={setName}
+          contact={contact}
+          setContact={setContact}
+          cnic={cnic}
+          setCnic={setCnic}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          totalRate={totalRate}
+          loading={loading}
+        />
       )}
     </div>
   );

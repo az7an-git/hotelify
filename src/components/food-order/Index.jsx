@@ -10,6 +10,8 @@ import BookingForm from "./BookingForm";
 import { toast } from "sonner";
 import { NOTIFICATIONS } from "../../constants/notifications";
 
+import PageHeader from "../common/header/PageHeader";
+
 const categories = ["All", "Full Course", "Lunch", "Breakfast"];
 
 const FoodOrderMain = () => {
@@ -91,13 +93,11 @@ const FoodOrderMain = () => {
   return loading ? (
     <Loader msg={"Fetching Food Items"} />
   ) : (
-    <div className="max-w-6xl mx-auto p-6 space-y-6 relative">
-      <div className="border-b border-white/60/80 pb-4 mb-6">
-        <h1 className="text-3xl lg:text-4xl font-extrabold tracking-tight">
-          Food Order
-        </h1>
-        <p className="text-slate-600 font-medium text-sm mt-1">Select from our chef-crafted gourmet menu options.</p>
-      </div>
+    <div className="max-w-7xl mx-auto p-6 space-y-6 relative">
+      <PageHeader 
+        title="Food Order" 
+        subtitle="Select from our chef-crafted gourmet menu options." 
+      />
       <Tabs
         categories={categories}
         handleCategoryChange={handleCategoryChange}

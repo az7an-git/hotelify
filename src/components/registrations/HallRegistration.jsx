@@ -41,7 +41,8 @@ const HallRegistration = () => {
     e.preventDefault();
     if (name && description && pp && image) {
       setLoading(true);
-      await addHall(name, description, pp, image, available, offers);
+      const validOffers = offers.filter((offer) => offer.title.trim() !== "");
+      await addHall(name, description, pp, image, available, validOffers);
       setLoading(false);
       toast.success(NOTIFICATIONS.HALL_REG_SUCCESS);
       setName("");
@@ -130,7 +131,6 @@ const HallRegistration = () => {
                   onChange={(e) =>
                     handleOfferChange(index, "title", e.target.value)
                   }
-                  required
                 />
                 <input
                   className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-lg px-2.5 py-1.5 outline-none focus:border-teal-500 text-xs w-full"

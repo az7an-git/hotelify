@@ -1,8 +1,8 @@
-// src/pages/RoomBookingPage.js
 import React, { useEffect, useState } from "react";
 import RoomCard from "./RoomCard";
 import { fetchRooms } from "../../services/roomRegService";
 import Loader from "../common/loader/Loader";
+import PageHeader from "../common/header/PageHeader";
 
 const RoomBookingMain = () => {
   const [rooms, setRooms] = useState([]);
@@ -22,13 +22,16 @@ const RoomBookingMain = () => {
     <Loader msg={"fetching rooms"} />
   ) : (
     <div className="p-6">
-      <h1 className="text-2xl lg:text-3xl text-center font-semibold mb-6">
-        Available Rooms
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {rooms.map((room) => (
-          <RoomCard key={room.id} room={room} />
-        ))}
+      <div className="max-w-7xl mx-auto">
+        <PageHeader 
+          title="Available Rooms" 
+          subtitle="Find the perfect room for your stay, designed for comfort and luxury." 
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {rooms.map((room) => (
+            <RoomCard key={room.id} room={room} />
+          ))}
+        </div>
       </div>
     </div>
   );
