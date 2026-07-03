@@ -49,14 +49,16 @@ const SubmitTestimonialForm = () => {
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full md:w-[30%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-full px-5 py-3 outline-none focus:border-teal-500 transition-colors text-sm"
+            className="w-full md:w-[30%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-full px-5 py-3 outline-none focus:border-teal-500 transition-colors text-sm disabled:opacity-50"
+            disabled={loading}
           />
           <textarea
             placeholder="Your Review"
             value={review}
             rows={1}
             onChange={(e) => setReview(e.target.value)}
-            className="w-full md:w-[67%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-5 py-3 outline-none focus:border-teal-500 transition-colors text-sm resize-none"
+            className="w-full md:w-[67%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-5 py-3 outline-none focus:border-teal-500 transition-colors text-sm resize-none disabled:opacity-50"
+            disabled={loading}
           />
         </div>
       

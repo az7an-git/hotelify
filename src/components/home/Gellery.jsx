@@ -30,11 +30,11 @@ const GallerySection = () => {
       setLoading(true);
       try {
         await addToGallery(images);
-        
+
         // Refresh the gallery images so the new one appears immediately
         const updatedImages = await fetchFromGallery();
         setAllImages(updatedImages);
-        
+
         setImages(null);
         e.target.reset(); // Clear the file input visually
         toast.success(NOTIFICATIONS.GALLERY_ADD_SUCCESS);
@@ -90,13 +90,13 @@ const GallerySection = () => {
         {/* Admin Only Upload Toggle */}
         {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
           <div className="mt-8 flex flex-col items-center">
-            <button 
+            <button
               onClick={() => setShowAdminForm(!showAdminForm)}
               className="bg-white/50 backdrop-blur-md text-blue-700 border border-white/80 px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:bg-white/70 transition-all duration-300 transform active:scale-95"
             >
               {showAdminForm ? "Close Admin Panel" : "Admin: Upload Images"}
             </button>
-            
+
             {showAdminForm && (
               <div className="max-w-xl mx-auto glass-card p-6 sm:p-8 rounded-3xl shadow-xl border border-white/60 mt-6 w-full animate-fade-in">
                 <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center justify-center gap-2">
@@ -106,12 +106,13 @@ const GallerySection = () => {
                 <form onSubmit={handleAddPic} className="flex flex-col gap-4">
                   <input
                     type="file"
-                    className="w-full file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 text-slate-600 bg-white/50 border border-slate-200 rounded-full px-2 py-2 cursor-pointer transition-colors"
+                    className="w-full file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 text-slate-600 bg-white/50 border border-slate-200 rounded-full px-2 py-2 cursor-pointer transition-colors disabled:opacity-50"
                     onChange={(e) => setImages(e.target.files[0])}
                     required
+                    disabled={loading}
                   />
-                  <button type="submit" className="glass-button-primary w-full py-3 rounded-full text-lg font-semibold shadow-blue-500/20 hover:shadow-blue-500/40">
-                    Add Picture
+                  <button type="submit" disabled={loading} className="glass-button-primary w-full py-3 rounded-full text-lg font-semibold shadow-blue-500/20 hover:shadow-blue-500/40 disabled:opacity-50">
+                    {loading ? "Adding..." : "Add Picture"}
                   </button>
                 </form>
               </div>

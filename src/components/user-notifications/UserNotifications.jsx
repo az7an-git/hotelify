@@ -13,6 +13,7 @@ import UserControlsHall from "../wedding-hall/UserControlsHall.jsx";
 import Tabs from "./Tabs.jsx";
 
 import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
 
 const UserNotifications = () => {
   const [activeTab, setActiveTab] = useState("food-orders");
@@ -70,7 +71,7 @@ const UserNotifications = () => {
 
   const handleDelete = async (notificationId, collectionNotification) => {
     await deleteNotification(notificationId, collectionNotification);
-    toast.success("Notification deleted successfully!");
+    toast.success(NOTIFICATIONS.NOTIFICATION_DELETED);
     setFoodNotifications((prevNotifications) =>
       prevNotifications.filter(
         (notification) => notification.id !== notificationId

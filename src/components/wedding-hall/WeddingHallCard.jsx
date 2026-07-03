@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   addDoc,
   collection,
@@ -23,19 +23,27 @@ const WeddingHallCard = ({ hall }) => {
   const [startDate,  setStartDate] = useState('');
   const [endDate,  setEndDate] = useState('');
   const [cnic,  setCnic] = useState('');
- 
-  const handleTotalRate = () => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const days = (end - start) / (1000 * 60 * 60 * 24);
-    const rate = days * hall.pp;
-    setTotalRate(rate);
-  };
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      if (end > start) {
+        const days = (end - start) / (1000 * 60 * 60 * 24);
+        const rate = Math.round(days * hall.pp);
+        setTotalRate(rate > 0 ? rate : 0);
+      } else {
+        setTotalRate(0);
+      }
+    } else {
+      setTotalRate(0);
+    }
+  }, [startDate, endDate, hall.pp]);
+ 
   const handleBooking = async (e) => {
     e.preventDefault();
     if (!currentUser) return toast.error(NOTIFICATIONS.HALL_BOOKING_LOGIN_REQUIRED);
-    handleTotalRate();
     const bookingInfo = {
       name,
       cnic, 
@@ -51,6 +59,7 @@ const WeddingHallCard = ({ hall }) => {
       applyDate: Timestamp.fromDate(new Date()),
     };
 
+    setLoading(true);
     try {
       await addDoc(collection(db, "wedding-hall-bookings"), bookingInfo);
       setIsBooking(false);
@@ -58,6 +67,8 @@ const WeddingHallCard = ({ hall }) => {
     } catch (error) {
       console.error("Error booking hall:", error);
       toast.error(NOTIFICATIONS.HALL_BOOKING_ERROR);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,6 +94,7 @@ const WeddingHallCard = ({ hall }) => {
       endDate={endDate}
       setEndDate={setEndDate}
       totalRate={totalRate}
+      loading={loading}
     />
       )}
     </div>

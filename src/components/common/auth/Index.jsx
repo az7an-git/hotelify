@@ -13,12 +13,14 @@ const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const toggleAuthMode = () => setIsLogin(!isLogin);
+  const toggleAuthMode = () => !loading && setIsLogin(!isLogin);
 
   const handleAuth = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
@@ -26,12 +28,14 @@ const Auth = () => {
         navigate("/");
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
-        toast.success(NOTIFICATIONS.AUTH_LOGIN_SUCCESS);
+        toast.success(NOTIFICATIONS.AUTH_SIGNUP_SUCCESS);
         navigate("/");
       }
     } catch (error) {
       console.error("Error during authentication:", error);
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,7 +55,8 @@ const Auth = () => {
               setEmail(e.target.value);
             }
           }}
-          className="w-full p-2 mb-3 border rounded focus:outline-yellow-600"
+          className="w-full p-2 mb-3 border rounded focus:outline-yellow-600 disabled:opacity-50"
+          disabled={loading}
         />
         <input
           type="password"
@@ -63,16 +68,18 @@ const Auth = () => {
               setPassword(e.target.value);
             }
           }}
-          className="w-full p-2 mb-3 border rounded focus:outline-yellow-600"
+          className="w-full p-2 mb-3 border rounded focus:outline-yellow-600 disabled:opacity-50"
+          disabled={loading}
         />
         <button
           type="submit"
-          className="w-full p-2 bg-blue-600 hover:bg-blue-800 transition-all duration-150 text-slate-800 rounded"
+          disabled={loading}
+          className="w-full p-2 bg-blue-600 hover:bg-blue-800 transition-all duration-150 text-slate-800 rounded disabled:opacity-50"
         >
-          {isLogin ? "Login" : "Sign Up"}
+          {loading ? "Processing..." : (isLogin ? "Login" : "Sign Up")}
         </button>
       </form>
-      <button onClick={toggleAuthMode} className="mt-4 underline text-blue-600">
+      <button onClick={toggleAuthMode} disabled={loading} className="mt-4 underline text-blue-600 disabled:opacity-50">
         {isLogin ? "Create an account" : "Already have an account? Log in"}
       </button>
       <div className="flex flex-col text-md mt-3 justify-center font-semibold">

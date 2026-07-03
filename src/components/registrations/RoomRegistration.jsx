@@ -41,12 +41,13 @@ const RoomRegistration = () => {
         <div className="flex flex-col space-y-1.5">
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Room Name</label>
           <input 
-            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm" 
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm disabled:opacity-50" 
             type="text" 
             placeholder="e.g., Deluxe Suite 204" 
             value={name} 
             onChange={(e) => setName(e.target.value)} 
             required 
+            disabled={loading}
           />
         </div>
 
@@ -54,24 +55,26 @@ const RoomRegistration = () => {
           <div className="flex flex-col space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Price per Day ($)</label>
             <input 
-              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm" 
+              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm disabled:opacity-50" 
               type="number" 
               placeholder="e.g., 120" 
               value={price || ''} 
               onChange={(e) => setPrice(e.target.value)} 
               required 
+              disabled={loading}
             />
           </div>
 
           <div className="flex flex-col space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">No. of Beds</label>
             <input 
-              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm" 
+              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm disabled:opacity-50" 
               type="number" 
               placeholder="e.g., 2" 
               value={beds || ''} 
               onChange={(e) => setBeds(e.target.value)} 
               required 
+              disabled={loading}
             />
           </div>
         </div>
@@ -80,23 +83,25 @@ const RoomRegistration = () => {
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Description</label>
           <textarea 
             rows={2} 
-            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm resize-none" 
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm resize-none disabled:opacity-50" 
             placeholder="e.g., Ocean view, king size bed..." 
             value={description} 
             onChange={(e) => setDescription(e.target.value)} 
             required 
+            disabled={loading}
           />
         </div>
 
         <div className="flex flex-col space-y-1.5">
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider mb-1">Room Image</label>
-          <label className="flex flex-col items-center justify-center border border-dashed border-white/60 hover:border-teal-500/50 rounded-xl p-4 cursor-pointer bg-white/40 backdrop-blur-md border border-white/50 text-slate-600 font-medium hover:text-slate-250 transition-all text-xs">
+          <label className={`flex flex-col items-center justify-center border border-dashed border-white/60 hover:border-teal-500/50 rounded-xl p-4 cursor-pointer bg-white/40 backdrop-blur-md border border-white/50 text-slate-600 font-medium hover:text-slate-250 transition-all text-xs ${loading ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}`}>
             <span className="font-semibold">{image ? image.name : "Select Image File"}</span>
             <input 
               type="file" 
               onChange={(e) => setImage(e.target.files[0])} 
               className="hidden"
               required 
+              disabled={loading}
             />
           </label>
         </div>

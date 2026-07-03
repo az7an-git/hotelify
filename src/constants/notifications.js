@@ -1,8 +1,10 @@
 export const NOTIFICATIONS = {
   // Bookings
   ROOM_BOOKING_SUCCESS: "Booking request sent successfully!",
+  ROOM_BOOKING_ERROR: "Failed to book room.",
   ROOM_BOOKING_LOGIN_REQUIRED: "Please log in to book a room",
   VEHICLE_BOOKING_SUCCESS: "Booking requested successfully!",
+  VEHICLE_BOOKING_ERROR: "Failed to book vehicle.",
   VEHICLE_BOOKING_LOGIN_REQUIRED: "Please log in to apply for vehicle rental",
   HALL_BOOKING_SUCCESS: "Booking request sent!",
   HALL_BOOKING_LOGIN_REQUIRED: "Please log in to book",
@@ -27,4 +29,10 @@ export const NOTIFICATIONS = {
 
   // Reports
   REPORTS_DATE_REQUIRED: "Please select both start and end dates.",
+
+  // Authentication
+  AUTH_LOGIN_SUCCESS: "Logged in successfully!",
+  AUTH_SIGNUP_SUCCESS: "Signed up successfully!",
+  AUTH_LOGOUT_SUCCESS: "Logged out successfully!",
+  AUTH_LOGOUT_ERROR: (msg) => `Logout failed: ${msg}`,
 };
