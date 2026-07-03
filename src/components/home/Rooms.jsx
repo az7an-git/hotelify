@@ -4,6 +4,9 @@ import RoomBooking from "../room-booking/RoomBookingForm";
 import { auth } from "../../firebase/Firebase";
 import { FaBed } from "react-icons/fa";
 
+import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
+
 const RoomsSection = () => {
   const [rooms, setRooms] = useState();
   const [selRoom, setSelRoom] = useState(null);
@@ -21,7 +24,7 @@ const RoomsSection = () => {
       setShowForm(!showForm);
       setSelRoom(room);
     } else {
-      alert("Please log in to book a room");
+      toast.error(NOTIFICATIONS.ROOM_BOOKING_LOGIN_REQUIRED);
     }
   };
 

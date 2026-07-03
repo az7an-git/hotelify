@@ -4,6 +4,7 @@ import { auth } from "../../firebase/Firebase";
 import { addVehicleBooking } from "../../services/vehicleRentalService";
 import BookingForm from "../common/forms/BookingForm";
 import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
 
 const VehicleBooking = ({ vehicle }) => {
   const [name, setName] = useState("");
@@ -38,7 +39,7 @@ const VehicleBooking = ({ vehicle }) => {
       available: true,
     };
     await addVehicleBooking(bookingData);
-    toast.success("Booking requested successfully!");
+    toast.success(NOTIFICATIONS.VEHICLE_BOOKING_SUCCESS);
   };
 
   return (

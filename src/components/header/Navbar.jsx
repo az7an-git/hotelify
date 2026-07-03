@@ -9,6 +9,9 @@ import useSticky from "../../hooks/use-sticky";
 import MobileNav from "./MobileNav";
 import LgNav from "./LgNav";
 
+import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useAuth();
@@ -32,10 +35,11 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      toast.success(NOTIFICATIONS.AUTH_LOGOUT_SUCCESS);
       navigate("/");
       setIsOpen(false)
     } catch (error) {
-      alert(`logout failed error: ${error}`);
+      toast.error(NOTIFICATIONS.AUTH_LOGOUT_ERROR(error.message));
       throw error;
     }
   };

@@ -4,6 +4,9 @@ import { inputStyles } from "./FoodRegistration";
 import SubmitButton from "../common/button/SubmitButton";
 import Loader from "../common/loader/Loader";
 
+import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
+
 const HallRegistration = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -40,6 +43,7 @@ const HallRegistration = () => {
       setLoading(true);
       await addHall(name, description, pp, image, available, offers);
       setLoading(false);
+      toast.success(NOTIFICATIONS.HALL_REG_SUCCESS);
       setName("");
       setDescription("");
       setPp("");
@@ -57,7 +61,7 @@ const HallRegistration = () => {
         className="glass-card p-6 md:p-8 space-y-5"
       >
         <h3 className="text-xl font-bold text-center text-slate-800 pb-3 border-b border-white/60">Register Hall</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Hall Name</label>

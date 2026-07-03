@@ -7,6 +7,9 @@ import { db } from "../../firebase/Firebase";
 import { MdDelete } from "react-icons/md";
 import { useAuth } from "../../contexts/authContext";
 
+import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
+
 const GallerySection = () => {
   const [images, setImages] = useState([]);
   const [allImages, setAllImages] = useState([]);
@@ -34,20 +37,20 @@ const GallerySection = () => {
         
         setImages(null);
         e.target.reset(); // Clear the file input visually
-        alert("Image added successfully!");
+        toast.success(NOTIFICATIONS.GALLERY_ADD_SUCCESS);
       } catch (error) {
         console.error("Error uploading image:", error);
-        alert("Failed to upload image. Please try again.");
+        toast.error(NOTIFICATIONS.GALLERY_ADD_ERROR);
       } finally {
         setLoading(false);
       }
     } else {
-      alert("Please select an image first!");
+      toast.error(NOTIFICATIONS.GALLERY_SELECT_IMAGE);
     }
   };
   const handleDeletePic = async (id) => {
     await deleteDoc(doc(db, "galleryPics", id));
-    alert(`Picture with id ${id} has been deleted`);
+    toast.success(NOTIFICATIONS.GALLERY_DELETE_SUCCESS(id));
   };
 
   return (

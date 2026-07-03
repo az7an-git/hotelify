@@ -4,6 +4,7 @@ import { inputStyles } from './FoodRegistration';
 import SubmitButton from '../common/button/SubmitButton';
 
 import { toast } from 'sonner';
+import { NOTIFICATIONS } from '../../constants/notifications';
 
 const ParkingRegistration = () => {
   const [name, setName] = useState('');
@@ -19,7 +20,7 @@ const ParkingRegistration = () => {
       setLoading(true);
       await addParkingSpot(name, category, rate, isAvailable, image, );
       setLoading(false);
-      toast.success('Parking spot added successfully!');
+      toast.success(NOTIFICATIONS.PARKING_REG_SUCCESS);
       setName('');
       setCategory('');
       setRate('');

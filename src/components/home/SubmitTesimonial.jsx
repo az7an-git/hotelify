@@ -3,6 +3,9 @@ import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/Firebase";
 import { inputStyles } from "../registrations/FoodRegistration";
 
+import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
+
 const SubmitTestimonialForm = () => {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
@@ -12,7 +15,7 @@ const SubmitTestimonialForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !review ) {
-      alert("All fields are required.");
+      toast.error(NOTIFICATIONS.TESTIMONIAL_FIELDS_REQUIRED);
       return;
     }
 

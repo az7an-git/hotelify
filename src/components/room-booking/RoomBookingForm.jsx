@@ -4,6 +4,7 @@ import { auth } from "../../firebase/Firebase";
 import { addRoomBooking } from "../../services/roomBookingService";
 import BookingForm from "../common/forms/BookingForm";
 import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
 
 const RoomBooking = ({ room }) => {
   const [name, setName] = useState("");
@@ -38,7 +39,7 @@ const RoomBooking = ({ room }) => {
       endDate,
     };
     await addRoomBooking(bookingData);
-    toast.success("Booking request sent successfully!");
+    toast.success(NOTIFICATIONS.ROOM_BOOKING_SUCCESS);
   };
 
   return (

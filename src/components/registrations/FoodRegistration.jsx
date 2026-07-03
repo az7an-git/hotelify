@@ -2,6 +2,8 @@ import { useState } from "react";
 import { addFoodItem } from "../../services/foodRegService";
 import SubmitButton from "../common/button/SubmitButton";
 import Loader from "../common/loader/Loader";
+import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
 
 const FoodRegistration = () => {
   const [name, setName] = useState("");
@@ -10,7 +12,6 @@ const FoodRegistration = () => {
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState("");
   const available = true;
 
   const handleAddFood = async (e) => {
@@ -18,10 +19,8 @@ const FoodRegistration = () => {
     if (name && category && price && image && desc) {
       setLoading(true);
       await addFoodItem(name, category, price, image, available, desc);
-      
-      // Show elegant success message instead of browser alert
-      setSuccessMsg(`Successfully added ${name}!`);
-      setTimeout(() => setSuccessMsg(""), 3000); // Clear after 3 seconds
+
+      toast.success(NOTIFICATIONS.FOOD_REG_SUCCESS(name));
 
       setLoading(false);
       setName("");
@@ -36,21 +35,12 @@ const FoodRegistration = () => {
     <Loader msg={"Adding the Dish"} />
   ) : (
     <div className="max-w-md mx-auto p-4 relative">
-      {/* Sleek Success Toast */}
-      {successMsg && (
-        <div className="absolute -top-4 left-4 right-4 z-50 animate-fade-in">
-          <div className="glass-card bg-emerald-500/10 border-emerald-400/50 p-3 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 backdrop-blur-xl">
-            <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-            <span className="text-emerald-700 font-bold text-sm">{successMsg}</span>
-          </div>
-        </div>
-      )}
       <form
         onSubmit={handleAddFood}
         className="glass-card p-6 md:p-8 space-y-5"
       >
         <h3 className="text-xl font-bold text-center text-slate-800 pb-3 border-b border-white/60">Register Food Item</h3>
-        
+
         <div className="flex flex-col space-y-1.5">
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Food Name</label>
           <input
@@ -91,13 +81,12 @@ const FoodRegistration = () => {
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider mb-1">Category</label>
           <div className="grid grid-cols-3 gap-3">
             {["Full Course", "Lunch", "Breakfast"].map((cat) => (
-              <label 
+              <label
                 key={cat}
-                className={`flex items-center justify-center py-2.5 px-2 text-xs md:text-sm rounded-xl cursor-pointer font-bold transition-all duration-300 shadow-sm border ${
-                  category === cat
+                className={`flex items-center justify-center py-2.5 px-2 text-xs md:text-sm rounded-xl cursor-pointer font-bold transition-all duration-300 shadow-sm border ${category === cat
                     ? "bg-blue-500 text-white border-blue-400 shadow-blue-500/30"
                     : "bg-white/50 backdrop-blur-md text-slate-600 border-white/60 hover:text-blue-700 hover:bg-white/80 hover:shadow-md"
-                }`}
+                  }`}
               >
                 <input
                   type="radio"

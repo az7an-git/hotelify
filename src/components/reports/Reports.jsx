@@ -6,6 +6,7 @@ import Tabs from "./Tabs";
 import DateRange from "./DateRange";
 import Loader from "../common/loader/Loader";
 import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
 
 const ReportsPage = () => {
   const [activeTab, setActiveTab] = useState("Food Orders");
@@ -16,7 +17,7 @@ const ReportsPage = () => {
 
   const fetchBookings = async () => {
     if (!startDate || !endDate) {
-      toast.error("Please select both start and end dates.");
+      toast.error(NOTIFICATIONS.REPORTS_DATE_REQUIRED);
       return;
     }
     setLoading(true);

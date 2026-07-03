@@ -6,6 +6,7 @@ import CardRate from '../common/cards/CardRate';
 import { useAuth } from '../../contexts/authContext';
 
 import { toast } from 'sonner';
+import { NOTIFICATIONS } from '../../constants/notifications';
 
 const VehicleCard = ({ vehicle }) => {
   const [showForm, setShowForm] = useState(false);
@@ -16,7 +17,7 @@ const VehicleCard = ({ vehicle }) => {
     if (auth.currentUser) {
       setShowForm(!showForm);
     } else {
-      toast.error('Please log in to apply for vehicle rental');
+      toast.error(NOTIFICATIONS.VEHICLE_BOOKING_LOGIN_REQUIRED);
     }
   };
 

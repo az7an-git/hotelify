@@ -7,6 +7,7 @@ import SubmitButton from "../common/button/SubmitButton";
 import { FaBed } from "react-icons/fa";
 
 import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../constants/notifications";
 
 const RoomCard = ({ room }) => {
   const [showForm, setShowForm] = useState(false);
@@ -15,7 +16,7 @@ const RoomCard = ({ room }) => {
     if (auth.currentUser) {
       setShowForm(!showForm);
     } else {
-      toast.error("Please log in to book a room");
+      toast.error(NOTIFICATIONS.ROOM_BOOKING_LOGIN_REQUIRED);
       return <Auth />;
     }
   };

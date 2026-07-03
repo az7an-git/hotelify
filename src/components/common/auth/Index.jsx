@@ -6,6 +6,9 @@ import {
 import { auth } from "../../../firebase/Firebase";
 import { useNavigate } from "react-router";
 
+import { toast } from "sonner";
+import { NOTIFICATIONS } from "../../../constants/notifications";
+
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -19,15 +22,16 @@ const Auth = () => {
     try {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
-        alert("login Successful");
+        toast.success(NOTIFICATIONS.AUTH_LOGIN_SUCCESS);
         navigate("/");
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
-        alert("login Successful");
+        toast.success(NOTIFICATIONS.AUTH_LOGIN_SUCCESS);
         navigate("/");
       }
     } catch (error) {
       console.error("Error during authentication:", error);
+      toast.error(error.message);
     }
   };
 

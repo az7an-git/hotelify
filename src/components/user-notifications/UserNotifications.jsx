@@ -26,7 +26,7 @@ const UserNotifications = () => {
   });
 
 
-  const { currentUser } = useAuth(); // Get the current user's ID
+  const { currentUser } = useAuth(); // Get the current user's ID 
 
   useEffect(() => {
     const fetchNotifications = async () => {
