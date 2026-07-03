@@ -8,8 +8,8 @@ function FoodOrder({ bookingFields, bookings, activeTab }) {
   };
 
   return (
-    <div className="w-full overflow-x-auto pb-4 animate-fade-in [transform:rotateX(180deg)]">
-      <div className="min-w-[800px] glass-card rounded-2xl overflow-hidden border border-white/60 shadow-sm [transform:rotateX(180deg)]">
+    <div className="w-full overflow-x-auto pb-4 animate-fade-in">
+      <div className="min-w-[800px] glass-card rounded-2xl overflow-hidden border border-white/60 shadow-sm">
         <table className="w-full text-left whitespace-nowrap">
           <thead>
             <tr className="bg-white/40 border-b border-white/60">
