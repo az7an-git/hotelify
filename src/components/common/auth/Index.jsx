@@ -6,7 +6,7 @@ import {
 import { auth } from "../../../firebase/Firebase";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
-import { NOTIFICATIONS } from "../../../constants/notifications";
+import { NOTIFICATIONS, AUTH_ERRORS } from "../../../constants/notifications";
 import { FaEye, FaEyeSlash, FaEnvelope, FaLock, FaBuilding, FaInfoCircle } from "react-icons/fa";
 import logo from "../../../assets/common/magnum.png";
 
@@ -39,7 +39,8 @@ const Auth = () => {
       }
     } catch (error) {
       console.error("Error during authentication:", error);
-      toast.error(error.message);
+      const friendlyMessage = (error && error.code && AUTH_ERRORS[error.code]) || error.message || AUTH_ERRORS.DEFAULT;
+      toast.error(friendlyMessage);
     } finally {
       setLoading(false);
     }

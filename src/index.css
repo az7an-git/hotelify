@@ -23,8 +23,8 @@
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: -1;
-    /* A more vibrant background to make the white glass pop */
-    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 50%, #84fab0 100%);
+    /* A premium, sophisticated neutral luxury background to make the white glass pop */
+    background: linear-gradient(135deg, #f8fafc 0%, #fdfbf7 50%, #e2e8f0 100%);
     background-size: 200% 200%;
     animation: gradientShift 15s ease infinite;
   }

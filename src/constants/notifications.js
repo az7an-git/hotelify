@@ -36,3 +36,14 @@ export const NOTIFICATIONS = {
   AUTH_LOGOUT_SUCCESS: "Logged out successfully!",
   AUTH_LOGOUT_ERROR: (msg) => `Logout failed: ${msg}`,
 };
+
+export const AUTH_ERRORS = {
+  "auth/invalid-credential": "Invalid email or password. Please try again.",
+  "auth/user-not-found": "No account matches this email address.",
+  "auth/wrong-password": "Incorrect password. Please try again.",
+  "auth/invalid-email": "Please enter a valid email address.",
+  "auth/email-already-in-use": "This email address is already in use by another account.",
+  "auth/weak-password": "Password is too weak. It must be at least 6 characters long.",
+  "auth/too-many-requests": "Too many failed attempts. Access has been temporarily disabled. Please try again later.",
+  DEFAULT: "Authentication failed. Please check your details and try again.",
+};

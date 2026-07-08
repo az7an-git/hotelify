@@ -50,8 +50,11 @@ const Navbar = () => {
     <header className="w-full z-50 sticky top-4 px-4 sm:px-6 lg:px-8 animate-fade-in transition-all duration-300">
       <nav className="glass-card max-w-7xl mx-auto flex flex-wrap justify-between items-center py-2.5 px-6 rounded-full shadow-lg">
         {/* Mobile Logo */}
-        <NavLink to="/" className="lg:hidden block py-1 hover:opacity-85 transition-opacity">
-          <img className="w-10 h-8 object-contain" src={logo} alt="Logo" />
+        <NavLink to="/" className="lg:hidden flex items-center gap-2 py-1 hover:opacity-90 transition-opacity">
+          <img className="w-9 h-9 object-contain" src={logo} alt="Magnum Hotel Logo" />
+          <span className="text-xs font-bold tracking-[0.2em] uppercase bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-800 bg-clip-text text-transparent font-sans">
+            Magnum Hotel
+          </span>
         </NavLink>
 
         {/* Hamburger Icon */}

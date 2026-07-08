@@ -17,8 +17,11 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
         } lg:space-x-8 items-center justify-between w-full`}
     >
       <div className="flex items-center space-x-6">
-        <NavLink to="/" className="block py-1 hover:opacity-85 transition-opacity">
-          <img className="w-10 h-8 object-contain" src={logo} alt="Logo" />
+        <NavLink to="/" className="flex items-center gap-2.5 py-1 hover:opacity-90 transition-opacity">
+          <img className="w-9 h-9 object-contain" src={logo} alt="Magnum Hotel Logo" />
+          <span className="text-xs sm:text-sm font-bold tracking-[0.22em] uppercase bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-800 bg-clip-text text-transparent font-sans">
+            Magnum Hotel
+          </span>
         </NavLink>
 
         {/* Services Dropdown */}
@@ -47,7 +50,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
         {currentUser && (
           <div className="relative group py-2">
             <button className="flex items-center space-x-1.5 text-slate-600 hover:text-blue-600 font-medium transition-colors duration-200">
-              <span>{isAdmin ? "Admin Panel" : "My Account"}</span>
+              <span>{isAdmin ? "Admin Panel" : "Dashboard"}</span>
               <FaChevronDown className="text-xs transition-transform duration-250 group-hover:rotate-180" />
             </button>
             <div className="absolute left-0 mt-2 w-48 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-100 shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
