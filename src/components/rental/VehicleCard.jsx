@@ -1,7 +1,7 @@
 // src/components/VehicleCard.js
 import React, { useState } from 'react';
 import VehicleBooking from './VehicleBookingForm';
-import { auth } from '../../firebase/Firebase';
+import { auth, ADMIN_UID } from '../../firebase/Firebase';
 import SubmitButton from '../common/button/SubmitButton';
 import { useAuth } from '../../contexts/authContext';
 
@@ -54,7 +54,7 @@ const VehicleCard = ({ vehicle }) => {
         </div>
         
         {/* Admin-only availability toggle */}
-        {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
+        {currentUser && currentUser.uid === ADMIN_UID && (
           <button 
             onClick={toggleAvailability} 
             className="w-full bg-slate-700/80 hover:bg-slate-800/90 text-white font-medium py-2 rounded-lg transition-colors text-sm"

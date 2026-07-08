@@ -1,10 +1,14 @@
 import React from "react";
 import { CiLogin } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { bookingNavs, adminNavs, userNavs } from "./navs";
+import { ADMIN_UID } from "../../firebase/Firebase";
 
 function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+
   return (
     <>
       {isOpen && (
@@ -16,39 +20,37 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                 <NavLink
                   key={`booking-${i}`}
                   to={`/${nav.nv}`}
-                  className={({isActive}) =>  `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                  className={({ isActive }) => `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                   onClick={() => setIsOpen(false)}
                 >
                   {nav.cont}
                 </NavLink>
               );
             })}
-            
-            {/** Navs for Admin */}
+
             {currentUser &&
-              currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" &&
+              currentUser.uid === ADMIN_UID &&
               adminNavs.map((nav, i) => {
                 return (
                   <NavLink
                     key={`admin-${i}`}
                     to={`/${nav.nv}`}
-                    className={({isActive}) =>  `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                    className={({ isActive }) => `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                     onClick={() => setIsOpen(false)}
                   >
                     {nav.cont}
                   </NavLink>
                 );
               })}
-              
-            {/** Navs for Users */}
+
             {currentUser &&
-              currentUser.uid !== "6HVNgEkgDfXnco34ujwrVfpmwbx2" &&
+              currentUser.uid !== ADMIN_UID &&
               userNavs.map((nav, i) => {
                 return (
                   <NavLink
                     key={`user-${i}`}
                     to={`/${nav.nv}`}
-                    className={({isActive}) =>  `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                    className={({ isActive }) => `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                     onClick={() => setIsOpen(false)}
                   >
                     {nav.cont}
@@ -56,16 +58,26 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                 );
               })}
           </div>
-            
+
           <div className="mt-1 pt-2 border-t border-slate-200/50 flex justify-center">
             {!currentUser ? (
-              <NavLink
-                to="/login"
-                className="py-2.5 px-8 text-slate-700 hover:text-blue-600 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
-                onClick={() => setIsOpen(false)}
-              >
-                <CiLogin />
-              </NavLink>
+              isLoginPage ? (
+                <NavLink
+                  to="/"
+                  className="py-2 px-8 text-slate-700 hover:text-blue-600 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-sm font-semibold flex items-center justify-center w-full"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span>Home</span>
+                </NavLink>
+              ) : (
+                <NavLink
+                  to="/login"
+                  className="py-2.5 px-8 text-slate-700 hover:text-blue-600 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <CiLogin />
+                </NavLink>
+              )
             ) : (
               <button
                 onClick={handleLogout}

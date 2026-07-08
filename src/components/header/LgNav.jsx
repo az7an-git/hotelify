@@ -2,17 +2,19 @@ import React from "react";
 import { CiLogin } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { adminNavs, bookingNavs, userNavs } from "./navs";
+import { ADMIN_UID } from "../../firebase/Firebase";
 
 function LgNav({ isOpen, currentUser, logo, handleLogout }) {
-  const isAdmin = currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2";
+  const isAdmin = currentUser && currentUser.uid === ADMIN_UID;
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
 
   return (
     <div
-      className={`hidden lg:flex ${
-        isOpen ? "block" : "hidden"
-      } lg:space-x-8 items-center justify-between w-full`}
+      className={`hidden lg:flex ${isOpen ? "block" : "hidden"
+        } lg:space-x-8 items-center justify-between w-full`}
     >
       <div className="flex items-center space-x-6">
         <NavLink to="/" className="block py-1 hover:opacity-85 transition-opacity">
@@ -31,8 +33,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
                 key={i}
                 to={`/${nav.nv}`}
                 className={({ isActive }) =>
-                  `${
-                    isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
+                  `${isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
                   } block px-4 py-2 text-sm transition-all duration-200`
                 }
               >
@@ -55,8 +56,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
                   key={i}
                   to={`/${nav.nv}`}
                   className={({ isActive }) =>
-                    `${
-                      isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
+                    `${isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
                     } block px-4 py-2 text-sm transition-all duration-200`
                   }
                 >
@@ -70,13 +70,22 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
 
       <div className="flex items-center">
         {!currentUser && (
-          <NavLink
-            to="/login"
-            className="flex items-center space-x-1 py-1.5 px-4 text-slate-700 hover:text-blue-600 hover:bg-slate-100/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
-          >
-            <CiLogin className="text-lg" />
-            <span>Login</span>
-          </NavLink>
+          isLoginPage ? (
+            <NavLink
+              to="/"
+              className="flex items-center py-1.5 px-4 text-slate-700 hover:text-blue-600 hover:bg-slate-100/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
+            >
+              <span>Home</span>
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/login"
+              className="flex items-center space-x-1 py-1.5 px-4 text-slate-700 hover:text-blue-600 hover:bg-slate-100/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
+            >
+              <CiLogin className="text-lg" />
+              <span>Login</span>
+            </NavLink>
+          )
         )}
         {currentUser && (
           <button

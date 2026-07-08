@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { toggleParkingAvailability } from "../../services/parkingService";
 import { useAuth } from "../../contexts/authContext";
+import { ADMIN_UID } from "../../firebase/Firebase";
 
 const ParkingCard = ({ vehicle }) => {
   const [startDate, setStartDate] = useState("");
@@ -91,7 +92,7 @@ const ParkingCard = ({ vehicle }) => {
           <span className="text-blue-600 bg-blue-100/50 px-3 py-1 rounded-lg border border-blue-200/50">${totalRate}</span>
         </p>
         
-        {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" ? (
+        {currentUser && currentUser.uid === ADMIN_UID ? (
           <button
             className={`w-full py-2.5 rounded-xl transition-all duration-300 shadow-md border ${
               isAvailable

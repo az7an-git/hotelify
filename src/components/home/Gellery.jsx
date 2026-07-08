@@ -3,7 +3,7 @@ import { inputStyles } from "../registrations/FoodRegistration";
 import { addToGallery, fetchFromGallery } from "../../services/galleryService";
 import SubmitButton from "../common/button/SubmitButton";
 import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../../firebase/Firebase";
+import { db, ADMIN_UID } from "../../firebase/Firebase";
 import { MdDelete } from "react-icons/md";
 import { useAuth } from "../../contexts/authContext";
 
@@ -53,6 +53,17 @@ const GallerySection = () => {
     toast.success(NOTIFICATIONS.GALLERY_DELETE_SUCCESS(id));
   };
 
+  const fallbackImages = [
+    { imageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80", id: "fallback-1" },
+    { imageUrl: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80", id: "fallback-2" },
+    { imageUrl: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80", id: "fallback-3" },
+    { imageUrl: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80", id: "fallback-4" },
+    { imageUrl: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80", id: "fallback-5" },
+    { imageUrl: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80", id: "fallback-6" }
+  ];
+
+  const displayedImages = allImages.length > 0 ? allImages : fallbackImages;
+
   return (
     <section className="py-12 lg:py-24 my-8 mx-4">
       <div className="container mx-auto px-4 sm:px-8 text-center">
@@ -63,7 +74,7 @@ const GallerySection = () => {
           <p className="text-blue-600 animate-pulse font-semibold">Adding Picture...</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 max-w-5xl mx-auto">
-            {allImages.map((img, index) => (
+            {displayedImages.map((img, index) => (
               <div
                 key={index}
                 className="relative aspect-square bg-white/40 rounded-3xl overflow-hidden shadow-xl border-2 border-white/60 group hover:shadow-2xl transition-all duration-300"
@@ -74,7 +85,8 @@ const GallerySection = () => {
                   className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
                 />
                 {currentUser &&
-                  currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
+                  currentUser.uid === ADMIN_UID &&
+                  !img.id.startsWith("fallback-") && (
                     <button
                       className="absolute top-3 right-3 bg-white/80 p-2.5 rounded-full text-rose-500 hover:text-rose-700 hover:bg-white shadow-md transition-colors opacity-0 group-hover:opacity-100 transform active:scale-95"
                       onClick={() => handleDeletePic(img.id)}
@@ -88,7 +100,7 @@ const GallerySection = () => {
         )}
 
         {/* Admin Only Upload Toggle */}
-        {currentUser && currentUser.uid === "6HVNgEkgDfXnco34ujwrVfpmwbx2" && (
+        {currentUser && currentUser.uid === ADMIN_UID && (
           <div className="mt-8 flex flex-col items-center">
             <button
               onClick={() => setShowAdminForm(!showAdminForm)}

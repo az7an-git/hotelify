@@ -36,7 +36,7 @@ const Navbar = () => {
     try {
       await signOut(auth);
       toast.success(NOTIFICATIONS.AUTH_LOGOUT_SUCCESS);
-      navigate("/");
+      navigate("/login");
       setIsOpen(false)
     } catch (error) {
       toast.error(NOTIFICATIONS.AUTH_LOGOUT_ERROR(error.message));
