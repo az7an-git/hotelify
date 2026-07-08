@@ -76,7 +76,7 @@ const Auth = () => {
           <div className="relative z-10 space-y-4">
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white">
               Simplicity in <br />
-              <span className="text-blue-400">Hospitality</span> Management.
+              <span className="text-amber-400">Hospitality</span> Management.
             </h1>
             <p className="text-slate-100 text-sm leading-relaxed max-w-xs font-medium">
               Manage check-ins, room inventories, dining requests, and dynamic reporting in real-time.
@@ -126,7 +126,7 @@ const Auth = () => {
                         setEmail(value);
                       }
                     }}
-                    className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-150 disabled:opacity-50 text-slate-800 font-medium"
+                    className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-150 disabled:opacity-50 text-slate-800 font-medium"
                     disabled={loading}
                   />
                 </div>
@@ -149,7 +149,7 @@ const Auth = () => {
                         setPassword(value);
                       }
                     }}
-                    className="w-full pl-10 pr-10 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-150 disabled:opacity-50 text-slate-800 font-medium"
+                    className="w-full pl-10 pr-10 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-150 disabled:opacity-50 text-slate-800 font-medium"
                     disabled={loading}
                   />
                   <button
@@ -166,7 +166,7 @@ const Auth = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 transition-all duration-150 disabled:opacity-50 flex justify-center items-center"
+                className="w-full py-3 bg-amber-600 hover:bg-amber-700 active:scale-[0.99] text-white font-semibold rounded-xl shadow-lg shadow-amber-500/25 transition-all duration-150 disabled:opacity-50 flex justify-center items-center"
               >
                 {loading ? (
                   <span className="flex items-center gap-2">
@@ -184,7 +184,7 @@ const Auth = () => {
               <button
                 onClick={toggleAuthMode}
                 disabled={loading}
-                className="text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors disabled:opacity-50"
+                className="text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors disabled:opacity-50"
               >
                 {isLogin ? "Create an account" : "Already have an account? Log in"}
               </button>
@@ -196,7 +196,7 @@ const Auth = () => {
                 onClick={handleAutofillAdmin}
                 className="p-4 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm rounded-2xl cursor-pointer transition-all duration-150 flex items-start gap-3 group"
               >
-                <div className="text-blue-500 mt-0.5 text-lg group-hover:scale-110 transition-transform">
+                <div className="text-amber-600 mt-0.5 text-lg group-hover:scale-110 transition-transform">
                   <FaInfoCircle />
                 </div>
                 <div className="text-left">

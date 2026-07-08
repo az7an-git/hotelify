@@ -84,7 +84,7 @@ const TestimonialsSection = () => {
     <section className="py-12 md:py-24 my-8 md:my-12 mx-4 text-slate-800">
       <div className="container mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-12">
-          What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 whitespace-nowrap">Guests Say</span>
+          What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800 whitespace-nowrap">Guests Say</span>
         </h2>
         {displayedTestimonials.length > 0 ? (
           <Slider {...settings} className="overflow-hidden">
@@ -95,7 +95,7 @@ const TestimonialsSection = () => {
                     "{testimonial.review}"
                   </p>
                   <div className="mt-auto pt-4 border-t border-slate-200/50">
-                    <p className="font-bold text-blue-600">{testimonial.name}</p>
+                    <p className="font-bold text-amber-700">{testimonial.name}</p>
                     <p className="text-slate-500 font-medium text-xs">
                       {testimonial.time && (testimonial.time.toDate ? testimonial.time.toDate().toLocaleDateString() : new Date(testimonial.time).toLocaleDateString())}
                     </p>

@@ -20,7 +20,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                 <NavLink
                   key={`booking-${i}`}
                   to={`/${nav.nv}`}
-                  className={({ isActive }) => `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                  className={({ isActive }) => `${isActive ? 'text-amber-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-amber-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                   onClick={() => setIsOpen(false)}
                 >
                   {nav.cont}
@@ -35,7 +35,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                   <NavLink
                     key={`admin-${i}`}
                     to={`/${nav.nv}`}
-                    className={({ isActive }) => `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                    className={({ isActive }) => `${isActive ? 'text-amber-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-amber-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                     onClick={() => setIsOpen(false)}
                   >
                     {nav.cont}
@@ -50,7 +50,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                   <NavLink
                     key={`user-${i}`}
                     to={`/${nav.nv}`}
-                    className={({ isActive }) => `${isActive ? 'text-blue-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-blue-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                    className={({ isActive }) => `${isActive ? 'text-amber-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-amber-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                     onClick={() => setIsOpen(false)}
                   >
                     {nav.cont}
@@ -64,7 +64,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
               isLoginPage ? (
                 <NavLink
                   to="/"
-                  className="py-2 px-8 text-slate-700 hover:text-blue-600 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-sm font-semibold flex items-center justify-center w-full"
+                  className="py-2 px-8 text-slate-700 hover:text-amber-700 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-sm font-semibold flex items-center justify-center w-full"
                   onClick={() => setIsOpen(false)}
                 >
                   <span>Home</span>
@@ -72,7 +72,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
               ) : (
                 <NavLink
                   to="/login"
-                  className="py-2.5 px-8 text-slate-700 hover:text-blue-600 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
+                  className="py-2.5 px-8 text-slate-700 hover:text-amber-700 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
                   onClick={() => setIsOpen(false)}
                 >
                   <CiLogin />

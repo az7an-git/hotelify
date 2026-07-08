@@ -57,16 +57,16 @@ const GallerySection = () => {
     <section className="py-12 lg:py-24 my-8 mx-4">
       <div className="container mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-10">
-          Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Gallery</span>
+          Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Gallery</span>
         </h2>
         {loading ? (
-          <p className="text-blue-600 animate-pulse font-semibold">Adding Picture...</p>
+          <p className="text-amber-600 animate-pulse font-semibold">Adding Picture...</p>
         ) : allImages.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 max-w-5xl mx-auto">
             {allImages.map((img, index) => (
               <div
                 key={index}
-                className="relative aspect-square bg-white/40 rounded-3xl overflow-hidden shadow-xl border-2 border-white/60 group hover:shadow-2xl transition-all duration-300"
+                className="relative aspect-square glass-card rounded-3xl overflow-hidden shadow-xl border-2 border-white/60 group hover:shadow-2xl transition-all duration-300"
               >
                 <img
                   src={img.imageUrl}
@@ -94,7 +94,7 @@ const GallerySection = () => {
           <div className="mt-8 flex flex-col items-center">
             <button
               onClick={() => setShowAdminForm(!showAdminForm)}
-              className="bg-white/50 backdrop-blur-md text-blue-700 border border-white/80 px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:bg-white/70 transition-all duration-300 transform active:scale-95"
+              className="bg-amber-50/50 backdrop-blur-md text-amber-700 border border-amber-200/50 px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:bg-amber-100/50 transition-all duration-300 transform active:scale-95"
             >
               {showAdminForm ? "Close Admin Panel" : "Admin: Upload Images"}
             </button>
@@ -102,18 +102,18 @@ const GallerySection = () => {
             {showAdminForm && (
               <div className="max-w-xl mx-auto glass-card p-6 sm:p-8 rounded-3xl shadow-xl border border-white/60 mt-6 w-full animate-fade-in">
                 <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center justify-center gap-2">
-                  <span className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-md uppercase tracking-wide">Admin</span>
+                  <span className="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-md uppercase tracking-wide">Admin</span>
                   Upload to Gallery
                 </h3>
                 <form onSubmit={handleAddPic} className="flex flex-col gap-4">
                   <input
                     type="file"
-                    className="w-full file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 text-slate-600 bg-white/50 border border-slate-200 rounded-full px-2 py-2 cursor-pointer transition-colors disabled:opacity-50"
+                    className="w-full file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 text-slate-600 bg-white/50 border border-slate-200 rounded-full px-2 py-2 cursor-pointer transition-colors disabled:opacity-50"
                     onChange={(e) => setImages(e.target.files[0])}
                     required
                     disabled={loading}
                   />
-                  <button type="submit" disabled={loading} className="glass-button-primary w-full py-3 rounded-full text-lg font-semibold shadow-blue-500/20 hover:shadow-blue-500/40 disabled:opacity-50">
+                  <button type="submit" disabled={loading} className="glass-button-primary w-full py-3 rounded-full text-lg font-semibold shadow-amber-500/10 hover:shadow-amber-500/20 disabled:opacity-50">
                     {loading ? "Adding..." : "Add Picture"}
                   </button>
                 </form>

@@ -12,7 +12,7 @@ const AboutUsSection = () => {
     <div className="container mx-auto max-w-7xl glass-card p-6 sm:p-10 lg:p-16 rounded-3xl shadow-2xl border border-white/60 lg:flex lg:items-center lg:gap-16 bg-white/50 backdrop-blur-xl">
       <div className="lg:w-1/2 space-y-6 lg:space-y-8 text-center lg:text-left">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-800">
-          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Magnum Hotel</span>
+          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Magnum Hotel</span>
         </h2>
         <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-medium">
           Experience unmatched luxury and comfort at The Magnum. From the moment you step through our doors, you'll be immersed in elegance and refinement. Our dedicated staff is committed to providing a personalized and unforgettable stay.

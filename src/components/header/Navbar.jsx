@@ -47,7 +47,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="w-full z-50 sticky top-4 px-4 sm:px-6 lg:px-8 animate-fade-in transition-all duration-300">
+    <header className="w-full z-50 fixed top-4 left-0 right-0 px-4 sm:px-6 lg:px-8 animate-fade-in transition-all duration-300">
       <nav className="glass-card max-w-7xl mx-auto flex flex-wrap justify-between items-center py-2.5 px-6 rounded-full shadow-lg">
         {/* Mobile Logo */}
         <NavLink to="/" className="lg:hidden flex items-center gap-2 py-1 hover:opacity-90 transition-opacity">
@@ -58,7 +58,7 @@ const Navbar = () => {
         </NavLink>
 
         {/* Hamburger Icon */}
-        <button className="lg:hidden ms-auto text-slate-700 hover:text-blue-600 transition-colors" onClick={toggleMenu}>
+        <button className="lg:hidden ms-auto text-slate-700 hover:text-amber-700 transition-colors" onClick={toggleMenu}>
           {isOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
         </button>
 

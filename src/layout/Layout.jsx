@@ -6,7 +6,7 @@ import Footer from '../components/footer/Footer';
 const Layout = () => (
   <div className="flex flex-col min-h-screen">
     <Navbar />
-    <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
+    <main className="flex-grow container mx-auto px-4 pt-24 sm:pt-28 pb-8 md:pb-12">
       <Outlet />
     </main>
     <Footer />

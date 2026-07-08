@@ -32,7 +32,7 @@ const RoomsSection = () => {
     <section className="py-12 md:py-24 my-8 md:my-12 text-slate-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-12 text-center">
-          Our Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Rooms & Suites</span>
+          Our Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Rooms & Suites</span>
         </h2>
         {rooms && rooms.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-sm sm:max-w-none mx-auto">
@@ -47,7 +47,7 @@ const RoomsSection = () => {
                     alt={room.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 ease-in-out"
                   />
-                  <div className="absolute top-4 right-4 bg-white/70 backdrop-blur-md text-blue-700 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-lg border border-white">
+                  <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md text-amber-700 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-lg border border-white">
                     Featured
                   </div>
                 </div>
@@ -57,10 +57,10 @@ const RoomsSection = () => {
                       <h3 className="text-xl sm:text-2xl font-extrabold text-slate-800">{room.name}</h3>
                       <p
                         title="No. of Beds"
-                        className="text-sm font-bold text-slate-700 flex items-center bg-blue-50/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-blue-100 shadow-sm shrink-0 ml-2"
+                        className="text-sm font-bold text-slate-700 flex items-center bg-amber-50/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-amber-100 shadow-sm shrink-0 ml-2"
                       >
                         {room.beds}{" "}
-                        <span className="ms-2 text-blue-600">
+                        <span className="ms-2 text-amber-600">
                           <FaBed size={16} />
                         </span>
                       </p>
@@ -70,12 +70,12 @@ const RoomsSection = () => {
                     </p>
                   </div>
                   <div className="flex justify-between items-center pt-4 border-t border-slate-200/60 mt-4">
-                    <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                    <span className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-700">
                       ${room.price}/day
                     </span>
                     <button
                       onClick={() => handleBookNow(room)}
-                      className="glass-button-primary px-6 py-2.5 rounded-full font-bold shadow-blue-500/20 hover:shadow-blue-500/40 text-sm transition-all transform active:scale-95 whitespace-nowrap ml-2"
+                      className="glass-button-primary px-6 py-2.5 rounded-full font-bold shadow-amber-500/10 hover:shadow-amber-500/20 text-sm transition-all transform active:scale-95 whitespace-nowrap ml-2"
                     >
                       Book Now
                     </button>
@@ -88,7 +88,7 @@ const RoomsSection = () => {
         ) : rooms ? (
           <p className="text-slate-600 font-medium italic text-center">No featured rooms available yet.</p>
         ) : (
-          <p className="text-blue-600 animate-pulse font-semibold text-center">Loading Rooms...</p>
+          <p className="text-amber-600 animate-pulse font-semibold text-center">Loading Rooms...</p>
         )}
       </div>
     </section>

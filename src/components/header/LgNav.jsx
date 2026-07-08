@@ -26,7 +26,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
 
         {/* Services Dropdown */}
         <div className="relative group py-2">
-          <button className="flex items-center space-x-1.5 text-slate-600 hover:text-blue-600 font-medium transition-colors duration-200">
+          <button className="flex items-center space-x-1.5 text-slate-600 hover:text-amber-700 font-medium transition-colors duration-200">
             <span>Services</span>
             <FaChevronDown className="text-xs transition-transform duration-250 group-hover:rotate-180" />
           </button>
@@ -36,7 +36,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
                 key={i}
                 to={`/${nav.nv}`}
                 className={({ isActive }) =>
-                  `${isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
+                  `${isActive ? "text-amber-700 font-semibold bg-amber-50/80" : "text-slate-600 hover:text-amber-700 hover:bg-slate-50/80"
                   } block px-4 py-2 text-sm transition-all duration-200`
                 }
               >
@@ -49,7 +49,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
         {/* Admin/User Dashboard Dropdown */}
         {currentUser && (
           <div className="relative group py-2">
-            <button className="flex items-center space-x-1.5 text-slate-600 hover:text-blue-600 font-medium transition-colors duration-200">
+            <button className="flex items-center space-x-1.5 text-slate-600 hover:text-amber-700 font-medium transition-colors duration-200">
               <span>{isAdmin ? "Admin Panel" : "Dashboard"}</span>
               <FaChevronDown className="text-xs transition-transform duration-250 group-hover:rotate-180" />
             </button>
@@ -59,7 +59,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
                   key={i}
                   to={`/${nav.nv}`}
                   className={({ isActive }) =>
-                    `${isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50/80"
+                    `${isActive ? "text-amber-700 font-semibold bg-amber-50/80" : "text-slate-600 hover:text-amber-700 hover:bg-slate-50/80"
                     } block px-4 py-2 text-sm transition-all duration-200`
                   }
                 >
@@ -76,14 +76,14 @@ function LgNav({ isOpen, currentUser, logo, handleLogout }) {
           isLoginPage ? (
             <NavLink
               to="/"
-              className="flex items-center py-1.5 px-4 text-slate-700 hover:text-blue-600 hover:bg-slate-100/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
+              className="flex items-center py-1.5 px-4 text-slate-700 hover:text-amber-700 hover:bg-amber-50/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
             >
               <span>Home</span>
             </NavLink>
           ) : (
             <NavLink
               to="/login"
-              className="flex items-center space-x-1 py-1.5 px-4 text-slate-700 hover:text-blue-600 hover:bg-slate-100/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
+              className="flex items-center space-x-1 py-1.5 px-4 text-slate-700 hover:text-amber-700 hover:bg-amber-50/50 rounded-full border border-slate-200 transition-all duration-200 cursor-pointer text-sm font-medium"
             >
               <CiLogin className="text-lg" />
               <span>Login</span>
