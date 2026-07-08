@@ -33,8 +33,8 @@ function AdminNotifications() {
           onClick={() => setActiveTab(tab.order)}
           className={`px-4 py-2 rounded-lg text-sm font-semibold tracking-wide capitalize transition-all duration-200 ${
             activeTab === tab.order
-              ? "bg-blue-500 text-slate-950 border border-teal-300 shadow-md"
-              : "bg-white/40 text-slate-600 hover:text-blue-600 hover:bg-white/60 border border-white/50 shadow-sm rounded-xl backdrop-blur-md transition-all"
+              ? "bg-amber-600 text-white border-amber-500 shadow-md"
+              : "bg-white/40 text-slate-600 hover:text-amber-700 hover:bg-white/60 border border-white/50 shadow-sm rounded-xl backdrop-blur-md transition-all"
           }`}
         >
          {tab.order.replace('-', ' ')}

@@ -42,7 +42,7 @@ function AdminControls() {
             key={i}
             className="p-6 border border-white/60/80 bg-white/40 backdrop-blur-md shadow-sm border border-white/50 rounded-2xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:border-slate-700/60 max-w-sm w-full"
           >
-            <h3 className="text-lg font-bold text-slate-800 mb-3">Booking from <span className='italic capitalize text-blue-600'>{vehicle.name}</span></h3>
+            <h3 className="text-lg font-bold text-slate-800 mb-3">Booking from <span className='italic capitalize text-amber-700'>{vehicle.name}</span></h3>
             <div className="text-slate-600 font-medium text-sm space-y-2 mb-4">
               <p className="flex justify-between items-center">
                 <span className="font-semibold text-slate-600">Vehicle Name:</span>
@@ -77,7 +77,7 @@ function AdminControls() {
               ) : (
                 <button
                   onClick={() => handleStatusChange(vehicle.id, vehicle.userId, 'delivered', vehicle.vehicleName, vehicle.name, vehicle.startDate, vehicle.endDate)}
-                  className="w-full px-4 py-2 bg-blue-500 hover:bg-blue-600 text-slate-950 rounded-full font-bold transition duration-200 transform active:scale-95 text-xs shadow-md shadow-teal-500/10"
+                  className="w-full px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-bold transition duration-200 transform active:scale-95 text-xs shadow-md shadow-amber-500/10"
                 >
                   Mark as Delivered
                 </button>

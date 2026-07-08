@@ -99,7 +99,7 @@ function AdminControlsRoom() {
                 onClick={() =>
                   handleStatusChange(room.id, room.userId, "checkedIn", room.name, room.room, room.startDate, room.endDate)
                 }
-                className="px-4 py-2 bg-blue-500 text-slate-800 rounded-full transition duration-200 transform hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring focus:ring-blue-200"
+                className="px-4 py-2 bg-amber-600 text-white rounded-full transition duration-200 transform hover:bg-amber-700 hover:scale-105 focus:outline-none focus:ring focus:ring-amber-200"
               >
                 Check In
               </button>

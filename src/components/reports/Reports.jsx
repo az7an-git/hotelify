@@ -48,7 +48,7 @@ const ReportsPage = () => {
 
       <div className="p-6 md:p-8 glass-card h-auto">
         <h2 className="text-xl md:text-2xl font-extrabold text-slate-800 text-center mb-8 pb-4 border-b border-white/60/60">
-          Booking Report for <span className="text-blue-600 italic">{activeTab}</span>
+          Booking Report for <span className="text-amber-700 italic">{activeTab}</span>
         </h2>
         {bookings.length < 1 ? (
           <p className="font-semibold text-slate-600 font-medium text-center py-6 italic"> No bookings found for this range </p>

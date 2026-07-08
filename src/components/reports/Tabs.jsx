@@ -10,8 +10,8 @@ function Tabs({ setActiveTab, activeTab }) {
             onClick={() => setActiveTab(tab)}
             className={`px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 shadow-md ${
               tab === activeTab
-                ? "bg-blue-500 text-slate-950 border border-teal-300"
-                : "bg-white/40 text-slate-600 hover:text-blue-600 hover:bg-white/60 border border-white/50 shadow-sm rounded-xl backdrop-blur-md transition-all"
+                ? "bg-amber-600 text-white border border-amber-500"
+                : "bg-white/40 text-slate-600 hover:text-amber-700 hover:bg-white/60 border border-white/50 shadow-sm rounded-xl backdrop-blur-md transition-all"
             }`}
           >
             {tab}

@@ -53,12 +53,12 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth-container p-4 max-w-5xl mx-auto my-8 lg:my-16">
-      <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-white">
+    <div className="auth-container w-full max-w-5xl mx-auto py-8 lg:py-16 lg:px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 w-full rounded-xl lg:rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-white">
 
         {/* Left Side: Visual Branding (Hidden/Modified on mobile, beautiful on desktop) */}
         <div
-          className="lg:col-span-5 relative hidden lg:flex flex-col justify-between p-12 text-white bg-cover bg-center"
+          className="lg:col-span-5 relative hidden lg:flex flex-col p-12 text-white bg-cover bg-center"
           style={{ backgroundImage: `url('/login_hotel_bg.png')` }}
         >
           {/* Dark overlay for solid text readability */}
@@ -72,8 +72,8 @@ const Auth = () => {
             <span className="text-2xl font-black tracking-wider text-white">MAGNUM HOTEL</span>
           </div>
 
-          {/* Bottom Branding / Slogan */}
-          <div className="relative z-10 space-y-4">
+          {/* Centered Slogan */}
+          <div className="relative z-10 flex-1 flex flex-col justify-center space-y-4">
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white">
               Simplicity in <br />
               <span className="text-amber-400">Hospitality</span> Management.
@@ -83,20 +83,16 @@ const Auth = () => {
             </p>
           </div>
 
-          {/* Footer element inside left panel */}
-          <div className="relative z-10 text-xs text-slate-300">
-            &copy; 2026 Magnum Hotel Management System.
-          </div>
         </div>
 
         {/* Right Side: Authentication Form */}
-        <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-center bg-slate-50/50">
+        <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-start lg:justify-center bg-slate-50/50">
           <div className="max-w-md w-full mx-auto space-y-6">
 
             {/* Form Header */}
-            <div>
+            <div className="text-center lg:text-left">
               {/* Logo icon only visible on mobile (since left pane is hidden) */}
-              <div className="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center p-1.5 shadow-md mb-4 lg:hidden">
+              <div className="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center p-1.5 shadow-md mb-4 lg:hidden mx-auto lg:mx-0">
                 <img src={logo} alt="Magnum Logo" className="w-full h-full object-contain rounded-xl" />
               </div>
               <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">
@@ -202,7 +198,7 @@ const Auth = () => {
                 <div className="text-left">
                   <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">Admin Login</h4>
                   <p className="text-xs text-slate-500 mt-0.5">Click here to automatically fill credentials:</p>
-                  <div className="text-xs text-slate-600 mt-1 font-mono">
+                  <div className="text-xs text-slate-600 mt-1 font-mono break-all">
                     <span className="font-semibold">Email:</span> hotelifyadmin@gmail.com<br />
                     <span className="font-semibold">Password:</span> Admin@123
                   </div>

@@ -41,7 +41,7 @@ const RoomRegistration = () => {
         <div className="flex flex-col space-y-1.5">
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Room Name</label>
           <input 
-            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm disabled:opacity-50" 
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm disabled:opacity-50" 
             type="text" 
             placeholder="e.g., Deluxe Suite 204" 
             value={name} 
@@ -55,7 +55,7 @@ const RoomRegistration = () => {
           <div className="flex flex-col space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Price per Day ($)</label>
             <input 
-              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm disabled:opacity-50" 
+              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm disabled:opacity-50" 
               type="number" 
               placeholder="e.g., 120" 
               value={price || ''} 
@@ -68,7 +68,7 @@ const RoomRegistration = () => {
           <div className="flex flex-col space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">No. of Beds</label>
             <input 
-              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm disabled:opacity-50" 
+              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm disabled:opacity-50" 
               type="number" 
               placeholder="e.g., 2" 
               value={beds || ''} 
@@ -83,7 +83,7 @@ const RoomRegistration = () => {
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Description</label>
           <textarea 
             rows={2} 
-            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm resize-none disabled:opacity-50" 
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm resize-none disabled:opacity-50" 
             placeholder="e.g., Ocean view, king size bed..." 
             value={description} 
             onChange={(e) => setDescription(e.target.value)} 

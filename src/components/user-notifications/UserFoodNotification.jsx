@@ -30,7 +30,9 @@ function UserFoodNotification({ notifications, handleDelete, loading }) {
           ))}
         </div>
       ) : (
-        <p className="text-gray-500 italic">No Food order updates yet</p>
+        <div className="w-full text-center py-12 bg-white/40 backdrop-blur-md shadow-sm border border-white/60 rounded-2xl text-slate-600 font-bold text-sm sm:text-base max-w-md mx-auto animate-fade-in">
+          No notifications yet for food orders.
+        </div>
       )}
     </div>
 

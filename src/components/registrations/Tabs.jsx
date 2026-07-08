@@ -33,8 +33,8 @@ const RegistrationTabs = () => {
             key={tab}
             className={`whitespace-nowrap shrink-0 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-300 shadow-md border ${
               activeTab === tab
-                ? 'bg-blue-500 text-white border-blue-400 shadow-blue-500/30'
-                : 'bg-white/50 text-slate-600 border-white/60 hover:text-blue-700 hover:bg-white/80 backdrop-blur-md hover:shadow-lg'
+                ? 'bg-amber-600 text-white border-amber-500 shadow-amber-500/10'
+                : 'bg-white/50 text-slate-600 border-white/60 hover:text-amber-700 hover:bg-white/80 backdrop-blur-md hover:shadow-lg'
             }`}
             onClick={() => setActiveTab(tab)}>
             {tab}

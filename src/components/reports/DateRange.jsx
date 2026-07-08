@@ -18,7 +18,7 @@ function DateRange({
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           onKeyDown={(e) => e.preventDefault()}
-          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm w-full md:w-auto"
+          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm w-full md:w-auto"
         />
       </div>
       <div className="flex flex-col space-y-1.5">
@@ -28,13 +28,13 @@ function DateRange({
           selected={endDate}
           onChange={(date) => setEndDate(date)}
           onKeyDown={(e) => e.preventDefault()}
-          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm w-full md:w-auto"
+          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm w-full md:w-auto"
         />
       </div>
       <div className="flex gap-3 items-end pt-4 lg:pt-5 w-full md:w-auto">
         <button
           onClick={fetchBookings}
-          className="bg-blue-500 hover:bg-blue-600 text-slate-950 px-6 py-2.5 rounded-full font-bold transition duration-200 text-sm shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20"
+          className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2.5 rounded-full font-bold transition duration-200 text-sm shadow-lg shadow-amber-500/10 hover:shadow-amber-500/20"
         >
           Generate Report
         </button>

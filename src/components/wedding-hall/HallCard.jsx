@@ -18,7 +18,7 @@ const HallCard = ({ hall, onBook, isBooking }) => {
           <p className="text-slate-500 italic text-sm line-clamp-2">{description}</p>
           <p className="text-slate-800 font-semibold flex items-center justify-between border-t border-white/40 pt-3">
             <span>Rate per Person</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 font-bold">${pp}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-600 font-bold">${pp}</span>
           </p>
 
           {offers && offers.length > 0 && (
@@ -28,9 +28,9 @@ const HallCard = ({ hall, onBook, isBooking }) => {
                 {offers.map((offer, index) => (
                   <li
                     key={index}
-                    className="p-3 rounded-xl bg-blue-50/60 border border-blue-200/50"
+                    className="p-3 rounded-xl bg-amber-50/60 border border-amber-200/50"
                   >
-                    <h4 className="font-bold text-blue-700 text-sm">{offer.title}</h4>
+                    <h4 className="font-bold text-amber-700 text-sm">{offer.title}</h4>
                     {offer.description && <p className="text-slate-600 mt-0.5 text-xs">{offer.description}</p>}
                     {offer.price && (
                       <p className="text-xs mt-1 font-medium">
@@ -49,7 +49,7 @@ const HallCard = ({ hall, onBook, isBooking }) => {
         <button
           type="button"
           onClick={onBook}
-          className="w-full py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 shadow-md transition-all duration-300"
+          className="glass-button-primary w-full py-2.5 rounded-xl font-semibold shadow-amber-500/10 hover:shadow-amber-500/20"
         >
           {isBooking ? 'Close Booking' : 'Book Now'}
         </button>

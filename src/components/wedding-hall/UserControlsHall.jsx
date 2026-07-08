@@ -32,7 +32,9 @@ const UserControlsHall = () => {
   return (
     <div className="container mx-auto p-4 ">
     {loading ? <Loader msg={"Fetching Halls updates for you"} /> : notifications.length === 0 ? (
-      <p className="text-gray-500 italic">No notifications available</p>
+      <div className="w-full text-center py-12 bg-white/40 backdrop-blur-md shadow-sm border border-white/60 rounded-2xl text-slate-600 font-bold text-sm sm:text-base max-w-md mx-auto animate-fade-in">
+        No notifications yet for wedding halls.
+      </div>
     ) : (
   <div className='flex justify-between items-center flex=wrap'>
     {

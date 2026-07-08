@@ -81,7 +81,7 @@ const TestimonialsSection = () => {
   const displayedTestimonials = testimonials.length > 0 ? testimonials : fallbackTestimonials;
 
   return (
-    <section className="py-12 md:py-24 my-8 md:my-12 mx-4 text-slate-800">
+    <section className="py-12 md:py-24 my-8 md:my-12 mx-0 sm:mx-4 text-slate-800">
       <div className="container mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-12">
           What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800 whitespace-nowrap">Guests Say</span>

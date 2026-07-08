@@ -46,7 +46,7 @@ const ParkingCard = ({ vehicle }) => {
             alt={vehicle.name}
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-md text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-white/60 shadow-sm">
+          <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-md text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-white/60 shadow-sm">
             ${vehicle.rate}/day
           </div>
         </div>
@@ -67,7 +67,7 @@ const ParkingCard = ({ vehicle }) => {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md rounded-xl px-2 py-1.5 outline-none focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 text-sm w-full max-w-[150px]"
+                className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md rounded-xl px-2 py-1.5 outline-none focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 text-sm w-full max-w-[150px]"
                 max={endDate}
                 min={today}
               />
@@ -78,7 +78,7 @@ const ParkingCard = ({ vehicle }) => {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md rounded-xl px-2 py-1.5 outline-none focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 text-sm w-full max-w-[150px]"
+                className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md rounded-xl px-2 py-1.5 outline-none focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 text-sm w-full max-w-[150px]"
                 min={startDate}
               />
             </div>
@@ -89,7 +89,7 @@ const ParkingCard = ({ vehicle }) => {
       <div className="px-2 pt-2 border-t border-white/40 flex-shrink-0">
         <p className="text-slate-800 font-semibold text-lg flex justify-between items-center pb-4">
           <span>Total Rate:</span> 
-          <span className="text-blue-600 bg-blue-100/50 px-3 py-1 rounded-lg border border-blue-200/50">${totalRate}</span>
+          <span className="text-amber-700 bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-200/50">${totalRate}</span>
         </p>
         
         {currentUser && currentUser.uid === ADMIN_UID ? (

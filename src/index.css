@@ -9,13 +9,19 @@
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   body {
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
-    @apply bg-slate-50 text-slate-800 antialiased selection:bg-blue-500/30 selection:text-blue-900;
+    @apply bg-slate-50 text-slate-800 antialiased selection:bg-amber-500/30 selection:text-amber-900;
   }
 
   body::before {

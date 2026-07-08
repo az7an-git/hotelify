@@ -28,7 +28,7 @@ function Halls({bookingFields, bookings, activeTab, }) {
                 {bookingFields[activeTab].map((field) => (
                   <td key={field} className="px-6 py-5 font-bold text-slate-800 capitalize">
                     {field === "status" ? (
-                      <span className="px-3 py-1 text-xs font-bold rounded-full bg-blue-500/10 text-blue-700 border border-blue-500/20 capitalize">
+                      <span className="px-3 py-1 text-xs font-bold rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20 capitalize">
                         {booking[field] || "Pending"}
                       </span>
                     ) : booking[field]?.seconds ? (
@@ -40,7 +40,7 @@ function Halls({bookingFields, bookings, activeTab, }) {
                 ))}
                 <td className="px-6 py-5 text-center">
                   <button
-                    className="p-3 bg-white/50 hover:bg-white/80 text-blue-600 rounded-full shadow-sm hover:shadow-md border border-white/60 transition-all transform active:scale-95 flex items-center justify-center mx-auto"
+                    className="p-3 bg-white/50 hover:bg-white/80 text-amber-700 rounded-full shadow-sm hover:shadow-md border border-white/60 transition-all transform active:scale-95 flex items-center justify-center mx-auto"
                     onClick={() => handleDownload(booking)}
                     title="Download Receipt"
                   >

@@ -31,7 +31,7 @@ const RoomCard = ({ room }) => {
             src={room.imageUrl}
             alt="room"
           />
-          <div className="absolute top-3 right-3 bg-white/40 backdrop-blur-md border border-white/50/80 backdrop-blur-md text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-white/60">
+          <div className="absolute top-3 right-3 bg-white/40 backdrop-blur-md border border-white/50/80 backdrop-blur-md text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-white/60">
             Luxury Suite
           </div>
         </div>
@@ -40,7 +40,7 @@ const RoomCard = ({ room }) => {
             <h3 className="text-xl font-bold text-slate-800">
               {room.name}
             </h3>
-            <span className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 ml-2 flex-shrink-0">
+            <span className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-600 ml-2 flex-shrink-0">
               ${room.price}
             </span>
           </div>
@@ -51,7 +51,7 @@ const RoomCard = ({ room }) => {
               className="flex items-center space-x-1 bg-white/40 backdrop-blur-md border border-white/50 px-2 py-1 rounded-md border border-white/60 flex-shrink-0"
             >
               <span className="font-semibold">{room.beds}</span>
-              <span className="text-blue-600">
+              <span className="text-amber-600">
                 <FaBed />
               </span>
             </div>

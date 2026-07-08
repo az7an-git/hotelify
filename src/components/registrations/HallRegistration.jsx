@@ -67,7 +67,7 @@ const HallRegistration = () => {
           <div className="flex flex-col space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Hall Name</label>
             <input
-              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm"
+              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm"
               type="text"
               placeholder="e.g., Grand Ballroom"
               value={name}
@@ -79,7 +79,7 @@ const HallRegistration = () => {
           <div className="flex flex-col space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Rate per Person ($)</label>
             <input
-              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm"
+              className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm"
               type="number"
               value={pp}
               onChange={(e) => setPp(e.target.value)}
@@ -93,7 +93,7 @@ const HallRegistration = () => {
           <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Description</label>
           <textarea
             rows={2}
-            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-2.5 outline-none focus:border-teal-500 transition-colors text-sm resize-none"
+            className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm resize-none"
             placeholder="e.g., Capacity up to 500 guests with catering..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -124,7 +124,7 @@ const HallRegistration = () => {
             >
               <div className="grid grid-cols-3 gap-2 flex-grow">
                 <input
-                  className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-lg px-2.5 py-1.5 outline-none focus:border-teal-500 text-xs w-full"
+                  className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-lg px-2.5 py-1.5 outline-none focus:border-amber-500 text-xs w-full"
                   type="text"
                   placeholder="Offer Title"
                   value={offer.title}
@@ -133,7 +133,7 @@ const HallRegistration = () => {
                   }
                 />
                 <input
-                  className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-lg px-2.5 py-1.5 outline-none focus:border-teal-500 text-xs w-full"
+                  className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-lg px-2.5 py-1.5 outline-none focus:border-amber-500 text-xs w-full"
                   type="text"
                   placeholder="Description"
                   value={offer.description}
@@ -142,7 +142,7 @@ const HallRegistration = () => {
                   }
                 />
                 <input
-                  className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-blue-400 focus:bg-white/80 focus:ring-2 focus:ring-blue-100 rounded-lg px-2.5 py-1.5 outline-none focus:border-teal-500 text-xs w-full"
+                  className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-lg px-2.5 py-1.5 outline-none focus:border-amber-500 text-xs w-full"
                   type="number"
                   placeholder="Price"
                   value={offer.price}
@@ -167,7 +167,7 @@ const HallRegistration = () => {
           ))}
           <button
             type="button"
-            className="w-full py-2 bg-slate-800 hover:bg-slate-700 text-blue-600 border border-teal-500/20 rounded-xl text-xs font-semibold transition-colors duration-200"
+            className="w-full py-2 bg-slate-800 hover:bg-slate-700 text-amber-600 border border-amber-500/20 rounded-xl text-xs font-semibold transition-colors duration-200"
             onClick={handleAddOffer}
           >
             + Add Another Offer

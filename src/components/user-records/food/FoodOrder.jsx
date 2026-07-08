@@ -27,7 +27,7 @@ function FoodOrder({ bookingFields, bookings, activeTab }) {
                   {booking.name || <span className="text-slate-400 italic font-medium">N/A</span>}
                 </td>
                 <td className="px-6 py-5">
-                  <span className="px-3 py-1 text-xs font-bold rounded-full bg-blue-500/10 text-blue-700 border border-blue-500/20 capitalize">
+                  <span className="px-3 py-1 text-xs font-bold rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20 capitalize">
                     {booking.status}
                   </span>
                 </td>
@@ -42,7 +42,7 @@ function FoodOrder({ bookingFields, bookings, activeTab }) {
                       booking.items.map((item, i) => (
                         <div key={i} className="flex items-center gap-3 bg-white/50 p-2.5 rounded-xl border border-white/60 shadow-sm">
                           <span className="font-bold text-slate-800 capitalize flex-1 line-clamp-1" title={item.name}>{item.name}</span>
-                          <span className="text-[10px] font-bold text-teal-700 bg-teal-500/10 px-2 py-1 rounded-full uppercase tracking-wider">{item.category}</span>
+                          <span className="text-[10px] font-bold text-amber-700 bg-amber-500/10 px-2 py-1 rounded-full uppercase tracking-wider">{item.category}</span>
                           <span className="text-sm font-bold text-slate-600 bg-slate-200/50 px-2 py-0.5 rounded-md">x{item.quantity}</span>
                           <span className="text-sm font-bold text-emerald-600">${item.price}</span>
                         </div>
@@ -51,7 +51,7 @@ function FoodOrder({ bookingFields, bookings, activeTab }) {
                 </td>
                 <td className="px-6 py-5 text-center">
                   <button
-                    className="p-3 bg-white/50 hover:bg-white/80 text-blue-600 rounded-full shadow-sm hover:shadow-md border border-white/60 transition-all transform active:scale-95 flex items-center justify-center mx-auto"
+                    className="p-3 bg-white/50 hover:bg-white/80 text-amber-700 rounded-full shadow-sm hover:shadow-md border border-white/60 transition-all transform active:scale-95 flex items-center justify-center mx-auto"
                     onClick={() => handleDownload(booking)}
                     title="Download Receipt"
                   >

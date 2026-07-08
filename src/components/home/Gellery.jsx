@@ -54,7 +54,7 @@ const GallerySection = () => {
   };
 
   return (
-    <section className="py-12 lg:py-24 my-8 mx-4">
+    <section className="py-12 lg:py-24 my-8 mx-0 sm:mx-4">
       <div className="container mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-10">
           Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Gallery</span>
@@ -100,20 +100,20 @@ const GallerySection = () => {
             </button>
 
             {showAdminForm && (
-              <div className="max-w-xl mx-auto glass-card p-6 sm:p-8 rounded-3xl shadow-xl border border-white/60 mt-6 w-full animate-fade-in">
-                <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center justify-center gap-2">
-                  <span className="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-md uppercase tracking-wide">Admin</span>
-                  Upload to Gallery
-                </h3>
-                <form onSubmit={handleAddPic} className="flex flex-col gap-4">
+              <div className="max-w-sm mx-auto glass-card p-6 rounded-2xl shadow-xl border border-white/60 mt-6 w-full animate-fade-in text-left">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="bg-amber-100 text-amber-700 text-xs px-2.5 py-1 rounded-md uppercase tracking-widest font-bold shrink-0">Admin</span>
+                  <h3 className="text-base font-bold text-slate-800 whitespace-nowrap">Upload to Gallery</h3>
+                </div>
+                <form onSubmit={handleAddPic} className="flex flex-col gap-3">
                   <input
                     type="file"
-                    className="w-full file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 text-slate-600 bg-white/50 border border-slate-200 rounded-full px-2 py-2 cursor-pointer transition-colors disabled:opacity-50"
+                    className="w-full file:mr-3 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 text-slate-500 text-xs bg-white/50 border border-slate-200 rounded-xl px-2 py-2 cursor-pointer transition-colors disabled:opacity-50"
                     onChange={(e) => setImages(e.target.files[0])}
                     required
                     disabled={loading}
                   />
-                  <button type="submit" disabled={loading} className="glass-button-primary w-full py-3 rounded-full text-lg font-semibold shadow-amber-500/10 hover:shadow-amber-500/20 disabled:opacity-50">
+                  <button type="submit" disabled={loading} className="glass-button-primary w-full py-2.5 rounded-full text-sm font-semibold disabled:opacity-50">
                     {loading ? "Adding..." : "Add Picture"}
                   </button>
                 </form>

@@ -15,7 +15,7 @@ const WelcomePage = () => {
   return (
     showWelcome && (
       <motion.div
-        className="h-screen w-full flex justify-center items-center bg-gradient-to-r from-blue-500 to-teal-500 text-slate-800"
+        className="h-screen w-full flex justify-center items-center bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800 text-slate-800"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, y: -50 }}

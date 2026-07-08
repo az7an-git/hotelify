@@ -10,7 +10,9 @@ function UserRentalNotifications({rentalVehicles, handleDelete, loading}) {
     loading.rental ? <Loader msg={"Fetching rental Updates for you"} /> : 
       
       rentalVehicles.length === 0 ? (
-      <p className="text-gray-500 italic">No notifications yet (Rental)</p>
+        <div className="w-full text-center py-12 bg-white/40 backdrop-blur-md shadow-sm border border-white/60 rounded-2xl text-slate-600 font-bold text-sm sm:text-base max-w-md mx-auto animate-fade-in">
+          No notifications yet for rentals.
+        </div>
     ) : (
       rentalVehicles.map((vehicleNotification, i) => (
         <div
