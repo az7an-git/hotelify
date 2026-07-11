@@ -5,7 +5,7 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaTwitter
 const Footer = () => {
   return (
     <footer className="bg-slate-950 text-slate-400 border-t border-slate-900 pt-10 pb-6 mt-auto text-sm w-full font-sans">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-8 pb-8">
+      <div className="w-[95%] max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between gap-8 pb-8">
         {/* Brand Column */}
         <div className="space-y-2 text-center md:text-left max-w-sm mx-auto md:mx-0">
           <span className="block text-xl font-bold tracking-[0.2em] uppercase bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-700 bg-clip-text text-transparent">
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-500 text-center">
+      <div className="w-[95%] max-w-[1400px] mx-auto px-6 pt-6 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-500 text-center">
         <p>&copy; {new Date().getFullYear()} Magnum Hotel. All rights reserved.</p>
         <div className="flex gap-5">
           <a href="#" className="hover:text-amber-500 transition-colors">Privacy Policy</a>

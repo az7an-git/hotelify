@@ -49,7 +49,7 @@ const SubmitTestimonialForm = () => {
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full md:w-[30%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-full px-5 py-3 outline-none transition-colors text-sm disabled:opacity-50"
+            className="w-full md:w-[30%] bg-white text-slate-800 border-2 border-slate-200 shadow-sm focus:border-amber-400 focus:ring-4 focus:ring-amber-100 rounded-full px-5 py-3 outline-none transition-all text-sm disabled:opacity-50"
             disabled={loading}
           />
           <textarea
@@ -57,7 +57,7 @@ const SubmitTestimonialForm = () => {
             value={review}
             rows={1}
             onChange={(e) => setReview(e.target.value)}
-            className="w-full md:w-[67%] bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-5 py-3 outline-none transition-colors text-sm resize-none disabled:opacity-50"
+            className="w-full md:w-[67%] bg-white text-slate-800 border-2 border-slate-200 shadow-sm focus:border-amber-400 focus:ring-4 focus:ring-amber-100 rounded-xl px-5 py-3 outline-none transition-all text-sm resize-none disabled:opacity-50"
             disabled={loading}
           />
         </div>

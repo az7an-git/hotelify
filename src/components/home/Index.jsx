@@ -13,7 +13,7 @@ const Reviews = lazy(() => import('./Testimonials'));
 const SubmitReview = lazy(() => import('./SubmitTesimonial'));
 
 const Divider = () => (
-  <div className="w-full max-w-5xl mx-auto h-px bg-gradient-to-r from-transparent via-amber-200/80 to-transparent my-12 sm:my-20"></div>
+  <div className="w-[95%] max-w-[1400px] mx-auto h-[2px] bg-gradient-to-r from-transparent via-slate-300 to-transparent my-12 sm:my-20"></div>
 );
 
 const SlideUpSection = ({ children }) => (
@@ -56,6 +56,7 @@ const HomeMain = () => {
         <SlideUpSection>
           <Reviews />
         </SlideUpSection>
+        <Divider />
         <SlideUpSection>
           <SubmitReview />
         </SlideUpSection>

@@ -15,7 +15,7 @@ import { NOTIFICATIONS } from "../../constants/notifications";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useAuth();
-  
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -47,8 +47,8 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="w-full z-50 fixed top-4 left-0 right-0 px-4 sm:px-6 lg:px-8 animate-fade-in transition-all duration-300">
-      <nav className="glass-card max-w-7xl mx-auto flex flex-wrap justify-between items-center py-2.5 px-6 rounded-full shadow-lg">
+    <header className="w-full z-50 fixed top-4 left-0 right-0 animate-fade-in transition-all duration-300">
+      <nav className="glass-card w-[95%] max-w-[1440px] mx-auto flex flex-wrap justify-between items-center py-3 sm:py-4 px-4 sm:px-8 rounded-[2rem] shadow-lg">
         {/* Mobile Logo */}
         <NavLink to="/" className="lg:hidden flex items-center gap-2 py-1 hover:opacity-90 transition-opacity">
           <img className="w-9 h-9 object-contain" src={logo} alt="Magnum Hotel Logo" />
