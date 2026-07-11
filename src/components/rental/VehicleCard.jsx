@@ -11,7 +11,7 @@ import { NOTIFICATIONS } from '../../constants/notifications';
 const VehicleCard = ({ vehicle }) => {
   const [showForm, setShowForm] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
-  const {currentUser} = useAuth();
+  const { currentUser } = useAuth();
 
   const handleBookNow = () => {
     if (auth.currentUser) {
@@ -52,19 +52,19 @@ const VehicleCard = ({ vehicle }) => {
         <div onClick={handleBookNow}>
           <SubmitButton callToAction={"Book Now"} />
         </div>
-        
+
         {/* Admin-only availability toggle */}
         {currentUser && currentUser.uid === ADMIN_UID && (
-          <button 
-            onClick={toggleAvailability} 
+          <button
+            onClick={toggleAvailability}
             className="w-full bg-slate-700/80 hover:bg-slate-800/90 text-white font-medium py-2 rounded-lg transition-colors text-sm"
           >
             {isAvailable ? 'Set as Unavailable' : 'Set as Available'}
           </button>
         )}
       </div>
-      
-      {showForm && <VehicleBooking vehicle={vehicle} />}
+
+      {showForm && <VehicleBooking vehicle={vehicle} onSuccess={() => setShowForm(false)} />}
     </div>
   );
 };

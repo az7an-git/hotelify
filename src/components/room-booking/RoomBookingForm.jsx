@@ -5,7 +5,7 @@ import BookingForm from "../common/forms/BookingForm";
 import { toast } from "sonner";
 import { NOTIFICATIONS } from "../../constants/notifications";
 
-const RoomBooking = ({ room }) => {
+const RoomBooking = ({ room, onSuccess }) => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [cnic, setCnic] = useState("");
@@ -49,6 +49,7 @@ const RoomBooking = ({ room }) => {
     try {
       await addRoomBooking(bookingData);
       toast.success(NOTIFICATIONS.ROOM_BOOKING_SUCCESS);
+      if (onSuccess) onSuccess();
     } catch (error) {
       console.error(error);
       toast.error(NOTIFICATIONS.ROOM_BOOKING_ERROR);

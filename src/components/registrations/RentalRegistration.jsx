@@ -5,8 +5,10 @@ import SubmitButton from '../common/button/SubmitButton';
 
 import { toast } from 'sonner';
 import { NOTIFICATIONS } from '../../constants/notifications';
+import { useNavigate } from 'react-router-dom';
 
 const RentalRegistration = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
   const [price, setPrice] = useState('');
@@ -21,6 +23,7 @@ const RentalRegistration = () => {
       await addVehicle(name, desc, price, image, available);
       setLoading(false);
       toast.success(NOTIFICATIONS.VEHICLE_REG_SUCCESS);
+      navigate('/rental');
       setName('');
       setDesc('');
       setPrice('');

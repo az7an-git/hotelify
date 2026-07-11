@@ -5,7 +5,7 @@ import BookingForm from "../common/forms/BookingForm";
 import { toast } from "sonner";
 import { NOTIFICATIONS } from "../../constants/notifications";
 
-const VehicleBooking = ({ vehicle }) => {
+const VehicleBooking = ({ vehicle, onSuccess }) => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [cnic, setCnic] = useState("");
@@ -50,6 +50,7 @@ const VehicleBooking = ({ vehicle }) => {
     try {
       await addVehicleBooking(bookingData);
       toast.success(NOTIFICATIONS.VEHICLE_BOOKING_SUCCESS);
+      if (onSuccess) onSuccess();
     } catch (error) {
       console.error(error);
       toast.error(NOTIFICATIONS.VEHICLE_BOOKING_ERROR);

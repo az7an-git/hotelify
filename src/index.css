@@ -109,3 +109,14 @@
   background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
   @apply px-4 py-2 rounded-xl text-white border-transparent shadow-md transition-all duration-300 hover:shadow-lg hover:opacity-90 active:scale-95 font-medium;
 }
+
+/* Hide native up/down spinners on number inputs (e.g., CNIC/contact) */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}

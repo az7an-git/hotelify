@@ -5,8 +5,10 @@ import SubmitButton from '../common/button/SubmitButton';
 
 import { toast } from 'sonner';
 import { NOTIFICATIONS } from '../../constants/notifications';
+import { useNavigate } from 'react-router-dom';
 
 const ParkingRegistration = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [rate, setRate] = useState('');
@@ -21,6 +23,7 @@ const ParkingRegistration = () => {
       await addParkingSpot(name, category, rate, isAvailable, image, );
       setLoading(false);
       toast.success(NOTIFICATIONS.PARKING_REG_SUCCESS);
+      navigate('/parking');
       setName('');
       setCategory('');
       setRate('');

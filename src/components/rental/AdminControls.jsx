@@ -34,13 +34,13 @@ function AdminControls() {
       };
   return (
     loading ? <Loader msg={"Fetching Rental Notifications"} /> :
-    <div className="space-y-6 p-6 flex justify-between items-center flex-wrap">
+    <div className="p-6 flex flex-wrap gap-6">
     {appliedVehicles &&
       appliedVehicles.map((vehicle, i) => (
         vehicle.status !== 'delivered' && vehicle.status !== 'rejected' && (
           <div
             key={i}
-            className="p-6 border border-white/60/80 bg-white/40 backdrop-blur-md shadow-sm border border-white/50 rounded-2xl shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:border-slate-700/60 max-w-sm w-full"
+            className="glass-card p-6 max-w-sm w-full"
           >
             <h3 className="text-lg font-bold text-slate-800 mb-3">Booking from <span className='italic capitalize text-amber-700'>{vehicle.name}</span></h3>
             <div className="text-slate-600 font-medium text-sm space-y-2 mb-4">

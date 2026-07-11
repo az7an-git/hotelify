@@ -4,8 +4,10 @@ import SubmitButton from "../common/button/SubmitButton";
 import Loader from "../common/loader/Loader";
 import { toast } from "sonner";
 import { NOTIFICATIONS } from "../../constants/notifications";
+import { useNavigate } from "react-router-dom";
 
 const FoodRegistration = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
@@ -21,6 +23,7 @@ const FoodRegistration = () => {
       await addFoodItem(name, category, price, image, available, desc);
 
       toast.success(NOTIFICATIONS.FOOD_REG_SUCCESS(name));
+      navigate("/food-order");
 
       setLoading(false);
       setName("");

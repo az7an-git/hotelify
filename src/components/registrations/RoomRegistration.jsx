@@ -5,8 +5,10 @@ import SubmitButton from '../common/button/SubmitButton';
 
 import { toast } from 'sonner';
 import { NOTIFICATIONS } from '../../constants/notifications';
+import { useNavigate } from "react-router-dom";
 
 const RoomRegistration = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);  
@@ -22,6 +24,7 @@ const RoomRegistration = () => {
       await addRoom(name, description, image, available, price, beds );
       setLoading(false);
       toast.success(NOTIFICATIONS.ROOM_REG_SUCCESS);
+      navigate('/room-booking');
       setName('');
       setDescription('');
       setImage(null);
@@ -52,7 +55,7 @@ const RoomRegistration = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <div className="flex flex-col space-y-1.5">
+          <div className="flex flex-col justify-end space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Price per Day ($)</label>
             <input 
               className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm disabled:opacity-50" 
@@ -65,7 +68,7 @@ const RoomRegistration = () => {
             />
           </div>
 
-          <div className="flex flex-col space-y-1.5">
+          <div className="flex flex-col justify-end space-y-1.5">
             <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">No. of Beds</label>
             <input 
               className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm disabled:opacity-50" 

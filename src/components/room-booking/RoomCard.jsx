@@ -60,9 +60,9 @@ const RoomCard = ({ room }) => {
       </div>
 
       <div className="pt-2 border-t border-white/60/60 flex justify-center flex-shrink-0" onClick={handleBookNow}>
-        <SubmitButton callToAction={"Book Now"} />
+        <SubmitButton callToAction={showForm ? "Cancel" : "Book Now"} />
       </div>
-      {showForm && <RoomBooking room={room} />}
+      {showForm && <RoomBooking room={room} onSuccess={() => setShowForm(false)} />}
     </div>
   );
 };

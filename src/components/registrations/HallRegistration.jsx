@@ -6,8 +6,10 @@ import Loader from "../common/loader/Loader";
 
 import { toast } from "sonner";
 import { NOTIFICATIONS } from "../../constants/notifications";
+import { useNavigate } from "react-router-dom";
 
 const HallRegistration = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [pp, setPp] = useState("");
@@ -45,6 +47,7 @@ const HallRegistration = () => {
       await addHall(name, description, pp, image, available, validOffers);
       setLoading(false);
       toast.success(NOTIFICATIONS.HALL_REG_SUCCESS);
+      navigate("/wedding-halls");
       setName("");
       setDescription("");
       setPp("");
