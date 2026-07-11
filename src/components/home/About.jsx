@@ -8,8 +8,8 @@ const AboutUsSection = () => {
 
   return (
     loading ? <ImgLoader /> :
-      <section className="py-8 lg:py-24 my-4 md:my-16 mx-0 sm:mx-6 lg:mx-8">
-        <div className="container mx-auto max-w-7xl glass-card p-5 sm:p-10 lg:p-16 rounded-none sm:rounded-3xl shadow-2xl border border-white/60 lg:flex lg:items-center lg:gap-16 bg-white/50 backdrop-blur-xl">
+      <section className="py-8 lg:py-24 my-4 md:my-16">
+        <div className="w-[95%] max-w-[1400px] mx-auto glass-card p-8 sm:p-12 lg:p-20 rounded-2xl sm:rounded-[3rem] shadow-2xl border border-white/60 lg:flex lg:items-center lg:gap-16 bg-white/50 backdrop-blur-xl">
           <div className="lg:w-1/2 space-y-4 lg:space-y-8 text-left">
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-800">
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Magnum Hotel</span>

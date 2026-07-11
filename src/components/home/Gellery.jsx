@@ -55,14 +55,14 @@ const GallerySection = () => {
 
   return (
     <section className="py-12 lg:py-24 my-8 mx-0 sm:mx-4">
-      <div className="container mx-auto px-4 sm:px-8 text-center">
+      <div className="w-[95%] max-w-[1400px] mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-10">
           Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Gallery</span>
         </h2>
         {loading ? (
           <p className="text-amber-600 animate-pulse font-semibold">Adding Picture...</p>
         ) : allImages.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 max-w-7xl mx-auto">
             {allImages.map((img, index) => (
               <div
                 key={index}

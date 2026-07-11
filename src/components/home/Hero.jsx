@@ -25,39 +25,39 @@ const HeroSection = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-amber-400/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Main card */}
-      <div className="relative z-10 text-center px-6 sm:px-8 w-[92%] max-w-3xl mx-auto space-y-5 glass-card py-10 md:py-14 rounded-2xl sm:rounded-3xl">
-        <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-700 animate-slide-up leading-tight">
+      <div className="relative z-10 text-center px-8 sm:px-12 w-[95%] max-w-6xl mx-auto space-y-6 glass-card py-16 md:py-24 rounded-2xl sm:rounded-[3rem]">
+        <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-700 animate-slide-up leading-tight">
           Experience Luxury &amp; Comfort
         </h1>
-        <p className="text-sm md:text-xl text-slate-600 max-w-xl mx-auto font-medium animate-slide-up">
+        <p className="text-base md:text-2xl text-slate-600 max-w-3xl mx-auto font-medium animate-slide-up">
           Welcome to <span className="text-amber-700 font-bold">Magnum</span> — Your dream luxury stay awaits!
         </p>
-        <div className="animate-slide-up">
+        <div className="animate-slide-up pt-4">
           <Link
             to="/room-booking"
-            className="glass-button-primary inline-block px-7 py-3 sm:px-10 sm:py-4 rounded-full text-base sm:text-lg"
+            className="glass-button-primary inline-block px-8 py-3 sm:px-12 sm:py-5 rounded-full text-lg sm:text-xl font-bold shadow-xl shadow-amber-600/20 hover:shadow-amber-600/40"
           >
             <span>Book Now</span>
           </Link>
         </div>
 
         {/* Stats row */}
-        <div className="pt-6 grid grid-cols-4 gap-2 sm:gap-6 max-w-2xl mx-auto border-t border-slate-200/60 mt-2 animate-slide-up">
+        <div className="pt-10 grid grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto border-t border-slate-200/60 mt-4 animate-slide-up">
           <div className="text-center">
-            <h4 className="text-lg md:text-3xl font-extrabold text-amber-700">150+</h4>
-            <p className="text-[9px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">Rooms</p>
+            <h4 className="text-xl md:text-4xl font-extrabold text-amber-700">150+</h4>
+            <p className="text-[10px] sm:text-sm text-slate-500 font-semibold uppercase tracking-wider mt-1">Rooms</p>
           </div>
           <div className="text-center">
-            <h4 className="text-lg md:text-3xl font-extrabold text-amber-700">5★</h4>
-            <p className="text-[9px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">Services</p>
+            <h4 className="text-xl md:text-4xl font-extrabold text-amber-700">5★</h4>
+            <p className="text-[10px] sm:text-sm text-slate-500 font-semibold uppercase tracking-wider mt-1">Services</p>
           </div>
           <div className="text-center">
-            <h4 className="text-lg md:text-3xl font-extrabold text-amber-700">24/7</h4>
-            <p className="text-[9px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">Concierge</p>
+            <h4 className="text-xl md:text-4xl font-extrabold text-amber-700">24/7</h4>
+            <p className="text-[10px] sm:text-sm text-slate-500 font-semibold uppercase tracking-wider mt-1">Concierge</p>
           </div>
           <div className="text-center">
-            <h4 className="text-lg md:text-3xl font-extrabold text-amber-700">100%</h4>
-            <p className="text-[9px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">Satisfaction</p>
+            <h4 className="text-xl md:text-4xl font-extrabold text-amber-700">100%</h4>
+            <p className="text-[10px] sm:text-sm text-slate-500 font-semibold uppercase tracking-wider mt-1">Satisfaction</p>
           </div>
         </div>
       </div>
