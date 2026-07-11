@@ -81,22 +81,22 @@ const TestimonialsSection = () => {
   const displayedTestimonials = testimonials.length > 0 ? testimonials : fallbackTestimonials;
 
   return (
-    <section className="py-12 md:py-24 my-8 md:my-12 mx-0 sm:mx-4 text-slate-800">
-      <div className="container mx-auto px-4 sm:px-8 text-center">
+    <section className="py-16 md:py-28 text-slate-800 bg-white/40">
+      <div className="w-[95%] max-w-[1400px] mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-12">
           What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800 whitespace-nowrap">Guests Say</span>
         </h2>
         {displayedTestimonials.length > 0 ? (
           <Slider {...settings} className="overflow-hidden">
             {displayedTestimonials.map((testimonial) => (
-              <div key={testimonial.id} className="px-2 md:px-3 pb-4 pt-2 h-full">
-                <div className="max-sm:p-5 p-8 glass-card border border-white/60 shadow-md flex flex-col justify-between h-full min-h-[240px]">
+              <div key={testimonial.id} className="px-3 md:px-4 pb-4 pt-2 h-full">
+                <div className="p-8 bg-white border border-slate-100 shadow-lg rounded-3xl flex flex-col justify-between h-full min-h-[220px]">
                   <p className="text-base md:text-lg italic text-slate-600 font-light leading-relaxed line-clamp-6 mb-4">
                     "{testimonial.review}"
                   </p>
-                  <div className="mt-auto pt-4 border-t border-slate-200/50">
+                  <div className="mt-auto pt-4 border-t border-slate-100">
                     <p className="font-bold text-amber-700">{testimonial.name}</p>
-                    <p className="text-slate-500 font-medium text-xs">
+                    <p className="text-slate-400 font-medium text-xs mt-0.5">
                       {testimonial.time && (testimonial.time.toDate ? testimonial.time.toDate().toLocaleDateString() : new Date(testimonial.time).toLocaleDateString())}
                     </p>
                   </div>

@@ -54,7 +54,7 @@ const GallerySection = () => {
   };
 
   return (
-    <section className="py-12 lg:py-24 my-8 mx-0 sm:mx-4">
+    <section className="py-16 lg:py-28 bg-white/30">
       <div className="w-[95%] max-w-[1400px] mx-auto px-4 sm:px-8 text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-10">
           Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Gallery</span>

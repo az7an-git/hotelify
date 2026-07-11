@@ -13,14 +13,14 @@ const Reviews = lazy(() => import('./Testimonials'));
 const SubmitReview = lazy(() => import('./SubmitTesimonial'));
 
 const Divider = () => (
-  <div className="w-[95%] max-w-[1400px] mx-auto h-[2px] bg-gradient-to-r from-transparent via-slate-300 to-transparent my-12 sm:my-20"></div>
+  <div className="w-[95%] max-w-[1400px] mx-auto h-[2px] bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
 );
 
 const SlideUpSection = ({ children }) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
+    viewport={{ once: true, margin: "-80px" }}
     transition={{ duration: 0.7, ease: "easeOut" }}
   >
     {children}
@@ -29,7 +29,7 @@ const SlideUpSection = ({ children }) => (
 
 const HomeMain = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Suspense fallback={
         <Loader msg={"Home..."} />
       }>

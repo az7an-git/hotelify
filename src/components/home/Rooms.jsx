@@ -29,7 +29,7 @@ const RoomsSection = () => {
   };
 
   return (
-    <section className="py-12 md:py-24 my-8 md:my-12 text-slate-800">
+    <section className="py-16 md:py-28 text-slate-800 bg-white/30">
       <div className="w-[95%] max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-12 text-center">
           Our Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-800">Rooms & Suites</span>
