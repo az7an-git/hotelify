@@ -14,6 +14,12 @@ const Footer = () => {
           <p className="text-slate-500 leading-relaxed font-light text-xs">
             Experience refined luxury, curated style, and timeless hospitality. Nestled in prime elegance, offering you an unforgettable retreat.
           </p>
+          <div className="flex gap-4 justify-center md:justify-start mt-3">
+            <a href="#" className="text-slate-500 hover:text-amber-500 transition-colors"><FaFacebook size={16} /></a>
+            <a href="#" className="text-slate-500 hover:text-amber-500 transition-colors"><FaInstagram size={16} /></a>
+            <a href="#" className="text-slate-500 hover:text-amber-500 transition-colors"><FaTwitter size={16} /></a>
+            <a href="#" className="text-slate-500 hover:text-amber-500 transition-colors"><FaTripadvisor size={16} /></a>
+          </div>
         </div>
 
         {/* Divider on mobile */}
