@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import ImgLoader from "../common/loader/ImgLoader";
 
 const HeroSection = () => {
-  const [loading, setLoading] = useState(false);
   // Using a beautiful Unsplash fallback image directly to avoid Firebase 402 Payment Required errors
   const fallbackHeroBg = "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80";
 
-  return loading ? (
-    <div className="h-screen w-full relative flex items-center justify-center bg-white/40 backdrop-blur-md border border-white/50">
-      <ImgLoader />
-    </div>
-  ) : (
+  return (
     <section
       className="relative min-h-[60vh] md:min-h-[88vh] mx-0 sm:mx-4 mt-16 md:mt-24 rounded-lg sm:rounded-3xl flex flex-col items-center justify-center bg-cover bg-center overflow-hidden shadow-2xl py-8"
       style={{
