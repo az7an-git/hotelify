@@ -48,7 +48,7 @@ const VehicleCard = ({ vehicle }) => {
         </div>
       </div>
 
-      <div className="pt-2 border-t border-white/60/60 flex flex-col gap-3 justify-center flex-shrink-0">
+      <div className="pt-2 border-t border-white/60 flex flex-col gap-3 justify-center flex-shrink-0">
         <div onClick={handleBookNow}>
           <SubmitButton callToAction={"Book Now"} />
         </div>
