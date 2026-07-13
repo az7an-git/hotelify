@@ -26,6 +26,7 @@ const AdminRecords = () => {
 
   useEffect(() => {
     const fetchBookings = async () => {
+      setLoading(true);
       let data = [];
       if (activeTab === "Food Order") data = await getFoodOrders();
       if (activeTab === "Rental Bookings") data = await getRentalVehicles();
@@ -77,8 +78,8 @@ const AdminRecords = () => {
           <button
             key={tab}
             className={`px-3 py-2.5 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shadow-md border text-center ${activeTab === tab
-                ? 'bg-amber-600 text-white border-amber-500 shadow-amber-500/10'
-                : 'bg-white/50 text-slate-600 border-white/60 hover:text-amber-700 hover:bg-white/80 backdrop-blur-md hover:shadow-lg'
+              ? 'bg-amber-600 text-white border-amber-500 shadow-amber-500/10'
+              : 'bg-white/50 text-slate-600 border-white/60 hover:text-amber-700 hover:bg-white/80 backdrop-blur-md hover:shadow-lg'
               }`}
             onClick={() => setActiveTab(tab)}
           >
@@ -96,6 +97,7 @@ const AdminRecords = () => {
                 {
                   records.map((record) => (
                     activeTab === record.name && <record.comp
+                      key={record.name}
                       activeTab={activeTab}
                       bookingFields={bookingFields}
                       bookings={bookings}

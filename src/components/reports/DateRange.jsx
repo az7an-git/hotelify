@@ -1,5 +1,5 @@
 import React from "react";
-import DatePicker from "react-datepicker";
+import CustomDatePicker from "../common/forms/CustomDatePicker";
 
 function DateRange({
   startDate,
@@ -13,22 +13,18 @@ function DateRange({
     <div className="flex gap-4 items-center mb-8 flex-wrap">
       <div className="flex flex-col space-y-1.5">
         <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">Start Date</label>
-        <DatePicker
+        <CustomDatePicker
           maxDate={endDate}
           selected={startDate}
           onChange={(date) => setStartDate(date)}
-          onKeyDown={(e) => e.preventDefault()}
-          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm w-full md:w-auto"
         />
       </div>
       <div className="flex flex-col space-y-1.5">
         <label className="text-xs font-semibold text-slate-600 font-medium uppercase tracking-wider">End Date</label>
-        <DatePicker
+        <CustomDatePicker
           minDate={startDate}
           selected={endDate}
           onChange={(date) => setEndDate(date)}
-          onKeyDown={(e) => e.preventDefault()}
-          className="bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm w-full md:w-auto"
         />
       </div>
       <div className="flex gap-3 items-end pt-4 lg:pt-5 w-full md:w-auto">
