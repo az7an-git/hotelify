@@ -50,23 +50,22 @@ const Navbar = () => {
     <header
       className="w-full z-50 fixed top-0 left-0 right-0 animate-fade-in transition-all duration-300"
       style={headerSticky ? {
-        backgroundColor: 'rgba(245, 245, 244, 0.65)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+        backgroundColor: 'rgba(12, 18, 34, 0.75)',
+        backdropFilter: 'blur(20px) saturate(1.4)',
+        WebkitBackdropFilter: 'blur(20px) saturate(1.4)',
       } : {}}
     >
       <nav className="w-[90%] max-w-[1100px] mx-auto flex flex-wrap justify-between items-center py-3 sm:py-4 px-4 sm:px-6">
         {/* Mobile Logo */}
-        <NavLink to="/" className="lg:hidden flex items-center gap-2 py-1 hover:opacity-90 transition-opacity">
-          <img className="w-9 h-9 object-contain" src={logo} alt="Magnum Hotel Logo" />
-          <span className="text-xs font-bold tracking-[0.2em] uppercase bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-800 bg-clip-text text-transparent font-sans">
+        <NavLink to="/" className="lg:hidden flex items-center gap-2.5 py-1 hover:opacity-90 transition-opacity">
+          <img className="w-12 h-12 object-contain drop-shadow-[0_0_10px_rgba(212,164,76,0.3)]" src={logo} alt="Magnum Hotel Logo" />
+          <span className="text-sm font-bold tracking-[0.18em] uppercase text-gold-300 font-sans">
             Magnum Hotel
           </span>
         </NavLink>
 
         {/* Hamburger Icon */}
-        <button className="lg:hidden ms-auto text-slate-700 hover:text-amber-700 transition-colors" onClick={toggleMenu}>
+        <button className="lg:hidden ms-auto text-slate-300 hover:text-gold-300 transition-colors" onClick={toggleMenu}>
           {isOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
         </button>
 

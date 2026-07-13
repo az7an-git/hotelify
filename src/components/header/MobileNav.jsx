@@ -12,7 +12,16 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
   return (
     <>
       {isOpen && (
-        <div className="lg:hidden absolute left-4 right-4 sm:left-6 sm:right-6 mt-3 glass-card rounded-3xl shadow-2xl py-4 px-4 flex flex-col gap-2 border border-white/40 animate-fade-in z-50 bg-white/70 backdrop-blur-xl">
+        <div
+          className="lg:hidden absolute left-4 right-4 sm:left-6 sm:right-6 mt-3 rounded-3xl shadow-2xl py-4 px-4 flex flex-col gap-2 animate-fade-in z-50"
+          style={{
+            background: 'rgba(17,24,39,0.88)',
+            backdropFilter: 'blur(24px) saturate(1.5)',
+            WebkitBackdropFilter: 'blur(24px) saturate(1.5)',
+            border: '1px solid rgba(217,169,79,0.1)',
+            boxShadow: '0 25px 50px rgba(0,0,0,0.4)',
+          }}
+        >
           <div className="grid grid-cols-2 gap-2">
             {/** Navs for Booking */}
             {bookingNavs.map((nav, i) => {
@@ -20,7 +29,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                 <NavLink
                   key={`booking-${i}`}
                   to={`/${nav.nv}`}
-                  className={({ isActive }) => `${isActive ? 'text-amber-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-amber-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                  className={({ isActive }) => `${isActive ? 'text-gold-300 font-bold bg-gold-400/10' : 'text-slate-300 hover:text-gold-300 hover:bg-white/5'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                   onClick={() => setIsOpen(false)}
                 >
                   {nav.cont}
@@ -35,7 +44,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                   <NavLink
                     key={`admin-${i}`}
                     to={`/${nav.nv}`}
-                    className={({ isActive }) => `${isActive ? 'text-amber-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-amber-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                    className={({ isActive }) => `${isActive ? 'text-gold-300 font-bold bg-gold-400/10' : 'text-slate-300 hover:text-gold-300 hover:bg-white/5'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                     onClick={() => setIsOpen(false)}
                   >
                     {nav.cont}
@@ -50,7 +59,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
                   <NavLink
                     key={`user-${i}`}
                     to={`/${nav.nv}`}
-                    className={({ isActive }) => `${isActive ? 'text-amber-700 font-bold bg-white/60 shadow-sm' : 'text-slate-700 hover:text-amber-600 hover:bg-white/50'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
+                    className={({ isActive }) => `${isActive ? 'text-gold-300 font-bold bg-gold-400/10' : 'text-slate-300 hover:text-gold-300 hover:bg-white/5'} block py-2 px-2 rounded-2xl transition-all duration-300 text-center text-sm font-medium`}
                     onClick={() => setIsOpen(false)}
                   >
                     {nav.cont}
@@ -59,12 +68,12 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
               })}
           </div>
 
-          <div className="mt-1 pt-2 border-t border-slate-200/50 flex justify-center">
+          <div className="mt-1 pt-2 border-t border-slate-700/50 flex justify-center">
             {!currentUser ? (
               isLoginPage ? (
                 <NavLink
                   to="/"
-                  className="py-2 px-8 text-slate-700 hover:text-amber-700 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-sm font-semibold flex items-center justify-center w-full"
+                  className="py-2 px-8 text-slate-300 hover:text-gold-300 hover:bg-white/5 rounded-2xl transition-all duration-300 cursor-pointer text-sm font-semibold flex items-center justify-center w-full"
                   onClick={() => setIsOpen(false)}
                 >
                   <span>Home</span>
@@ -72,7 +81,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
               ) : (
                 <NavLink
                   to="/login"
-                  className="py-2.5 px-8 text-slate-700 hover:text-amber-700 hover:bg-white/60 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
+                  className="py-2.5 px-8 text-gold-300 hover:text-gold-200 hover:bg-gold-400/10 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
                   onClick={() => setIsOpen(false)}
                 >
                   <CiLogin />
@@ -81,7 +90,7 @@ function MobileNav({ isOpen, currentUser, logo, handleLogout, setIsOpen }) {
             ) : (
               <button
                 onClick={handleLogout}
-                className="py-2.5 px-8 text-slate-700 hover:text-rose-600 hover:bg-rose-50/80 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
+                className="py-2.5 px-8 text-slate-300 hover:text-rose-400 hover:bg-rose-500/10 rounded-2xl transition-all duration-300 cursor-pointer text-2xl flex items-center justify-center w-full"
               >
                 <IoIosLogOut />
               </button>
