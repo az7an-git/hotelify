@@ -47,8 +47,16 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="w-full z-50 fixed top-4 left-0 right-0 animate-fade-in transition-all duration-300">
-      <nav className="glass-card w-[95%] max-w-[1440px] mx-auto flex flex-wrap justify-between items-center py-3 sm:py-4 px-4 sm:px-8 rounded-[2rem] shadow-lg">
+    <header
+      className="w-full z-50 fixed top-0 left-0 right-0 animate-fade-in transition-all duration-300"
+      style={headerSticky ? {
+        backgroundColor: 'rgba(245, 245, 244, 0.65)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+      } : {}}
+    >
+      <nav className="w-[90%] max-w-[1100px] mx-auto flex flex-wrap justify-between items-center py-3 sm:py-4 px-4 sm:px-6">
         {/* Mobile Logo */}
         <NavLink to="/" className="lg:hidden flex items-center gap-2 py-1 hover:opacity-90 transition-opacity">
           <img className="w-9 h-9 object-contain" src={logo} alt="Magnum Hotel Logo" />
@@ -68,6 +76,7 @@ const Navbar = () => {
           currentUser={currentUser}
           logo={logo}
           handleLogout={handleLogout}
+          isScrolled={headerSticky}
         />
       </nav>
 
