@@ -94,7 +94,7 @@ const GallerySection = () => {
           <div className="mt-8 flex flex-col items-center">
             <button
               onClick={() => setShowAdminForm(!showAdminForm)}
-              className="bg-amber-50/50 backdrop-blur-md text-amber-700 border border-amber-200/50 px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:bg-amber-100/50 transition-all duration-300 transform active:scale-95"
+              className="glass-button text-sm font-bold shadow-lg transition-all duration-300 transform active:scale-95"
             >
               {showAdminForm ? "Close Admin Panel" : "Admin: Upload Images"}
             </button>

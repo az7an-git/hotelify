@@ -72,10 +72,10 @@
 
 /* Dark Mode Glassmorphism custom classes */
 .glass-panel {
-  background: rgba(13, 18, 34, 0.65);
+  background: rgba(13, 18, 34, 0.65) !important;
   backdrop-filter: blur(20px) saturate(1.6);
   -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  border: 1px solid rgba(212, 164, 76, 0.15);
+  border: 1px solid rgba(212, 164, 76, 0.15) !important;
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
@@ -84,42 +84,70 @@
 }
 
 .glass-button {
-  background: rgba(13, 18, 34, 0.5);
+  background: rgba(13, 18, 34, 0.5) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(212, 164, 76, 0.25);
+  border: 1px solid rgba(212, 164, 76, 0.25) !important;
   @apply px-5 py-2.5 rounded-full transition-all duration-300 hover:bg-slate-800/80 hover:shadow-md hover:text-gold-300 hover:border-gold-400/50 active:scale-95 font-medium text-slate-200;
 }
 
 .glass-button-primary {
-  background: linear-gradient(135deg, #d4a44c 0%, #b8862e 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #d4a44c 0%, #b8862e 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: #070b13 !important;
   @apply px-6 py-3 rounded-full shadow-lg shadow-gold-600/20 hover:shadow-xl hover:shadow-gold-600/35 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-bold;
 }
 
 /* Override existing page section backgrounds to keep dark theme consistent */
 section.bg-slate-50\/60,
+section.bg-slate-50\/70,
 section.bg-slate-50,
+section.bg-white\/30,
 .bg-slate-50,
 .bg-slate-100 {
   background: transparent !important;
 }
 
-/* Override borders */
+/* Force global element overrides for white layouts and inputs */
+form.bg-white,
+div.bg-white,
+.bg-white {
+  background: rgba(13, 18, 34, 0.65) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Ensure borders match the luxury gold-navy palette */
 .border-white\/60, 
 .border-white\/80,
+.border-white,
+.border-slate-100,
 .border-slate-200,
-.border-t-white\/60\/60 {
+.border-slate-200\/60,
+.border-t-slate-200\/60,
+.border-t-white\/60\/60,
+.border-t {
   border-color: rgba(212, 164, 76, 0.15) !important;
 }
 
-/* Ensure background of dropdowns/modals in cards is glass styled */
+/* Input Fields styling across forms */
+input, textarea, select {
+  background-color: rgba(7, 11, 19, 0.6) !important;
+  color: #ffffff !important;
+  border-color: rgba(212, 164, 76, 0.2) !important;
+}
+input::placeholder, textarea::placeholder {
+  color: rgba(156, 163, 175, 0.6) !important;
+}
+
+/* Fix specific badges */
+.bg-white\/80,
 .bg-white\/40,
 .bg-white\/50,
-.bg-white\/60 {
-  background: rgba(13, 18, 34, 0.5) !important;
+.bg-white\/60,
+.bg-amber-50\/80 {
+  background: rgba(13, 18, 34, 0.75) !important;
   color: #e2e8f0 !important;
+  border-color: rgba(212, 164, 76, 0.25) !important;
 }
 
 /* Hide native up/down spinners on number inputs */
