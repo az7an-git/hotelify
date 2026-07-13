@@ -12,18 +12,19 @@ module.exports = {
       colors: {
         // Map slate to navy colors so all text-slate-xxx and bg-slate-xxx automatically become navy
         slate: {
-          50: '#0c1222',     // Very dark navy background
-          100: '#111827',
-          200: '#1f2937',
-          300: '#374151',
-          400: '#9ca3af',
-          500: '#94a3b8',    // Soft silver-blue for muted text
-          600: '#94a3b8',    // Soft text color - now readable light slate
-          700: '#cbd5e1',    // Medium bright text - light text
-          800: '#f8fafc',    // Bright headings - almost white
-          900: '#ffffff',    // Main heading - pure white
+          50: '#070b13',     // Very dark navy background
+          100: '#0d1222',
+          200: '#1e293b',
+          300: '#cbd5e1',    // silver-blue for body text
+          400: '#94a3b8',
+          500: '#cbd5e1',    // Soft silver-blue for muted text
+          600: '#e2e8f0',    // Soft text color (old slate-600) -> now bright slate
+          700: '#f1f5f9',    // Medium bright text (old slate-700) -> near white text
+          800: '#ffffff',    // Bright headings (old slate-800) -> pure white
+          900: '#ffffff',    // Main heading -> pure white
           950: '#020617',
         },
+        // Map amber/yellow to gold colors so all text-amber-xxx, bg-amber-xxx automatically become gold
         amber: {
           50: '#fdf8ed',
           100: '#f9eccc',
@@ -31,7 +32,7 @@ module.exports = {
           300: '#e8bc5a',
           400: '#d4a44c',
           500: '#c4912e',
-          600: '#b8862e',
+          600: '#d4a44c',
           700: '#d4a44c',    // gold accent
           800: '#b8862e',    // dark gold accent
           900: '#7a531f',

@@ -39,9 +39,9 @@ function LgNav({ isOpen, currentUser, logo, handleLogout, isScrolled }) {
       >
         {/* Services Dropdown */}
         <div className="relative group">
-          <button className="flex items-center gap-2 text-slate-300 hover:text-gold-300 font-medium transition-all duration-200 text-sm py-2 px-5 rounded-full hover:bg-white/5">
+          <button className="flex items-center gap-1.5 text-slate-300 hover:text-gold-300 font-medium transition-all duration-200 text-xs py-1.5 px-3 rounded-full hover:bg-white/5">
             <span>Services</span>
-            <FaChevronDown className="text-[9px] transition-transform duration-300 group-hover:rotate-180 opacity-50 group-hover:opacity-100" />
+            <FaChevronDown className="text-[8px] transition-transform duration-300 group-hover:rotate-180 opacity-50 group-hover:opacity-100" />
           </button>
           <div
             className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-52 rounded-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50"
@@ -58,7 +58,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout, isScrolled }) {
                 key={i}
                 to={`/${nav.nv}`}
                 className={({ isActive }) =>
-                  `${isActive ? "text-gold-300 font-semibold bg-gold-400/10" : "text-slate-300 hover:text-gold-300 hover:bg-white/5"} block px-5 py-2.5 text-sm transition-all duration-200`
+                  `${isActive ? "text-gold-300 font-semibold bg-gold-400/10" : "text-slate-300 hover:text-gold-300 hover:bg-white/5"} block mx-2 my-0.5 px-4 py-2 text-sm rounded-xl transition-all duration-200`
                 }
               >
                 {nav.cont}
@@ -68,14 +68,14 @@ function LgNav({ isOpen, currentUser, logo, handleLogout, isScrolled }) {
         </div>
 
         {/* Divider */}
-        {currentUser && <span className="w-px h-5 bg-slate-600/60" />}
+        {currentUser && <span className="w-px h-4 bg-slate-600/60" />}
 
         {/* Admin/User Dashboard Dropdown */}
         {currentUser && (
           <div className="relative group">
-            <button className="flex items-center gap-2 text-slate-300 hover:text-gold-300 font-medium transition-all duration-200 text-sm py-2 px-5 rounded-full hover:bg-white/5">
+            <button className="flex items-center gap-1.5 text-slate-300 hover:text-gold-300 font-medium transition-all duration-200 text-xs py-1.5 px-3 rounded-full hover:bg-white/5">
               <span>{isAdmin ? "Admin Panel" : "Dashboard"}</span>
-              <FaChevronDown className="text-[9px] transition-transform duration-300 group-hover:rotate-180 opacity-50 group-hover:opacity-100" />
+              <FaChevronDown className="text-[8px] transition-transform duration-300 group-hover:rotate-180 opacity-50 group-hover:opacity-100" />
             </button>
             <div
               className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-52 rounded-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50"
@@ -92,7 +92,7 @@ function LgNav({ isOpen, currentUser, logo, handleLogout, isScrolled }) {
                   key={i}
                   to={`/${nav.nv}`}
                   className={({ isActive }) =>
-                    `${isActive ? "text-gold-300 font-semibold bg-gold-400/10" : "text-slate-300 hover:text-gold-300 hover:bg-white/5"} block px-5 py-2.5 text-sm transition-all duration-200`
+                    `${isActive ? "text-gold-300 font-semibold bg-gold-400/10" : "text-slate-300 hover:text-gold-300 hover:bg-white/5"} block mx-2 my-0.5 px-4 py-2 text-sm rounded-xl transition-all duration-200`
                   }
                 >
                   {nav.cont}

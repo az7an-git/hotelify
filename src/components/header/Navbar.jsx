@@ -55,7 +55,7 @@ const Navbar = () => {
         WebkitBackdropFilter: 'blur(20px) saturate(1.4)',
       } : {}}
     >
-      <nav className="w-[90%] max-w-[1100px] mx-auto flex flex-wrap justify-between items-center py-3 sm:py-4 px-4 sm:px-6">
+      <nav className="w-[90%] max-w-[1100px] mx-auto flex flex-wrap justify-between items-center py-3 sm:py-2 px-4 sm:px-6">
         {/* Mobile Logo */}
         <NavLink to="/" className="lg:hidden flex items-center gap-2.5 py-1 hover:opacity-90 transition-opacity">
           <img className="w-12 h-12 object-contain drop-shadow-[0_0_10px_rgba(212,164,76,0.3)]" src={logo} alt="Magnum Hotel Logo" />

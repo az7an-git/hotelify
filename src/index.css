@@ -10,21 +10,18 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE/Edge */
   }
 
   html::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari, Opera */
   }
 
   body {
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
-    @apply bg-[#0c1222] text-slate-200 antialiased selection:bg-amber-500/30 selection:text-amber-200;
+    @apply bg-[#070b13] text-slate-300 antialiased selection:bg-gold-500/30 selection:text-gold-200;
   }
 
   body::before {
@@ -35,35 +32,21 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    /* Deep navy with subtle warm gradient for luxury feel */
-    background: linear-gradient(135deg, #0c1222 0%, #111827 40%, #0f172a 70%, #131c2e 100%);
+    background: linear-gradient(135deg, #070b13 0%, #0d1222 50%, #090e1a 100%);
     background-size: 200% 200%;
     animation: gradientShift 15s ease infinite;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', sans-serif;
     @apply text-white font-semibold tracking-tight;
   }
 }
 
 @keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Custom Styled Thin Scrollbar for Dark UI */
@@ -73,47 +56,73 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(7, 11, 19, 0.4);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(217, 169, 79, 0.3);
+  background: rgba(212, 164, 76, 0.2);
   border-radius: 9999px;
-  border: 1px solid rgba(217, 169, 79, 0.15);
+  border: 1px solid rgba(212, 164, 76, 0.1);
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 169, 79, 0.5);
+  background: rgba(212, 164, 76, 0.4);
 }
 
 /* Dark Mode Glassmorphism custom classes */
 .glass-panel {
-  background: rgba(17, 24, 39, 0.75);
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  border: 1px solid rgba(217, 169, 79, 0.08);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+  background: rgba(13, 18, 34, 0.65);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(212, 164, 76, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .glass-card {
-  @apply glass-panel rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  @apply glass-panel rounded-3xl transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/5 hover:-translate-y-1 hover:border-gold-400/30;
 }
 
 .glass-button {
-  background: rgba(17, 24, 39, 0.6);
+  background: rgba(13, 18, 34, 0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(217, 169, 79, 0.15);
-  @apply px-4 py-2 rounded-xl transition-all duration-300 hover:bg-slate-800/80 hover:shadow-md active:scale-95 font-medium text-slate-200;
+  border: 1px solid rgba(212, 164, 76, 0.25);
+  @apply px-5 py-2.5 rounded-full transition-all duration-300 hover:bg-slate-800/80 hover:shadow-md hover:text-gold-300 hover:border-gold-400/50 active:scale-95 font-medium text-slate-200;
 }
 
 .glass-button-primary {
   background: linear-gradient(135deg, #d4a44c 0%, #b8862e 100%);
-  @apply px-4 py-2 rounded-xl text-slate-900 border-transparent shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/20 hover:opacity-90 active:scale-95 font-semibold;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #070b13 !important;
+  @apply px-6 py-3 rounded-full shadow-lg shadow-gold-600/20 hover:shadow-xl hover:shadow-gold-600/35 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-bold;
 }
 
-/* Hide native up/down spinners on number inputs (e.g., CNIC/contact) */
+/* Override existing page section backgrounds to keep dark theme consistent */
+section.bg-slate-50\/60,
+section.bg-slate-50,
+.bg-slate-50,
+.bg-slate-100 {
+  background: transparent !important;
+}
+
+/* Override borders */
+.border-white\/60, 
+.border-white\/80,
+.border-slate-200,
+.border-t-white\/60\/60 {
+  border-color: rgba(212, 164, 76, 0.15) !important;
+}
+
+/* Ensure background of dropdowns/modals in cards is glass styled */
+.bg-white\/40,
+.bg-white\/50,
+.bg-white\/60 {
+  background: rgba(13, 18, 34, 0.5) !important;
+  color: #e2e8f0 !important;
+}
+
+/* Hide native up/down spinners on number inputs */
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
