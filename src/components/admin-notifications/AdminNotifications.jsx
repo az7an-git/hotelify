@@ -3,6 +3,7 @@ import AdminOrders from "../food-order/AdminOrder";
 import AdminControls from "../rental/AdminControls";
 import AdminControlsRoom from "../room-booking/AdminControlsRoom";
 import AdminControlsHall from "../wedding-hall/AdminControlsHall";
+import AdminControlsParking from "../paking/AdminControlsParking";
 
 function AdminNotifications() {
   const [activeTab, setActiveTab] = useState("food-orders");
@@ -20,11 +21,14 @@ function AdminNotifications() {
     {
       order: 'hall-bookings',
     },
+    {
+      order: 'parking-bookings',
+    },
   ]
 
   return (
     <div>
-       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
 
       {
         tabs.map((tab, i) => {
@@ -44,10 +48,21 @@ function AdminNotifications() {
       </div>
    
 
-      {activeTab === "food-orders" && <AdminOrders />}
-      {activeTab === "rental-orders" && <AdminControls />}
-      {activeTab === "room-bookings" && <AdminControlsRoom />}
-      {activeTab === "hall-bookings" && <AdminControlsHall />}
+      <div className={activeTab === "food-orders" ? "block" : "hidden"}>
+        <AdminOrders isActive={activeTab === "food-orders"} />
+      </div>
+      <div className={activeTab === "rental-orders" ? "block" : "hidden"}>
+        <AdminControls isActive={activeTab === "rental-orders"} />
+      </div>
+      <div className={activeTab === "room-bookings" ? "block" : "hidden"}>
+        <AdminControlsRoom isActive={activeTab === "room-bookings"} />
+      </div>
+      <div className={activeTab === "hall-bookings" ? "block" : "hidden"}>
+        <AdminControlsHall />
+      </div>
+      <div className={activeTab === "parking-bookings" ? "block" : "hidden"}>
+        <AdminControlsParking isActive={activeTab === "parking-bookings"} />
+      </div>
     </div>
   );
 }

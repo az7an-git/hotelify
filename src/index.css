@@ -209,16 +209,16 @@ input[type='number'] {
 .react-datepicker__day-name {
   color: rgba(212, 164, 76, 0.8) !important;
   font-weight: 600 !important;
-  width: 2.2rem !important;
-  line-height: 2.2rem !important;
-  margin: 0.166rem !important;
+  width: 1.8rem !important;
+  line-height: 1.8rem !important;
+  margin: 0.1rem !important;
 }
 
 .react-datepicker__day {
   color: #e2e8f0 !important;
-  width: 2.2rem !important;
-  line-height: 2.2rem !important;
-  margin: 0.166rem !important;
+  width: 1.8rem !important;
+  line-height: 1.8rem !important;
+  margin: 0.1rem !important;
   border-radius: 50% !important;
   transition: all 0.2s ease-in-out !important;
 }
@@ -248,9 +248,21 @@ input[type='number'] {
   display: none !important;
 }
 
+/* Ensure the calendar popup floats on top and does not push layout elements */
+.react-datepicker-wrapper {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.react-datepicker-popper {
+  position: absolute !important;
+  z-index: 50 !important;
+}
+
 /* Navigation buttons */
 .react-datepicker__navigation {
-  top: 14px !important;
+  top: 10px !important;
 }
 
 .react-datepicker__navigation-icon::before {

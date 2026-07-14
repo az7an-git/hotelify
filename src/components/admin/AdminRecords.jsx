@@ -1,37 +1,53 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getFoodOrders } from "../../services/orderService";
 import { getRentalVehicles } from "../../services/vehicleRentalService";
 import { fetchHallsBookings } from "../../services/hallRegService";
 import { getRoomBookings } from "../../services/roomBookingService";
+import { getParkingBookings } from "../../services/parkingService";
 import Loader from "../common/loader/Loader";
 import VehicleOrder from "../user-records/vehicle/VehicleOrder";
 import Halls from "../user-records/hall/Halls";
 import Rooms from "../user-records/rooms/Rooms";
 import FoodOrder from "../user-records/food/FoodOrder";
+import ParkingBookings from "../user-records/parking/ParkingBookings";
 
 
 const AdminRecords = () => {
   const [activeTab, setActiveTab] = useState("Food Order");
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const cacheRef = useRef({});
 
 
   // Mock: Selected fields for each booking type
   const bookingFields = {
-    "Food Order": ["userName", "status",],
-    "Rental Bookings": ["name", "vehicleName", "startDate", "endDate",],
+    "Food Order": ["userName", "status"],
+    "Rental Bookings": ["name", "vehicleName", "startDate", "endDate"],
     "Hall Bookings": ["name", "hallName", "startDate", "endDate", "status"],
     "Room Bookings": ["name", "room", "startDate", "endDate", "status"],
+    "Parking Bookings": ["userName", "spotName", "spotCategory", "startDate", "endDate", "totalRate", "status"],
   };
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchBookings = async () => {
-      setLoading(true);
+      // Check cache first
+      const cached = cacheRef.current[activeTab];
+      if (cached) {
+        setBookings(cached);
+        setLoading(false);
+      } else {
+        setBookings([]);
+        setLoading(true);
+      }
+
       let data = [];
       if (activeTab === "Food Order") data = await getFoodOrders();
       if (activeTab === "Rental Bookings") data = await getRentalVehicles();
       if (activeTab === "Hall Bookings") data = await fetchHallsBookings();
       if (activeTab === "Room Bookings") data = await getRoomBookings();
+      if (activeTab === "Parking Bookings") data = await getParkingBookings();
 
       // Sort bookings by date descending (newest first)
       const sortedData = data.sort((a, b) => {
@@ -44,11 +60,20 @@ const AdminRecords = () => {
         };
         return getTimestamp(b) - getTimestamp(a);
       });
-      setBookings(sortedData);
-      setLoading(false);
+
+      cacheRef.current[activeTab] = sortedData;
+
+      if (isMounted) {
+        setBookings(sortedData);
+        setLoading(false);
+      }
     };
 
     fetchBookings();
+
+    return () => {
+      isMounted = false;
+    };
   }, [activeTab]);
 
   const records = [
@@ -68,13 +93,17 @@ const AdminRecords = () => {
       name: "Room Bookings",
       comp: Rooms,
     },
+    {
+      name: "Parking Bookings",
+      comp: ParkingBookings,
+    },
   ]
 
   return (
     <div className="p-4">
       {/* Tabs */}
       <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:justify-center sm:gap-4 max-w-md sm:max-w-none mx-auto mb-8">
-        {["Food Order", "Rental Bookings", "Hall Bookings", "Room Bookings"].map((tab) => (
+        {["Food Order", "Rental Bookings", "Hall Bookings", "Room Bookings", "Parking Bookings"].map((tab) => (
           <button
             key={tab}
             className={`px-3 py-2.5 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shadow-md border text-center ${activeTab === tab
