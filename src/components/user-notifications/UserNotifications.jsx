@@ -10,6 +10,8 @@ import { getRentalVehiclesNotification } from "../../services/vehicleRentalServi
 import UserControlsRoom from "../room-booking/UserControlsRoom.jsx";
 import { getRoomBookingsNotification } from "../../services/roomBookingService.js";
 import UserControlsHall from "../wedding-hall/UserControlsHall.jsx";
+import UserControlsParking from "../paking/UserControlsParking.jsx";
+import { getParkingBookingsNotification } from "../../services/parkingService.js";
 import Tabs from "./Tabs.jsx";
 
 import { toast } from "sonner";
@@ -20,10 +22,13 @@ const UserNotifications = () => {
   const [foodNotifications, setFoodNotifications] = useState([]);
   const [rentalVehicles, setRentalVehicles] = useState([]);
   const [roomNotifications, setRoomNotifications] = useState([]);
+  const [parkingNotifications, setParkingNotifications] = useState([]);
+  const [deletingId, setDeletingId] = useState(null);
   const [loading, setLoading] = useState({
     food: true,
     rental: true,
     room: true,
+    parking: true,
   });
 
 
@@ -64,29 +69,55 @@ const UserNotifications = () => {
         room: false,
       }))
     };
-    getRoomNotifications();
-    fetchNotifications();
-    fetchRentalInfo();
+    const fetchParkingInfo = async () => {
+      const parkingNotis = await getParkingBookingsNotification();
+      const myNotis = parkingNotis.filter((noti) => {
+        return noti.userId === currentUser.uid;
+      });
+      setParkingNotifications(myNotis);
+      setLoading((prev) => ({
+        ...prev,
+        parking: false,
+      }));
+    };
+    if (currentUser) {
+      getRoomNotifications();
+      fetchNotifications();
+      fetchRentalInfo();
+      fetchParkingInfo();
+    }
   }, [currentUser, activeTab]);
 
   const handleDelete = async (notificationId, collectionNotification) => {
-    await deleteNotification(notificationId, collectionNotification);
-    toast.success(NOTIFICATIONS.NOTIFICATION_DELETED);
-    setFoodNotifications((prevNotifications) =>
-      prevNotifications.filter(
-        (notification) => notification.id !== notificationId
-      )
-    );
-    setRentalVehicles((prevNotifications) =>
-      prevNotifications.filter(
-        (notification) => notification.id !== notificationId
-      )
-    );
-    setRoomNotifications((prevNotifications) =>
-      prevNotifications.filter(
-        (notification) => notification.id !== notificationId
-      )
-    );
+    try {
+      setDeletingId(notificationId);
+      await deleteNotification(notificationId, collectionNotification);
+      toast.success(NOTIFICATIONS.NOTIFICATION_DELETED);
+      setFoodNotifications((prevNotifications) =>
+        prevNotifications.filter(
+          (notification) => notification.id !== notificationId
+        )
+      );
+      setRentalVehicles((prevNotifications) =>
+        prevNotifications.filter(
+          (notification) => notification.id !== notificationId
+        )
+      );
+      setRoomNotifications((prevNotifications) =>
+        prevNotifications.filter(
+          (notification) => notification.id !== notificationId
+        )
+      );
+      setParkingNotifications((prevNotifications) =>
+        prevNotifications.filter(
+          (notification) => notification.id !== notificationId
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setDeletingId(null);
+    }
   };
 
   return (
@@ -97,6 +128,7 @@ const UserNotifications = () => {
           handleDelete={handleDelete}
           notifications={foodNotifications}
           loading={loading}
+          deletingId={deletingId}
         />
       )}
       {activeTab === "rental-orders" && (
@@ -105,6 +137,7 @@ const UserNotifications = () => {
             rentalVehicles={rentalVehicles}
             handleDelete={handleDelete}
             loading={loading}
+            deletingId={deletingId}
           />
         </div>
       )}
@@ -114,13 +147,23 @@ const UserNotifications = () => {
             roomNotifications={roomNotifications}
             handleDelete={handleDelete}
             loading={loading}
-
+            deletingId={deletingId}
           />
         </div>
       )}
       {activeTab === "hall-bookings" && (
         <div>
           <UserControlsHall handleDelete={handleDelete} />
+        </div>
+      )}
+      {activeTab === "parking-bookings" && (
+        <div>
+          <UserControlsParking
+            parkingNotifications={parkingNotifications}
+            handleDelete={handleDelete}
+            loading={loading}
+            deletingId={deletingId}
+          />
         </div>
       )}
     </div>

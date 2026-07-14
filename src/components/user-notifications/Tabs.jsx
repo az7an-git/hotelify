@@ -14,6 +14,9 @@ function Tabs({activeTab, setActiveTab}) {
         {
           order: "hall-bookings",
         },
+        {
+          order: "parking-bookings",
+        },
       ];
   return (
     <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:justify-center sm:gap-4 max-w-md sm:max-w-none mx-auto mb-8">

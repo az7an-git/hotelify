@@ -1,7 +1,7 @@
 import React from 'react'
 import Loader from '../common/loader/Loader'
 
-function UserFoodNotification({ notifications, handleDelete, loading }) {
+function UserFoodNotification({ notifications, handleDelete, loading, deletingId }) {
   return (
     <div className="space-y-6 mx-auto p-4 flex justify-between items-center flex-wrap">
       {loading.food ? <Loader msg={"Fetching Food Updates for you"} /> : notifications.length > 0 ? (
@@ -21,10 +21,11 @@ function UserFoodNotification({ notifications, handleDelete, loading }) {
                 ))}
               </ul>
               <button
+                disabled={deletingId === notification.id}
                 onClick={() => handleDelete(notification.id, 'food-notifications')}
-                className="mt-4 px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-300 transform hover:bg-red-600 hover:scale-105"
+                className="mt-4 px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-300 transform hover:bg-red-600 hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
               >
-                Delete
+                {deletingId === notification.id ? "Deleting..." : "Delete"}
               </button>
             </div>
           ))}

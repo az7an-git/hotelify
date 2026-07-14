@@ -2,16 +2,16 @@ import React from "react";
 
 function Tabs({ setActiveTab, activeTab }) {
   return (
-    <div className="flex gap-4 mb-4 flex-wrap max-md:space-y-3">
+    <div className="flex gap-4 mb-8 flex-wrap">
       {["Food Orders", "Rental Orders", "Room Orders", "Hall Orders"].map(
         (tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 shadow-md ${
+            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shadow-md border text-center ${
               tab === activeTab
-                ? "bg-amber-600 text-white border border-amber-500"
-                : "bg-white/40 text-slate-600 hover:text-amber-700 hover:bg-white/60 border border-white/50 shadow-sm rounded-xl backdrop-blur-md transition-all"
+                ? "bg-amber-600 text-white border-amber-500 shadow-amber-500/10"
+                : "bg-white/50 text-slate-600 border-white/60 hover:text-amber-700 hover:bg-white/80 backdrop-blur-md hover:shadow-lg"
             }`}
           >
             {tab}

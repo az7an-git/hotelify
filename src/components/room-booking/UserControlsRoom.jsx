@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from '../common/loader/Loader';
 
-function UserControlsRoom({ roomNotifications, handleDelete, loading }) {
+function UserControlsRoom({ roomNotifications, handleDelete, loading, deletingId }) {
 
   return (
     <div className="container mx-auto p-4 flex flex-wrap justify-between items-center">
@@ -23,10 +23,11 @@ function UserControlsRoom({ roomNotifications, handleDelete, loading }) {
 
                 <p className='font-semibold text-gray-600 italic'>Booked Room: {room.roomName}</p>
                 <button
+                  disabled={deletingId === room.id}
                   onClick={() => handleDelete(room.id, 'room-booking-notifications')}
-                  className="mt-3 px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-300 hover:bg-red-600 hover:scale-105"
+                  className="mt-3 px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-300 hover:bg-red-600 hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
                 >
-                  Delete
+                  {deletingId === room.id ? "Deleting..." : "Delete"}
                 </button>
               </div>
             ))

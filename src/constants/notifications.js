@@ -9,6 +9,10 @@ export const NOTIFICATIONS = {
   HALL_BOOKING_SUCCESS: "Booking request sent!",
   HALL_BOOKING_LOGIN_REQUIRED: "Please log in to book",
   HALL_BOOKING_ERROR: "Failed to book hall. Please try again.",
+  PARKING_BOOKING_SUCCESS: "Parking spot booked successfully!",
+  PARKING_BOOKING_ERROR: "Failed to book parking spot. Please try again.",
+  PARKING_BOOKING_LOGIN_REQUIRED: "Please log in to book a parking spot.",
+  PARKING_BOOKING_DATES_REQUIRED: "Please select both start and end dates.",
 
   // Registrations (Admin)
   ROOM_REG_SUCCESS: "Room added successfully!",
