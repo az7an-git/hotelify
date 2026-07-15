@@ -25,7 +25,7 @@ function UserControlsRoom({ roomNotifications, handleDelete, loading, deletingId
                 <button
                   disabled={deletingId === room.id}
                   onClick={() => handleDelete(room.id, 'room-booking-notifications')}
-                  className="mt-3 px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-300 hover:bg-red-600 hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
+                  className="mt-3 px-4 py-2 bg-red-500 text-white rounded-full transition duration-300 hover:bg-red-600 hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
                 >
                   {deletingId === room.id ? "Deleting..." : "Delete"}
                 </button>

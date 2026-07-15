@@ -25,7 +25,7 @@ function UserRentalNotifications({rentalVehicles, handleDelete, loading, deletin
           <button
             disabled={deletingId === vehicleNotification.id}
             onClick={() => handleDelete(vehicleNotification.id, 'vehicle-rental-notifications')}
-            className="mt-3 px-4 py-2 bg-red-500 text-slate-800 rounded-full transition duration-300 hover:bg-red-600 hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
+            className="mt-3 px-4 py-2 bg-red-500 text-white rounded-full transition duration-300 hover:bg-red-600 hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
           >
             {deletingId === vehicleNotification.id ? "Deleting..." : "Delete"}
           </button>
