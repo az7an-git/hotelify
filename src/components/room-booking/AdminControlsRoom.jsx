@@ -43,12 +43,11 @@ function AdminControlsRoom({ isActive }) {
       await updateRoomOrderStatus(roomId, newStatus);
 
       const notificationMessage = {
-        booked: "Your Booking has been accepted!",
+        booked: "Your booking has been accepted!",
         rejected: "Your booking has been rejected.",
-        checkedIn: "Check in successfull! Enjoy your stay",
-        checkedOut: "Check out successfull! come again",
+        checkedIn: "Check in successful! Enjoy your stay",
+        checkedOut: "Check out successful! Come again",
       };
-      const RoomStatus = newStatus;
 
       await sendRoomBookingNotification(
         userId,
@@ -57,7 +56,7 @@ function AdminControlsRoom({ isActive }) {
         userName,
         bookedFrom,
         bookedUntil,
-        RoomStatus
+        newStatus
       );
 
       const updatedRooms = rooms.map((room) =>
