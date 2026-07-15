@@ -5,13 +5,13 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAfzPiRFc8S8cbEkZX-NYSby0HtyXN8xAs",
-  authDomain: "hotelify-azlan.firebaseapp.com",
-  projectId: "hotelify-azlan",
-  storageBucket: "hotelify-azlan.firebasestorage.app",
-  messagingSenderId: "778083460065",
-  appId: "1:778083460065:web:1e243d1ea1b2f31e22a8a0",
-  measurementId: "G-VJPQNNQVRX"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -19,6 +19,6 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
-export const ADMIN_UID = "FY0EuhiBlOaMH7ufUEXxPKsSKeC3";
+export const ADMIN_UID = import.meta.env.VITE_ADMIN_UID;
 
 
