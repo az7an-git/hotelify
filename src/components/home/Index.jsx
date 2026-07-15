@@ -4,7 +4,7 @@ import Loader from "../common/loader/Loader";
 
 import { motion } from "framer-motion";
 
-const Hero = lazy(() => import('./Hero'));
+import Hero from "./Hero";
 const About = lazy(() => import('./About'));
 const Rooms = lazy(() => import('./Rooms'));
 const Amenity = lazy(() => import('./Amenities'));
