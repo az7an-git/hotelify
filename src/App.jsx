@@ -19,6 +19,7 @@ import WelcomePage from './WelcomePage';
 
 import ImgLoader from './components/common/loader/ImgLoader';
 import { Toaster } from 'sonner';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App = () => {
   const Layout = React.lazy(() => import('./layout/Layout'));
@@ -26,6 +27,7 @@ const App = () => {
   return (
     <Suspense fallback={<ImgLoader />}>
       <Toaster richColors position="top-right" />
+      <SpeedInsights />
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
