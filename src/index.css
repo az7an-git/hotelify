@@ -273,3 +273,11 @@ input[type='number'] {
 .react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
   border-color: #ffffff !important;
 }
+
+/* Fix text selection color on Sonner toasts so text remains readable against bright backgrounds */
+[data-sonner-toast] *::selection,
+[data-sonner-toast]::selection {
+  background: rgba(0, 0, 0, 0.4) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
