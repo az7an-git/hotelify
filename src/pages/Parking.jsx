@@ -1,5 +1,5 @@
 import React from 'react'
-import ParkingMain from '../components/paking/Index'
+import ParkingMain from '../components/parking/Index'
 
 function Parking() {
   return (

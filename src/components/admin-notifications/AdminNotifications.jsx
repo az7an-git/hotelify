@@ -3,7 +3,7 @@ import AdminOrders from "../food-order/AdminOrder";
 import AdminControls from "../rental/AdminControls";
 import AdminControlsRoom from "../room-booking/AdminControlsRoom";
 import AdminControlsHall from "../wedding-hall/AdminControlsHall";
-import AdminControlsParking from "../paking/AdminControlsParking";
+import AdminControlsParking from "../parking/AdminControlsParking";
 
 function AdminNotifications() {
   const [activeTab, setActiveTab] = useState("food-orders");

@@ -7,9 +7,8 @@ function BookingForm({ handleBooking, name, setName, contact, setContact, cnic, 
     const formattedDate = currentDate.toISOString().split("T")[0];
     setToday(formattedDate);
   }, []);
-  const inputClass = "w-full bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-3 outline-none transition-colors text-sm disabled:opacity-50 mb-3";
-  const dateInputClass =
-    "w-full bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-3 outline-none focus:border-amber-500 transition-colors text-sm disabled:opacity-50";
+  const inputClass = "w-full rounded-xl px-4 py-3 outline-none transition-colors text-sm disabled:opacity-50 mb-3 focus:ring-1 focus:ring-amber-400/50";
+  const dateInputClass = "w-full rounded-xl px-4 py-3 outline-none transition-colors text-sm disabled:opacity-50 focus:ring-1 focus:ring-amber-400/50";
 
   return (
     <form onSubmit={handleBooking} className="mt-4 flex flex-col justify-center items-center w-full max-w-sm mx-auto">
@@ -61,7 +60,7 @@ function BookingForm({ handleBooking, name, setName, contact, setContact, cnic, 
           type="date"
           value={startDate}
           onChange={(e) => {
-            setStartDate(e.target.value);r
+            setStartDate(e.target.value);
           }}
           className={dateInputClass}
           max={endDate}
@@ -85,8 +84,8 @@ function BookingForm({ handleBooking, name, setName, contact, setContact, cnic, 
         />
       </div>
 
-      <div className="mb-4 bg-white/40 border border-white/60 px-6 py-2 rounded-full shadow-sm backdrop-blur-md">
-        <p className='font-bold text-slate-700 text-sm'>Total: <span className="text-amber-600">${totalRate}</span></p>
+      <div className="mb-4 bg-slate-900/40 border border-gold-400/20 px-6 py-2 rounded-full shadow-sm backdrop-blur-md">
+        <p className='font-bold text-slate-200 text-sm'>Total: <span className="text-amber-500">${totalRate}</span></p>
       </div>
       <button
         type="submit"

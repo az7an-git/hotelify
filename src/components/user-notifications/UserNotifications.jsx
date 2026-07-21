@@ -10,7 +10,7 @@ import { getRentalVehiclesNotification } from "../../services/vehicleRentalServi
 import UserControlsRoom from "../room-booking/UserControlsRoom.jsx";
 import { getRoomBookingsNotification } from "../../services/roomBookingService.js";
 import UserControlsHall from "../wedding-hall/UserControlsHall.jsx";
-import UserControlsParking from "../paking/UserControlsParking.jsx";
+import UserControlsParking from "../parking/UserControlsParking.jsx";
 import { getParkingBookingsNotification } from "../../services/parkingService.js";
 import Tabs from "./Tabs.jsx";
 

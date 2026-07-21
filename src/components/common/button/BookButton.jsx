@@ -5,7 +5,7 @@ function BookButton({text, setIsBooking, isBooking, loading}) {
   return (
     <div>
       <button
-        className='subButton mt-3 flex items-center justify-center gap-2'
+        className='glass-button-primary mt-3 flex items-center justify-center gap-2'
         type='submit'
         onClick={() => setIsBooking(!isBooking)}
         disabled={loading}
