@@ -15,7 +15,7 @@ import RegistrationPage from './pages/RegistrationPage';
 import ReportsPage from './pages/ReportsPage';
 import UserRecordsPage from './pages/UserRecordsPage';
 import AdminRecordsPage from './pages/AdminRecordsPage';
-import WelcomePage from './WelcomePage';
+import WelcomePage from './pages/WelcomePage';
 
 import ImgLoader from './components/common/loader/ImgLoader';
 import { Toaster } from 'sonner';
