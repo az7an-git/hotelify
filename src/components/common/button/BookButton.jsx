@@ -1,7 +1,7 @@
 import React from 'react'
 import './submitButton.css'
 
-function BookButton({text, setIsBooking, isBooking, loading}) {
+function BookButton({ text, setIsBooking, isBooking, loading }) {
   return (
     <div>
       <button
