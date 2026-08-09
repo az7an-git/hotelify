@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../../../firebase/Firebase";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { NOTIFICATIONS, AUTH_ERRORS } from "../../../constants/notifications";
-import { FaEye, FaEyeSlash, FaEnvelope, FaLock, FaBuilding, FaInfoCircle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaEnvelope, FaLock, FaBuilding, FaInfoCircle, FaUser } from "react-icons/fa";
 import logo from "../../../assets/common/magnum.png";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +25,8 @@ const Auth = () => {
 
   const handleAuth = async (e) => {
     e.preventDefault();
-    if (!email.trim() || !password.trim()) {
+    const fullName = `${firstName.trim()} ${lastName.trim()}`.trim();
+    if (!email.trim() || !password.trim() || (!isLogin && (!firstName.trim() || !lastName.trim()))) {
       toast.error("Please fill in all fields.");
       return;
     }
@@ -33,7 +37,12 @@ const Auth = () => {
         toast.success(NOTIFICATIONS.AUTH_LOGIN_SUCCESS);
         navigate("/");
       } else {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        if (userCredential.user && fullName) {
+          await updateProfile(userCredential.user, {
+            displayName: fullName
+          });
+        }
         toast.success(NOTIFICATIONS.AUTH_SIGNUP_SUCCESS);
         navigate("/");
       }
@@ -105,6 +114,44 @@ const Auth = () => {
 
             {/* Form */}
             <form onSubmit={handleAuth} className="space-y-4">
+              {/* First & Last Name inputs (Only shown during Sign Up - side-by-side on sm+) */}
+              {!isLogin && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider block">First Name</label>
+                    <div className="relative">
+                      <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                        <FaUser />
+                      </span>
+                      <input
+                        type="text"
+                        placeholder="John"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        className="w-full pl-10 pr-3 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-150 disabled:opacity-50 text-slate-800 font-medium"
+                        disabled={loading}
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider block">Last Name</label>
+                    <div className="relative">
+                      <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                        <FaUser />
+                      </span>
+                      <input
+                        type="text"
+                        placeholder="Doe"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        className="w-full pl-10 pr-3 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-150 disabled:opacity-50 text-slate-800 font-medium"
+                        disabled={loading}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Email input */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider block">Email Address</label>
