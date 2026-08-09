@@ -11,6 +11,7 @@ const UserChat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -36,16 +37,26 @@ const UserChat = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (newMessage.trim() === '') return;
+    if (newMessage.trim() === '' || sending) return;
   
-    await addDoc(collection(db, 'messages'), {
-      userId: currentUser.uid,
-      senderId: currentUser.uid,
-      message: newMessage,
-      timestamp: serverTimestamp(),
-    });
-  
-    setNewMessage('');
+    setSending(true);
+    try {
+      const displayName = currentUser.displayName || (currentUser.email ? currentUser.email.split('@')[0] : 'User');
+      await addDoc(collection(db, 'messages'), {
+        userId: currentUser.uid,
+        senderId: currentUser.uid,
+        senderName: displayName,
+        senderEmail: currentUser.email || '',
+        message: newMessage,
+        timestamp: serverTimestamp(),
+      });
+    
+      setNewMessage('');
+    } catch (err) {
+      console.error("Error sending message:", err);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -84,13 +95,19 @@ const UserChat = () => {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           placeholder="Type a message..."
-          className="flex-1 bg-white/40 backdrop-blur-md shadow-sm border border-white/50 text-slate-700 border border-white/60 rounded-full px-5 py-3 outline-none focus:border-teal-500 transition-colors"
+          disabled={sending}
+          className="flex-1 bg-white/40 backdrop-blur-md shadow-sm border border-white/50 text-slate-700 border border-white/60 rounded-full px-5 py-3 outline-none focus:border-teal-500 transition-colors disabled:opacity-60"
         />
         <button
           type="submit"
-          className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 px-6 py-3 rounded-full font-bold transition-all duration-200 active:scale-95 shadow-md shadow-teal-500/10"
+          disabled={sending || !newMessage.trim()}
+          className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-300 hover:to-gold-500 text-slate-950 px-6 py-3 rounded-full font-bold transition-all duration-200 active:scale-95 shadow-md shadow-gold-500/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[80px]"
         >
-          Send
+          {sending ? (
+            <span className="animate-spin h-4 w-4 border-2 border-slate-950 border-t-transparent rounded-full" />
+          ) : (
+            "Send"
+          )}
         </button>
       </form>
     </div>

@@ -71,44 +71,31 @@ const AdminChat = () => {
   const handleSideMenu = () => {
     setShowSideMenu(!showSideMenu);
   };
-const handleClick = () => {
-  console.log('clicked')
-  console.log(viewMessage)
-  setViewMessage(false)
-}
+  const handleClick = () => {
+    console.log('clicked')
+    console.log(viewMessage)
+    setViewMessage(false)
+  }
   return (
-   <>
-     <div className="flex relative max-lg:hidden">
-      {/*  Sidebar toggler */}
+    <div className="flex relative w-full flex-col lg:flex-row">
+      {/* Sidebar toggler (Desktop) */}
       <SidebarToggler
         handleSideMenu={handleSideMenu}
         showSideMenu={showSideMenu}
       />
-      {/* left Panel - Chat Selector */}
-      <ChatSelector
-        users={users}
-        showSideMenu={showSideMenu}
-        selectedUser={selectedUser}
-        setSelectedUser={setSelectedUser}
-        loading={loading}
-        setViewMessage={setViewMessage}
-      />
 
-      {/* Right Panel - Chat Window */}
-      <MessagesPanel
-        selectedUser={selectedUser}
-        messages={messages}
-        newMessage={newMessage}
-        setNewMessage={setNewMessage}
-        handleSendMessage={handleSendMessage}
-      />
-    </div>
-    <div className="flex relative lg:hidden">
-      {/*  Sidebar toggler */}
-     <div className={`${viewMessage ? '' : 'hidden'}`} 
-     onClick={handleClick}
-     ><IoArrowBack className="text-2xl font-semibold" /></div>
-      {/* left Panel - Chat Selector */}
+      {/* Back Button (Mobile when chat is selected) */}
+      {viewMessage && (
+        <button
+          onClick={handleClick}
+          className="lg:hidden flex items-center gap-2 mb-3 px-3 py-1.5 bg-white/40 backdrop-blur-md border border-white/50 rounded-full text-slate-800 font-semibold hover:text-blue-600 transition-all active:scale-95 cursor-pointer w-fit shadow-sm"
+        >
+          <IoArrowBack className="text-lg" />
+          <span className="text-xs font-bold">Back</span>
+        </button>
+      )}
+
+      {/* Left Panel - Chat Selector */}
       <ChatSelector
         users={users}
         showSideMenu={showSideMenu}
@@ -129,7 +116,6 @@ const handleClick = () => {
         viewMessage={viewMessage}
       />
     </div>
-   </>
   );
 };
 

@@ -7,7 +7,7 @@ function ChatSelector({users, showSideMenu, selectedUser, setSelectedUser, loadi
     setViewMessage(true);
   }
   return (
-    <div className={`w-1/4 border-r border-white/60 bg-white/40 backdrop-blur-md shadow-sm border border-white/50 p-3 h-[70vh] rounded-l-2xl ${showSideMenu ? 'flex flex-col' : 'hidden'} ${viewMessage ? 'max-lg:hidden' : 'max-lg:w-full max-lg:text-center'}`}>
+    <div className={`w-full lg:w-1/4 border-r-0 lg:border-r border-white/60 bg-white/40 backdrop-blur-md shadow-sm border border-white/50 p-3 h-[70vh] rounded-2xl lg:rounded-r-none lg:rounded-l-2xl ${showSideMenu ? 'flex flex-col' : 'hidden'} ${viewMessage ? 'max-lg:hidden' : 'max-lg:w-full'}`}>
     <h3 
       className="text-lg font-bold tracking-wide mb-4 text-slate-800 border-b border-white/60 pb-2">
       Users
