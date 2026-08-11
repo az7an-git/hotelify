@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { saveFoodOrder } from "../../services/foodService";
 import FoodCard from "./FoodCard";
-import { auth } from "../../firebase/Firebase";
+import { auth, ADMIN_UID } from "../../firebase/Firebase";
+import { useAuth } from "../../contexts/authContext";
 import { fetchFoodItems } from "../../services/foodRegService";
 import { Timestamp } from "firebase/firestore";
 import Loader from "../common/loader/Loader";
@@ -25,6 +26,9 @@ const FoodOrderMain = () => {
   const [foodItems, setFoodItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { currentUser } = useAuth();
+
+  const isAdmin = currentUser && currentUser.uid === ADMIN_UID;
 
   useEffect(() => {
     const fetchAllFoodOrders = async () => {
@@ -42,6 +46,10 @@ const FoodOrderMain = () => {
       ...prevOrder,
       [foodItem.id]: { ...foodItem, quantity },
     }));
+  };
+
+  const handleDeletedFood = (deletedId) => {
+    setFoodItems(prev => prev.filter(item => item.id !== deletedId));
   };
 
   const handleSubmitOrder = async () => {
@@ -69,13 +77,13 @@ const FoodOrderMain = () => {
       try {
         await saveFoodOrder(orderData);
         toast.success(NOTIFICATIONS.FOOD_ORDER_SUCCESS);
+        setOrder({});
         setFormData({
           name: "",
           contact: "",
           address: "",
         });
       } catch (error) {
-        console.error("Error placing the order:", error);
         toast.error(NOTIFICATIONS.FOOD_ORDER_ERROR);
       } finally {
         setIsSubmitting(false);
@@ -111,6 +119,7 @@ const FoodOrderMain = () => {
                 key={foodItem.id}
                 foodItem={foodItem}
                 onQuantityChange={handleQuantityChange}
+                onDeleted={handleDeletedFood}
               />
             ))
           ) : (
@@ -124,13 +133,15 @@ const FoodOrderMain = () => {
           No items Found
         </div>
       )}
-      <BookingForm
-        order={order}
-        formData={formData}
-        setFormData={setFormData}
-        handleSubmitOrder={handleSubmitOrder}
-        isSubmitting={isSubmitting}
-      />
+      {!isAdmin && (
+        <BookingForm
+          order={order}
+          formData={formData}
+          setFormData={setFormData}
+          handleSubmitOrder={handleSubmitOrder}
+          isSubmitting={isSubmitting}
+        />
+      )}
     </div>
   );
 };
