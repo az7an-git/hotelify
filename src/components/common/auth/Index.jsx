@@ -25,19 +25,24 @@ const Auth = () => {
 
   const handleAuth = async (e) => {
     e.preventDefault();
-    const fullName = `${firstName.trim()} ${lastName.trim()}`.trim();
-    if (!email.trim() || !password.trim() || (!isLogin && (!firstName.trim() || !lastName.trim()))) {
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPassword = password.trim();
+    const cleanFirstName = firstName.trim();
+    const cleanLastName = lastName.trim();
+    const fullName = `${cleanFirstName} ${cleanLastName}`.trim();
+
+    if (!cleanEmail || !cleanPassword || (!isLogin && (!cleanFirstName || !cleanLastName))) {
       toast.error("Please fill in all fields.");
       return;
     }
     setLoading(true);
     try {
       if (isLogin) {
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, cleanEmail, cleanPassword);
         toast.success(NOTIFICATIONS.AUTH_LOGIN_SUCCESS);
         navigate("/");
       } else {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(auth, cleanEmail, cleanPassword);
         if (userCredential.user && fullName) {
           await updateProfile(userCredential.user, {
             displayName: fullName
@@ -55,11 +60,11 @@ const Auth = () => {
     }
   };
 
-  const handleAutofillAdmin = () => {
-    setEmail("hotelifyadmin@gmail.com");
-    setPassword("Admin@123");
-    toast.success("Admin credentials autofilled!");
-  };
+  // const handleAutofillAdmin = () => {
+  //   setEmail("hotelifyadmin@gmail.com");
+  //   setPassword("Admin@123");
+  //   toast.success("Admin credentials autofilled!");
+  // };
 
   return (
     <div className="auth-container w-full max-w-5xl mx-auto py-8 lg:py-16 lg:px-4">
@@ -234,7 +239,7 @@ const Auth = () => {
             </div>
 
             {/* Demo Credentials Alert Helper */}
-            {isLogin && (
+            {/* {isLogin && (
               <div
                 onClick={handleAutofillAdmin}
                 className="p-4 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm rounded-2xl cursor-pointer transition-all duration-150 flex items-start gap-3 group"
@@ -251,7 +256,7 @@ const Auth = () => {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
           </div>
         </div>
 

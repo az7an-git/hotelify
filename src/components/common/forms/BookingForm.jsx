@@ -1,109 +1,176 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { FaTimes, FaCalendarAlt } from 'react-icons/fa';
 
-function BookingForm({ handleBooking, name, setName, contact, setContact, cnic, setCnic, startDate, setStartDate, endDate, setEndDate, totalRate, loading }) {
+function BookingForm({ handleBooking, name, setName, contact, setContact, cnic, setCnic, startDate, setStartDate, endDate, setEndDate, totalRate, loading, onClose, title = "Complete Reservation" }) {
   const [today, setToday] = useState("");
+
   useEffect(() => {
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().split("T")[0];
     setToday(formattedDate);
   }, []);
-  const inputClass = "w-full rounded-xl px-4 py-3 outline-none transition-colors text-sm disabled:opacity-50 mb-3 focus:ring-1 focus:ring-amber-400/50";
-  const dateInputClass = "w-full rounded-xl px-4 py-3 outline-none transition-colors text-sm disabled:opacity-50 focus:ring-1 focus:ring-amber-400/50";
 
-  return (
-    <form onSubmit={handleBooking} className="mt-4 flex flex-col justify-center items-center w-full max-w-sm mx-auto">
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => {
-          const value = e.target.value;
-          if (value.length <= 15) {
-            setName(e.target.value);
-          }
-        }}
-        placeholder="Name"
-        className={inputClass}
-        disabled={loading}
-        required
-      />
-      <input
-        type="number"
-        value={contact}
-        onChange={(e) => {
-          const value = e.target.value;
-          if (value.length <= 11) {
-            setContact(e.target.value);
-          }
-        }}
-        placeholder="Contact Number"
-        className={inputClass}
-        disabled={loading}
-        required
-      />
-      <input
-        type="number"
-        value={cnic}
-        onChange={(e) => {
-          const value = e.target.value;
-          if (value.length <= 13) {
-            setCnic(e.target.value)
-          }
-        }}
-        placeholder="CNIC (no hyphens)"
-        className={inputClass}
-        disabled={loading}
-        required
-      />
-      <div className="w-full flex flex-col gap-1 mb-3">
-        <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider">Start Date</label>
-        <input
-          type="date"
-          value={startDate}
-          onChange={(e) => {
-            setStartDate(e.target.value);
-          }}
-          className={dateInputClass}
-          max={endDate}
-          min={today}
-          disabled={loading}
-          required
-        />
-      </div>
-      <div className="w-full flex flex-col gap-1 mb-4">
-        <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider">End Date</label>
-        <input
-          type="date"
-          value={endDate}
-          onChange={(e) => {
-            setEndDate(e.target.value);
-          }}
-          className={dateInputClass}
-          min={startDate}
-          disabled={loading}
-          required
-        />
-      </div>
+  const inputStyle = {
+    backgroundColor: '#070b13',
+    color: '#ffffff',
+    borderColor: '#334155'
+  };
 
-      <div className="mb-4 bg-slate-900/40 border border-gold-400/20 px-6 py-2 rounded-full shadow-sm backdrop-blur-md">
-        <p className='font-bold text-slate-200 text-sm'>Total: <span className="text-amber-500">${totalRate}</span></p>
-      </div>
-      <button
-        type="submit"
-        disabled={loading}
-        className="glass-button-primary w-full py-3.5 rounded-full text-base font-bold shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300 transform active:scale-95 mt-3 flex items-center justify-center gap-2 disabled:opacity-50"
+  const modalContent = (
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{ backgroundColor: '#0f172a', borderColor: '#d4a44c' }}
+        className="relative w-full max-w-md border rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] p-6 sm:p-8 space-y-5 text-slate-100 overflow-hidden"
       >
-        {loading ? (
-          <>
-            <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
-            <span>Applying...</span>
-          </>
-        ) : "Apply Booking"}
-      </button>
-    </form>
-  )
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="flex items-center gap-2.5">
+            <FaCalendarAlt style={{ color: '#fbbf24' }} className="text-lg" />
+            <h3 style={{ color: '#ffffff' }} className="text-lg font-bold">
+              {title}
+            </h3>
+          </div>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              style={{ backgroundColor: '#1e293b', color: '#cbd5e1' }}
+              className="w-8 h-8 rounded-full flex items-center justify-center transition-colors text-sm hover:text-white"
+            >
+              <FaTimes />
+            </button>
+          )}
+        </div>
+
+        {/* Form Body */}
+        <form onSubmit={handleBooking} className="space-y-4">
+          <div className="space-y-1">
+            <label style={{ color: '#94a3b8' }} className="text-[11px] font-bold uppercase tracking-wider">Full Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => {
+                if (e.target.value.length <= 25) setName(e.target.value);
+              }}
+              placeholder="e.g. John Doe"
+              style={inputStyle}
+              className="w-full rounded-xl px-4 py-2.5 outline-none transition-all text-sm border focus:border-amber-400 placeholder-slate-500"
+              disabled={loading}
+              required
+            />
+          </div>
+
+          <div className="space-y-1">
+            <label style={{ color: '#94a3b8' }} className="text-[11px] font-bold uppercase tracking-wider">Contact Number</label>
+            <input
+              type="number"
+              value={contact}
+              onChange={(e) => {
+                if (e.target.value.length <= 12) setContact(e.target.value);
+              }}
+              placeholder="e.g. 03001234567"
+              style={inputStyle}
+              className="w-full rounded-xl px-4 py-2.5 outline-none transition-all text-sm border focus:border-amber-400 placeholder-slate-500"
+              disabled={loading}
+              required
+            />
+          </div>
+
+          <div className="space-y-1">
+            <label style={{ color: '#94a3b8' }} className="text-[11px] font-bold uppercase tracking-wider">CNIC (no hyphens)</label>
+            <input
+              type="number"
+              value={cnic}
+              onChange={(e) => {
+                if (e.target.value.length <= 13) setCnic(e.target.value);
+              }}
+              placeholder="e.g. 4210112345671"
+              style={inputStyle}
+              className="w-full rounded-xl px-4 py-2.5 outline-none transition-all text-sm border focus:border-amber-400 placeholder-slate-500"
+              disabled={loading}
+              required
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1">
+              <label style={{ color: '#94a3b8' }} className="text-[11px] font-bold uppercase tracking-wider">Start Date</label>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                style={inputStyle}
+                className="w-full rounded-xl px-3 py-2 outline-none text-xs border focus:border-amber-400 [color-scheme:dark]"
+                max={endDate}
+                min={today}
+                disabled={loading}
+                required
+              />
+            </div>
+            <div className="space-y-1">
+              <label style={{ color: '#94a3b8' }} className="text-[11px] font-bold uppercase tracking-wider">End Date</label>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                style={inputStyle}
+                className="w-full rounded-xl px-3 py-2 outline-none text-xs border focus:border-amber-400 [color-scheme:dark]"
+                min={startDate || today}
+                disabled={loading}
+                required
+              />
+            </div>
+          </div>
+
+          {/* Total Rate Display */}
+          <div style={{ backgroundColor: '#1e293b', borderColor: 'rgba(245, 158, 11, 0.4)' }} className="p-3 rounded-2xl border text-center my-2">
+            <p style={{ color: '#e2e8f0' }} className="text-xs font-semibold">
+              Total Calculated Amount: <span style={{ color: '#fbbf24' }} className="text-base font-bold ml-1">${totalRate}</span>
+            </p>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="pt-2 flex gap-3">
+            {onClose && (
+              <button
+                type="button"
+                onClick={onClose}
+                disabled={loading}
+                style={{ backgroundColor: '#1e293b', color: '#ffffff', borderColor: '#475569' }}
+                className="w-1/3 py-3 rounded-full text-xs font-bold border transition-all active:scale-95 hover:bg-slate-700 disabled:opacity-50"
+              >
+                Cancel
+              </button>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              style={{ background: 'linear-gradient(to right, #d4a44c, #b8862e)', color: '#070b13' }}
+              className={`${onClose ? 'w-2/3' : 'w-full'} py-3.5 rounded-full text-sm font-bold shadow-lg shadow-amber-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50`}
+            >
+              {loading ? (
+                <>
+                  <svg className="animate-spin h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  <span>Applying...</span>
+                </>
+              ) : "Apply Booking"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+
+  return ReactDOM.createPortal(modalContent, document.body);
 }
 
-export default BookingForm
+export default BookingForm;

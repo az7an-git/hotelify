@@ -19,8 +19,8 @@ function CustomDatePicker({
       maxDate={maxDate}
       placeholderText={placeholderText}
       onKeyDown={(e) => e.preventDefault()}
-      className={className || "bg-white/50 text-slate-800 border border-white/60 shadow-sm backdrop-blur-md focus:border-amber-400 focus:bg-white/80 focus:ring-2 focus:ring-amber-100 rounded-xl px-4 py-2.5 outline-none focus:border-amber-500 transition-colors text-sm w-full md:w-auto"}
-      wrapperClassName={wrapperClassName || "w-full md:w-auto"}
+      className={className || "bg-slate-900/80 text-white border border-gold-400/20 focus:border-gold-400/60 focus:ring-2 focus:ring-amber-400/20 rounded-xl px-4 py-2.5 outline-none transition-all duration-300 text-sm w-full placeholder-slate-400"}
+      wrapperClassName={wrapperClassName || "w-full"}
       {...props}
     />
   );
