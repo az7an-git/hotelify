@@ -51,7 +51,6 @@ const RoomBooking = ({ room, onSuccess }) => {
       toast.success(NOTIFICATIONS.ROOM_BOOKING_SUCCESS);
       if (onSuccess) onSuccess();
     } catch (error) {
-      console.error(error);
       toast.error(NOTIFICATIONS.ROOM_BOOKING_ERROR);
     } finally {
       setLoading(false);
@@ -73,6 +72,8 @@ const RoomBooking = ({ room, onSuccess }) => {
       setEndDate={setEndDate}
       totalRate={totalRate}
       loading={loading}
+      onClose={onSuccess}
+      title={`Reserve ${room.name}`}
     />
   );
 };
