@@ -52,7 +52,6 @@ const VehicleBooking = ({ vehicle, onSuccess }) => {
       toast.success(NOTIFICATIONS.VEHICLE_BOOKING_SUCCESS);
       if (onSuccess) onSuccess();
     } catch (error) {
-      console.error(error);
       toast.error(NOTIFICATIONS.VEHICLE_BOOKING_ERROR);
     } finally {
       setLoading(false);
@@ -74,6 +73,8 @@ const VehicleBooking = ({ vehicle, onSuccess }) => {
       setEndDate={setEndDate}
       totalRate={totalRate}
       loading={loading}
+      onClose={onSuccess}
+      title={`Rent ${vehicle.name}`}
     />
   );
 };
