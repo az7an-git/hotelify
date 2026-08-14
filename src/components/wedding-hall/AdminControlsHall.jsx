@@ -39,41 +39,60 @@ const AdminControlsHall = () => {
   return loading ? (
     <Loader msg={"Fetching Halls Notfications"} />
   ) : (
-    <div className="container mx-auto p-4 ">
+    <div className="p-4 sm:p-6">
       {activeBookings.length === 0 ? (
         <div className="text-center py-12 bg-white/40 backdrop-blur-md shadow-sm border border-white/60 rounded-2xl text-slate-600 font-bold text-sm sm:text-base max-w-md mx-auto animate-fade-in">
           No wedding hall bookings pending action.
         </div>
       ) : (
-        <div className="space-y-6 flex flex-wrap gap-6 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch w-full">
           {activeBookings.map((booking) => (
             <div
               key={booking.id}
-              className="p-6 bg-white border border-gray-200 shadow-lg rounded-lg transform transition duration-300 hover:shadow-xl hover:scale-105"
+              className="glass-card p-6 rounded-2xl w-full h-full flex flex-col justify-between border border-gold-400/20 shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-gold-400/40"
             >
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Booking from <span className='italic capitalize'>{booking.name}</span></h3>
-              <p className="text-xl font-semibold text-gray-700 mb-1">
-                {booking.hallName}
-              </p>
-              <p className="text-gray-600">
-                <strong>Contact:</strong>  {booking.contact}
-              </p>
-              <p className="text-gray-600 mb-3">
-                <strong>Status:</strong> {booking.status}
-              </p>
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-3">
+                    Booking from <span className="text-amber-400 font-semibold">{booking.name}</span>
+                  </h3>
+                  <div className="text-sm space-y-2 mb-4 text-slate-300">
+                    <p className="flex justify-between items-center gap-4">
+                      <span className="font-medium text-slate-400">Hall:</span>
+                      <span className="text-slate-100 font-semibold">{booking.hallName}</span>
+                    </p>
+                    <p className="flex justify-between items-center gap-4">
+                      <span className="font-medium text-slate-400">Contact:</span>
+                      <span className="text-slate-100 font-semibold">{booking.contact}</span>
+                    </p>
+                    <p className="flex justify-between items-center gap-4">
+                      <span className="font-medium text-slate-400">Status:</span>
+                      <span className={`px-2.5 py-0.5 text-xs rounded-full font-semibold capitalize border ${
+                        booking.status === 'Pending'
+                          ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+                          : booking.status === 'Accepted'
+                          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                          : 'bg-blue-500/20 text-blue-300 border-blue-500/30'
+                      }`}>
+                        {booking.status}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-              <div className="flex gap-4 mt-4">
+              <div className="flex gap-3 mt-auto pt-4 border-t border-white/10">
                 {booking.status === "Pending" && (
                   <>
                     <button
-                      onClick={() => updateBookingStatus(booking.id, "Accepted", booking.userId, booking.hallName, booking.name,)}
-                      className="px-5 py-2 font-semibold bg-green-500 text-slate-800 rounded-full shadow-md transform transition hover:bg-green-600 hover:-translate-y-1 focus:ring focus:ring-green-200"
+                      onClick={() => updateBookingStatus(booking.id, "Accepted", booking.userId, booking.hallName, booking.name)}
+                      className="flex-1 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition duration-200 active:scale-95 text-xs shadow-lg shadow-emerald-600/20"
                     >
                       Accept
                     </button>
                     <button
-                      onClick={() => updateBookingStatus(booking.id, "Rejected", booking.userId, booking.hallName, booking.name,)}
-                      className="px-5 py-2 font-semibold bg-red-500 text-slate-800 rounded-full shadow-md transform transition hover:bg-red-600 hover:-translate-y-1 focus:ring focus:ring-red-200"
+                      onClick={() => updateBookingStatus(booking.id, "Rejected", booking.userId, booking.hallName, booking.name)}
+                      className="flex-1 px-4 py-2.5 bg-rose-600/80 hover:bg-rose-600 text-white font-bold rounded-xl transition duration-200 active:scale-95 text-xs shadow-lg shadow-rose-600/20"
                     >
                       Reject
                     </button>
@@ -82,10 +101,10 @@ const AdminControlsHall = () => {
 
                 {booking.status === "Accepted" && (
                   <button
-                    onClick={() => updateBookingStatus(booking.id, "Delivered", booking.userId, booking.hallName, booking.name,)}
-                    className="px-5 py-2 font-semibold bg-amber-600 text-white rounded-full shadow-md transform transition hover:bg-amber-700 hover:-translate-y-1 focus:ring focus:ring-amber-200"
+                    onClick={() => updateBookingStatus(booking.id, "Delivered", booking.userId, booking.hallName, booking.name)}
+                    className="w-full px-4 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl transition duration-200 active:scale-95 text-xs shadow-lg shadow-amber-600/20"
                   >
-                    Delivered
+                    Mark as Delivered
                   </button>
                 )}
               </div>
