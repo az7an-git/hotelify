@@ -8,7 +8,6 @@ import {
 import { db } from "../../firebase/Firebase";
 import { useAuth } from "../../contexts/authContext";
 import HallCard from "./HallCard";
-import BookButton from "../common/button/BookButton";
 import BookingForm from "../common/forms/BookingForm";
 
 import { toast } from "sonner";
@@ -65,7 +64,6 @@ const WeddingHallCard = ({ hall }) => {
       setIsBooking(false);
       toast.success(NOTIFICATIONS.HALL_BOOKING_SUCCESS);
     } catch (error) {
-      console.error("Error booking hall:", error);
       toast.error(NOTIFICATIONS.HALL_BOOKING_ERROR);
     } finally {
       setLoading(false);
@@ -73,10 +71,10 @@ const WeddingHallCard = ({ hall }) => {
   };
 
   return (
-    <div className="flex flex-col gap-3 h-full">
+    <div className="h-full">
       <HallCard
         hall={hall}
-        onBook={() => setIsBooking(!isBooking)}
+        onBook={() => setIsBooking(true)}
         isBooking={isBooking}
       />
       {isBooking && (
@@ -94,6 +92,8 @@ const WeddingHallCard = ({ hall }) => {
           setEndDate={setEndDate}
           totalRate={totalRate}
           loading={loading}
+          onClose={() => setIsBooking(false)}
+          title={`Reserve ${hall.name}`}
         />
       )}
     </div>
