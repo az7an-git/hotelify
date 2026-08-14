@@ -1,6 +1,16 @@
-import { collection, addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/Firebase';
 import { uploadToCloudinary } from './cloudinaryService';
+import { toast } from 'sonner';
+
+// Delete Room
+export const deleteRoom = async (roomId) => {
+  try {
+    await deleteDoc(doc(db, 'rooms', roomId));
+  } catch (error) {
+    toast.error(`Error deleting room: ${error.message || error}`);
+  }
+};
 
 // Add Room
 export const addRoom = async (name, description, imageFile, available, price, beds) => {
@@ -19,7 +29,7 @@ export const addRoom = async (name, description, imageFile, available, price, be
       createdAt: serverTimestamp(),
     });
   } catch (error) {
-    console.error('Error adding room:', error);
+    toast.error(`Error adding room: ${error.message || error}`);
   }
 };
 
@@ -39,6 +49,7 @@ export const fetchRooms = async () => {
       return getTimestamp(b.createdAt) - getTimestamp(a.createdAt);
     });
   } catch (error) {
-    console.error('Error fetching rooms:', error);
+    toast.error(`Error fetching rooms: ${error.message || error}`);
+    return [];
   }
 };
