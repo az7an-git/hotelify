@@ -16,12 +16,16 @@ export const AuthProvider = ({ children }) => {
 
   // Sign up function
   const signUp = async (email, password) => {
-    await createUserWithEmailAndPassword(auth, email, password);
+    const cleanEmail = (email || "").trim().toLowerCase();
+    const cleanPassword = (password || "").trim();
+    await createUserWithEmailAndPassword(auth, cleanEmail, cleanPassword);
   };
 
   // Login function
   const login = async (email, password) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    const cleanEmail = (email || "").trim().toLowerCase();
+    const cleanPassword = (password || "").trim();
+    await signInWithEmailAndPassword(auth, cleanEmail, cleanPassword);
   };
 
   // Logout function
